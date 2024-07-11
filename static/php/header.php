@@ -54,8 +54,8 @@
                         <li><a class="dropdown-item"
                                 href="/SC-502-Web-ClienteServidor/static/routes/servicios/callcenter.php">Call
                                 Center</a></li>
-                        <li><a class="dropdown-item" href="/servicios/capacitacion">Capacitación</a></li>
-                        <li><a class="dropdown-item" href="/servicios/soporte">Soporte</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/servicios/capacitacion.php">Capacitación</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/servicios/soporte.php">Soporte</a></li>
                     </ul>
                 </div>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"

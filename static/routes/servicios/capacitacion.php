@@ -7,12 +7,12 @@ ini_set('display_errors', 1);
 <html>
 
 <head>
-    <title>callcenter</title>
+    <title>Capacitacion</title>
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/3b9cff258c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/style.css?n=<?php echo(rand()); ?>">
-    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/routes_style.css?n=<?php echo(rand()); ?>">
+    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/style.css?n=<?php echo (rand()); ?>">
+    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/routes_style.css?n=<?php echo (rand()); ?>">
     <script src="./SC-502-Web-ClienteServidor/static/js/script.js"></script>
 </head>
 
@@ -26,12 +26,12 @@ ini_set('display_errors', 1);
             <section>
                 <p
                     style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
-                    <i class="fa-solid fa-phone fa-sm" style="color: #ffffff;"></i> Call Center
+                    <i class="fa-solid fa-phone fa-sm" style="color: #ffffff;"></i> Capacitaciones
                 </p>
                 <div id="about-card" class="card text-center">
-                    <p> Mediante personal altamente capacitado ofrecemos un servicio de solidez, respaldo y garantía
-                        brindáandole apoyo en todas sus
-                        dudas y consultas sobre procedimientos de nuestro software empresarial.</p>
+                    <p> El software marca Excalibur-Tech S.A. brinda capacitación sobre uso de la herramienta en las
+                        instalaciones del cliente, así como capacitación de campo a agentes vendedores y cobradores con
+                        su propio equipo.</p>
                     <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                         exercitation
@@ -43,7 +43,7 @@ ini_set('display_errors', 1);
                     <div class="zoom-effect">
                         <a href="/img/GRAFICO-1.jpg" id="popupLink">
                             <p><img class="custom-image"
-                                    src="/SC-502-Web-ClienteServidor/static/img/servicios/callcenter.jpeg" alt="Call-Center" />
+                                    src="/SC-502-Web-ClienteServidor/static/img/servicios/capacitaciones.jpg" alt="Capacitaciones" />
                             </p>
                         </a>
                     </div>
