@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 <html>
 
 <head>
-    <title>ERP</title>
+    <title>Cuentas por Cobrar</title>
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/3b9cff258c.js" crossorigin="anonymous"></script>
@@ -26,13 +26,17 @@ ini_set('display_errors', 1);
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black">
-                    <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> ERP
+                    <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> Cuentas por Cobrar
                 </p>
                 <div id="about-card" class="card text-center">
-                    <p class="custom-card-text">Para toda empresa es importante poseer una herramienta
-                        multi-usuarios, multi-compañía y multi-moneda que sea ágil, sencilla de utilizar, que
-                        permita a sus trabajadores el cumplimiento de funciones de forma ordenada, controlando todo
-                        proceso administrativo, operativo y financiero.</p>
+                    <p class="custom-card-text">Este módulo le permite a usted como empresario controlar:
+                    <ul>
+                        <li>El registro de clientes, corporaciones, documentos por cobros y liquidación de saldos de clientes.</li>
+                        <li>Consultar y analizar reporte de los saldos y antigüedad de la cartera.</li>
+                        <li>Manejo de exoneraciones totales/parciales por cliente/producto y controlar su caducidad.</li>
+                        <li>Envío de email.</li>
+                        <li>Tarifa única y reducida.</li>
+                    </ul></p>
                     <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -41,7 +45,7 @@ ini_set('display_errors', 1);
                         anim id est laborum."</p>
                     <div class="zoom-effect">
                         <a href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php" id="popupLink">
-                            <p><img class="custom-image" src="/SC-502-Web-ClienteServidor/static/img/productos/GRAFICO-1.jpg"
+                            <p><img class="custom-image" src="/SC-502-Web-ClienteServidor/static/img/productos/cuentasporcobrar.jpg"
                                     alt="ERP" /></p>
                         </a>
                     </div>
@@ -61,7 +65,15 @@ ini_set('display_errors', 1);
         </div>
 
     </main>
-
+    <style>
+        ul {
+            list-style-position: inside; 
+            padding-left: 0; 
+        }
+        li {
+            margin: 10px 0; 
+        }
+    </style>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/footer.php'; ?>
 </body>
 

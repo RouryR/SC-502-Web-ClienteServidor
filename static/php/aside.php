@@ -28,7 +28,7 @@
             servicioalcliente@excalibur-tech.com
         </li>
         <li class="list-group-item card">
-            <a href="/tiketes/FormularioTiketes" style="text-decoration: none; color: inherit;">
+            <a href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php" style="text-decoration: none; color: inherit;">
                 <i class="fa-solid fa-headset fa-lg" style="color: #2069ad;"></i>
                 Soporte
             </a>

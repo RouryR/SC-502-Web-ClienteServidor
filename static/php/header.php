@@ -19,30 +19,30 @@
                         <li><a class="dropdown-item"
                                 href="/SC-502-Web-ClienteServidor/static/routes/productos/epr.php">ERP</a>
                         </li>
-                        <li><a class="dropdown-item" href="/productos/RuteoYDistribucion">Ruteo y
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/ruteo.php">Ruteo y
                                 Distribución</a></li>
-                        <li><a class="dropdown-item" href="/productos/PuntoDeVenta">Punto de Venta</a></li>
-                        <li><a class="dropdown-item" href="/productos/NominaYRecursosHumanos">Nómina y Recursos
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/PuntoDeVenta.php">Punto de Venta</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/nominaYRecursos.php">Nómina y Recursos
                                 Humanos</a></li>
-                        <li><a class="dropdown-item" href="/productos/Manufactura">Manufactura</a></li>
-                        <li><a class="dropdown-item" href="/productos/Importaciones">Importaciones</a></li>
-                        <li><a class="dropdown-item" href="/productos/FacturacionIntercompany">Facturación
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/manufactura.php">Manufactura</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/importaciones.php">Importaciones</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/facturacionIntercompany.php">Facturación
                                 Intercompany</a></li>
-                        <li><a class="dropdown-item" href="/productos/Facturacion">Facturación</a></li>
-                        <li><a class="dropdown-item" href="/productos/Estadistica">Estadística</a></li>
-                        <li><a class="dropdown-item" href="/productos/LiquidacionDeAgentes">Liquidación de
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/facturacion.php">Facturación</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/estadisticaDeVentas.php">Estadística de Ventas</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/liquidacionDeAgentes.php">Liquidación de
                                 Agentes</a>
                         </li>
-                        <li><a class="dropdown-item" href="/productos/CuentasPorCobrar">Cuentas por Cobrar</a>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/cuentasXcobrar.php">Cuentas por Cobrar</a>
                         </li>
-                        <li><a class="dropdown-item" href="/productos/Contabilidad">Contabilidad</a></li>
-                        <li><a class="dropdown-item" href="/productos/Comisiones">Comisiones</a></li>
-                        <li><a class="dropdown-item" href="/productos/CuentasPorPagar">Cuentas por Pagar</a>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/contabilidad.php">Contabilidad</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/comisiones.php">Comisiones</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/cuentasXpagar.php">Cuentas por Pagar</a>
                         </li>
-                        <li><a class="dropdown-item" href="/productos/Bancos">Bancos</a></li>
-                        <li><a class="dropdown-item" href="/productos/Inventario">Inventario</a></li>
-                        <li><a class="dropdown-item" href="/productos/ActivosFijos">Activos Fijos</a></li>
-                        <li><a class="dropdown-item" href="/productos/Compras">Compras</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/bancosYconciliaciones.php">Bancos y Conciliaciones</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/inventarios.php">Inventarios</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/activosFijos.php">Activos Fijos</a></li>
+                        <li><a class="dropdown-item" href="/SC-502-Web-ClienteServidor/static/routes/productos/compras.php">Compras</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">

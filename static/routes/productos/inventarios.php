@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 <html>
 
 <head>
-    <title>ERP</title>
+    <title>Inventarios</title>
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/3b9cff258c.js" crossorigin="anonymous"></script>
@@ -26,13 +26,19 @@ ini_set('display_errors', 1);
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black">
-                    <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> ERP
+                    <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i> Inventarios
                 </p>
                 <div id="about-card" class="card text-center">
-                    <p class="custom-card-text">Para toda empresa es importante poseer una herramienta
-                        multi-usuarios, multi-compañía y multi-moneda que sea ágil, sencilla de utilizar, que
-                        permita a sus trabajadores el cumplimiento de funciones de forma ordenada, controlando todo
-                        proceso administrativo, operativo y financiero.</p>
+                    <p class="custom-card-text">Este módulo permite a los empresarios:
+                    <ul>
+                        <li>Una administración del inventario por bodegas con seguridad personalizada, localizaciones, lotes, conteos físicos programados y cuadre.</li>
+                        <li>Uso de Hand Held’s para el registro de conteos con el uso de los códigos de barras.</li>
+                        <li>Permite una administración de las diferentes transacciones de inventario donde las mismas son configurables (requisiciones/ajustes/producciones), control de lotes vencidos, etc.</li>
+                        <li>Permite el manejo de estructuras de combos y recetas de artículos acorde a la necesidad del cliente.</li>
+                        <li>Registro de compras de mercadería local.</li>
+                        <li>Permite la consulta a reportes de existencias, transacciones, kardex, análisis de inventarios en exceso y otros reportes.</li>
+                        <li>Aceptación compras régimen tradicional y régimen simplificado.</li>
+                    </ul></p>
                     <p class="custom-card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -41,7 +47,7 @@ ini_set('display_errors', 1);
                         anim id est laborum."</p>
                     <div class="zoom-effect">
                         <a href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php" id="popupLink">
-                            <p><img class="custom-image" src="/SC-502-Web-ClienteServidor/static/img/productos/GRAFICO-1.jpg"
+                            <p><img class="custom-image" src="/SC-502-Web-ClienteServidor/static/img/productos/inventarios1.jpg"
                                     alt="ERP" /></p>
                         </a>
                     </div>
@@ -61,7 +67,15 @@ ini_set('display_errors', 1);
         </div>
 
     </main>
-
+    <style>
+        ul {
+            list-style-position: inside; 
+            padding-left: 0; 
+        }
+        li {
+            margin: 10px 0; 
+        }
+    </style>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/footer.php'; ?>
 </body>
 
