@@ -59,7 +59,7 @@
                     </ul>
                 </div>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
-                    href="/casoExito/CasosExito">Casos de Éxito</a>
+                    href="/SC-502-Web-ClienteServidor/static/routes/casosdeexito.php">Casos de Éxito</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php">Contáctenos</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
