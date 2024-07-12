@@ -61,7 +61,7 @@
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/casoExito/CasosExito">Casos de Éxito</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
-                    href="/contactenos/info">Contáctenos</a>
+                    href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php">Contáctenos</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/SC-502-Web-ClienteServidor/static/routes/acercade.php">Acerca de</a>
             </div>

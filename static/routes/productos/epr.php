@@ -40,7 +40,7 @@ ini_set('display_errors', 1);
                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
                         anim id est laborum."</p>
                     <div class="zoom-effect">
-                        <a href="/img/GRAFICO-1.jpg" id="popupLink">
+                        <a href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php" id="popupLink">
                             <p><img class="custom-image" src="/SC-502-Web-ClienteServidor/static/img/GRAFICO-1.jpg"
                                     alt="ERP" /></p>
                         </a>

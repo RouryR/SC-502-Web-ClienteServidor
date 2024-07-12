@@ -3,6 +3,11 @@
     margin: auto;
 }
 
+#form-card {
+    width: 700px;
+    margin: auto;
+}
+
 .zoom-effect {
     overflow: hidden;
 }
