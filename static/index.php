@@ -137,7 +137,7 @@ ini_set('display_errors', 1);
                         </div>
 
                         <div class="grid-item">
-                            <i class="fa-solid fa-person-arrow-down-to-line fa-3x"></i>
+                            <img width="48" height="48" src="https://img.icons8.com/color/48/coins.png" alt="coins" />
                             <span>Comisiones</span>
                         </div>
 
@@ -148,7 +148,9 @@ ini_set('display_errors', 1);
                         </div>
 
                         <div class="grid-item">
-                            <i class="fa-solid fa-building-columns fa-3x"></i>
+                            <img width="48" height="48"
+                                src="https://img.icons8.com/external-photo3ideastudio-lineal-color-photo3ideastudio/48/000000/external-bank-building-photo3ideastudio-lineal-color-photo3ideastudio.png"
+                                alt="external-bank-building-photo3ideastudio-lineal-color-photo3ideastudio" />
                             <span>Bancos y conciliaciones</span>
                         </div>
 
@@ -165,7 +167,8 @@ ini_set('display_errors', 1);
                         </div>
 
                         <div class="grid-item">
-                            <i class="fa-solid fa-paste fa-3x"></i>
+                            <img width="48" height="48" src="https://img.icons8.com/windows/48/clipboard-list.png"
+                                alt="clipboard-list" />
                             <span>Inventarios</span>
                         </div>
 

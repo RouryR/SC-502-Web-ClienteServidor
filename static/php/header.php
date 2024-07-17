@@ -101,7 +101,7 @@
                         <li><a class="dropdown-item"
                                 href="/SC-502-Web-ClienteServidor/static/routes/tiquetes/tiquetes.php">Tiquetes</a></li>
                         <li><a class="dropdown-item"
-                                href="">xxxx</a>
+                                href="/SC-502-Web-ClienteServidor/static/routes/empleados/empleados.php">Usuarios</a>
                         </li>
                         <li><a class="dropdown-item"
                                 href="">xxxx</a></li>
@@ -112,9 +112,8 @@
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php">Contáctenos</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
-                    href="/SC-502-Web-ClienteServidor/static/routes/acercade1.php">Acerca de 1</a>
-                <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
-                    href="/SC-502-Web-ClienteServidor/static/routes/acercade2.php">Acerca de 2</a>
+                    href="/SC-502-Web-ClienteServidor/static/routes/acercade1.php">Sobre Nosotros</a>
+                
             </div>
         </div>
         <div class="d-flex justify-content-end align-items-center">

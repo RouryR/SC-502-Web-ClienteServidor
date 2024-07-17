@@ -1,14 +1,7 @@
-.container-fluid {
-    position: fixed;
-    top: 0;
-    height: 80px;
-    width: 100%;
-    z-index: 5;
-    background-color: #2069AD;
-}
-
+/* NavBar --------------------*/
 .logo-img {
-    height: 79px;;
+    height: 79px;
+    ;
 }
 
 .active {
@@ -34,12 +27,12 @@
 }
 
 
- .carousel {
-     background-color: lightgray;
-     width: 100%;
-     padding: 0px;
-     margin-top: 50px;
- }
+.carousel {
+    background-color: lightgray;
+    width: 100%;
+    padding: 0px;
+    margin-top: 50px;
+}
 
 .rounded-button {
     border-radius: 50%;
@@ -53,7 +46,7 @@
     transform: translateY(-50%);
     padding: 40px;
     color: white;
-    font-size: 40px;  
+    font-size: 40px;
 }
 
 .carousel-control-prev {
@@ -73,11 +66,100 @@
 
 
 
-/* body */
+/* body --------------------*/
+.container-fluid {
+    position: fixed;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 5;
+    background-color: #2069AD;
+}
+
 .row.mb-3 .col-sm-6 {
     flex: 0 0 calc(33.333% - 16px);
     max-width: calc(25% - 16px);
     margin-left: 1%;
+}
+
+
+/* Estilos para Sections --------------------*/
+section {
+    width: 70%;
+    color: white;
+    padding: 0px;
+    color: #000000;
+    text-align: center;
+    margin-left: 4%;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+/* Estilos para el aside --------------------*/
+aside {
+    position: sticky;
+    top: 80px;
+    width: 24%;
+    background-color: #2069AD;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 90vh;
+    overflow-y: auto;
+    z-index: 1;
+    border-radius: 10px
+}
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+}
+
+.embed-responsive .embed-responsive-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+
+
+/* Card Icons Servicios --------------------*/
+.card-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s, transform 0.5s, background-color 0.5s, box-shadow 0.5s;
+}
+
+.card-visible:hover {
+    background-color: #3f99ed49;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-no-effect {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    transition: none !important;
+    background-color: white !important;
 }
 
 .grid-container {
@@ -122,80 +204,7 @@
     margin-bottom: 16px;
 }
 
-section {
-    width: 70%;
-    color: white;
-    padding: 0px;
-    color: #000000;
-    text-align: center;
-    margin-left: 4%;
-}
-
-/* Estilos para el aside */
-aside {
-    position: sticky;
-    top: 80px;
-    width: 24%;
-    background-color: #2069AD;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    height: 90vh;
-    overflow-y: auto;
-    z-index: 1;
-    border-radius: 10px
-}
-
-.embed-responsive {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 0;
-    overflow: hidden;
-    padding-bottom: 56.25%;
-}
-
-.embed-responsive .embed-responsive-item {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.content-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px;
-    margin-top: 20px;
-}
-
-.card-hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s, transform 0.5s;
-}
-
-.card-visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.5s, transform 0.5s, background-color 0.5s, box-shadow 0.5s;
-}
-
-.card-visible:hover {
-    background-color: #3f99ed49;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.card-no-effect {
-    opacity: 1 !important;
-    transform: scale(1) !important;
-    transition: none !important;
-    background-color: white !important;
-}
-
+/* Footer --------------------*/
 footer {
     bottom: 0;
     width: 100%;
@@ -212,6 +221,8 @@ footer p {
     color: #ffffff;
     font-display: bold;
 }
+
+/* Cards Casos de Exito --------------------*/
 
 #about-card {
     opacity: 1;
@@ -246,18 +257,15 @@ footer p {
     margin-top: 16px;
 }
 
-body,
-.container-fluid,
-aside,
-footer,
-.grid-item {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
 
 
-/* Estilos para el modo oscuro */
-.dark-mode .card-text, .dark-mode .grid-item,
-.dark-mode .card-header h4, .dark-mode .card-title h5,.dark-mode .card-title2{
+
+/* Estilos para el modo oscuro --------------------*/
+.dark-mode .card-text,
+.dark-mode .grid-item,
+.dark-mode .card-header h4,
+.dark-mode .card-title h5,
+.dark-mode .card-title2 {
     color: white;
 }
 
@@ -323,4 +331,10 @@ footer.dark-mode,
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
+body,
+.container-fluid,
+aside,
+footer,
+.grid-item {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
