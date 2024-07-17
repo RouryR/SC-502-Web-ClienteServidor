@@ -8,12 +8,8 @@ ini_set('display_errors', 1);
 
 <head>
     <title>Excalibur-Tech</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/3b9cff258c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/style.css?n=<?php echo(rand()); ?>">
-    <script src="/SC-502-Web-ClienteServidor/static/js/script.js"></script>
-    <?php include '../static/php/include.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/head.php'; ?>
+    <script src="/SC-502-Web-ClienteServidor/static/js/homeJS/script.js"></script>
 </head>
 
 <body>
@@ -75,7 +71,7 @@ ini_set('display_errors', 1);
             <p
                 style="color: white; font-size: 30px; background-color: #2069AD; border-radius: 10px; margin-top: 0; text-align: center; border-bottom: 1px solid black;">
                 <i class="fa-solid fa-briefcase fa-beat fa-sm" style="color: #ffffff;"></i>
-                <?php echo $tittle; ?>
+                Bienvenido
             </p>
 
             <div id="about-card" class="card text-center">
@@ -83,7 +79,7 @@ ini_set('display_errors', 1);
                     <h4>Sobre nosotros</h4>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Misión</h5>
+                    <h5 class="card-title2">Misión</h5>
                     <p class="card-text"><img width="60" height="60"
                             src="https://img.icons8.com/ultraviolet/60/goal.png" alt="goal" /> En <strong>Excalibur-Tech
                             S.A.</strong> somos una empresa líder en soluciones de tecnología de
@@ -94,7 +90,7 @@ ini_set('display_errors', 1);
                         su información.</p>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Visión</h5>
+                    <h5 class="card-title2">Visión</h5>
                     <p class="card-text"><img width="60" height="60"
                             src="https://img.icons8.com/office/60/define-location.png" alt="define-location" /> En
                         <strong>Excalibur-Tech S.A.</strong> buscamos ser un proveedor de servicios de tecnología de
@@ -182,7 +178,7 @@ ini_set('display_errors', 1);
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Resumen</h5>
+                    <h5 class="card-title2">Resumen</h5>
                     <p class="card-text">Lorem
                         ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                         incididunt ut labore et

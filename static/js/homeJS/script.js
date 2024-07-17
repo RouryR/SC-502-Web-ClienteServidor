@@ -1,18 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var acceptButton = document.getElementById("acceptButton");
-    var cookieAlert = document.querySelector(".alert");
-
-    acceptButton.addEventListener("click", function () {
-        document.cookie = "cookies_accepted=true;";
-        cookieAlert.style.display = "none";
-    });
-
-    if (document.cookie.split(';').some((item) => item.trim().startsWith('cookies_accepted='))) {
-        cookieAlert.style.display = "none";
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
     var cards = document.querySelectorAll(".card");
 
     window.addEventListener("scroll", function () {
@@ -37,3 +23,4 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 });
+

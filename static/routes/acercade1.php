@@ -8,11 +8,7 @@ ini_set('display_errors', 1);
 
 <head>
     <title>Acerca de Nosotros</title>
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/3b9cff258c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/style.css?n=<?php echo (rand()); ?>">
-    <script src="/SC-502-Web-ClienteServidor/static/js/script.js"></script>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/head.php'; ?>
 </head>
 
 <body>
@@ -24,9 +20,9 @@ ini_set('display_errors', 1);
 
         <div class="content-container">
             <section>
-                <p
-                    style="color: white; font-weight: bold; font-size: 25px; background-color: #2069AD; margin-top: 0; text-align: center; border-bottom: 1px solid black">
-                    <i class="fa-solid fa-phone fa-sm" style="color: #ffffff;"></i> Acerca de Nosotros
+                <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
+            #2069AD; text-align: center; border-bottom: 1px solid black;">
+                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Acerca de Nosotros
                 </p>
                 <div id="about-card" class="card text-center">
                     <p> Desde 1999 Excalibur-Tech nace siendo una empresa costarricense, actualmente somos líderes en el
