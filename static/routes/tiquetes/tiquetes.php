@@ -105,6 +105,7 @@ ini_set('display_errors', 1);
                                                 role="tab" aria-controls="pills-home"
                                                 aria-selected="true">Completados</button>
                                         </li>
+                                       
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary" id="pills-profile-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
@@ -168,7 +169,10 @@ ini_set('display_errors', 1);
                                                 </div>
                                             </div>
                                         </li>
-
+                                        <li class="btn btn-outline-primary" role="presentation">
+                                            <a class="nav-item" style="text-decoration: none;"
+                                                href="/SC-502-Web-ClienteServidor/static/routes/empleados/empleados.php">Volver</a>
+                                        </li>
                                     </ul>
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"

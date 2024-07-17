@@ -107,6 +107,13 @@ ini_set('display_errors', 1);
                                         
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary" id="pills-profile-tab"
+                                                data-bs-toggle="pill" data-bs-target="#pills-profile3" type="button"
+                                                role="tab" aria-controls="pills-profile"
+                                                aria-selected="false">Ver Empresas</button>
+                                        </li> 
+                                        
+                                        <li class="nav-item" role="presentation">
+                                            <button class="btn btn-outline-primary" id="pills-profile-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
                                                 role="tab" aria-controls="pills-profile"
                                                 aria-selected="false">Tiquetes</button>
@@ -191,7 +198,7 @@ ini_set('display_errors', 1);
 
                                         <li class="nav-item" role="presentation">
                                             <button type="button" class="btn btn-success pull-right"
-                                                data-bs-toggle="modal" data-bs-target="#newIssue2">Crear nuevo Usuario
+                                                data-bs-toggle="modal" data-bs-target="#newIssue2">Crear nuevo usuario
                                             </button>
 
                                             <div class="modal fade" id="newIssue2" tabindex="-1"
@@ -199,8 +206,7 @@ ini_set('display_errors', 1);
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-blue">
-                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i> Crear
-                                                                nuevo Usuario</h4>
+                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i>Usuario</h4>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
@@ -275,6 +281,216 @@ ini_set('display_errors', 1);
                                     </ul>
                                     <div class="tab-content" id="pills-tabContent">
 
+
+                                        <div class="tab-pane fade" id="pills-profile3" role="tabpanel"
+                                            aria-labelledby="pills-profile-tab">
+                                            <div class:="titulo" style="text-align: center; color: white; ">
+                                                <h2>Empresas</h2>
+                                            </div>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Nombre</th>
+                                                        <th scope="col">Correo</th>
+                                                        <th scope="col">Teléfono</th>
+                                                        <th scope="col">Acción</th>
+
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr >
+                                                        <th scope="row">1</th>
+                                                        <td>Manza Té</td>
+                                                        <td>manzaTe@gmail.com</td>
+                                                        <td>12341234</td>
+                                                        <td> <div class="btn-group">
+                                                                <button type="button"
+                                                                    class="btn btn-primary dropdown-toggle"
+                                                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                                                    style="background-color: #083e70">
+                                                                    Edición
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-dark"
+                                                                    aria-labelledby="dropdownMenuButton2">
+                                                                    <li><a class="dropdown-item">Eliminar</a></li>
+                                                                    <li class="nav-item" role="presentation">
+                                                                        <button type="button" class="dropdown-item"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#newIssue">Modificar
+                                                                        </button>
+
+                                                                        <div class="modal fade" id="newIssue"
+                                                                            tabindex="-1" aria-labelledby="newIssue"
+                                                                            aria-hidden="true">
+                                                                            <div
+                                                                                class="modal-dialog modal-dialog-centered">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header bg-blue">
+                                                                                        <h4 class="modal-title"><i
+                                                                                                class="fa fa-pencil"></i>
+                                                                                            Empresas Cliente</h4>
+                                                                                        <button type="button"
+                                                                                            class="btn-close"
+                                                                                            data-bs-dismiss="modal"
+                                                                                            aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <form action="#" method="post">
+                                                                                        <div class="modal-body">
+                                                                                            <div
+                                                                                                class="form-group mb-3">
+                                                                                                <input name="subject"
+                                                                                                    type="text"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="Nombre de la Empresa"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                            
+                                                                                            <div
+                                                                                                class="form-group mb-3">
+                                                                                                <input name="subject"
+                                                                                                    type="email"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="Correo"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                            
+                                                                                            <div
+                                                                                                class="form-group mb-3">
+                                                                                                <input name="subject"
+                                                                                                    type="text"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="Teléfono"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-secondary"
+                                                                                                data-bs-dismiss="modal"><i
+                                                                                                    class="fa fa-times"></i>
+                                                                                                Cancelar</button>
+                                                                                            <button
+                                                                                                style="background-color: #083e70"
+                                                                                                type="submit"
+                                                                                                class="btn btn-primary"><i
+                                                                                                    class="fa fa-pencil"></i>
+                                                                                                Modificar</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div></td>
+                                                        
+                                                    </tr>
+                                                    <tr >
+                                                        <th scope="row">2</th>
+                                                        <td>Trigo Miel</td>
+                                                        <td>trigomiel@gmail.com</td>
+                                                        <td>43214321</td>
+                                                        <td> <div class="btn-group">
+                                                                <button type="button"
+                                                                    class="btn btn-primary dropdown-toggle"
+                                                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                                                    style="background-color: #083e70">
+                                                                    Edición
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-dark"
+                                                                    aria-labelledby="dropdownMenuButton2">
+                                                                    <li><a class="dropdown-item">Eliminar</a></li>
+                                                                    <li class="nav-item" role="presentation">
+                                                                        <button type="button" class="dropdown-item"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#newIssue">Modificar
+                                                                        </button>
+
+                                                                        <div class="modal fade" id="newIssue"
+                                                                            tabindex="-1" aria-labelledby="newIssue"
+                                                                            aria-hidden="true">
+                                                                            <div
+                                                                                class="modal-dialog modal-dialog-centered">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header bg-blue">
+                                                                                        <h4 class="modal-title"><i
+                                                                                                class="fa fa-pencil"></i>
+                                                                                            Empresas Cliente</h4>
+                                                                                        <button type="button"
+                                                                                            class="btn-close"
+                                                                                            data-bs-dismiss="modal"
+                                                                                            aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <form action="#" method="post">
+                                                                                        <div class="modal-body">
+                                                                                            <div
+                                                                                                class="form-group mb-3">
+                                                                                                <input name="subject"
+                                                                                                    type="text"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="Nombre de la Empresa"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                            
+                                                                                            <div
+                                                                                                class="form-group mb-3">
+                                                                                                <input name="subject"
+                                                                                                    type="email"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="Correo"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                            
+                                                                                            <div
+                                                                                                class="form-group mb-3">
+                                                                                                <input name="subject"
+                                                                                                    type="text"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="Teléfono"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-secondary"
+                                                                                                data-bs-dismiss="modal"><i
+                                                                                                    class="fa fa-times"></i>
+                                                                                                Cancelar</button>
+                                                                                            <button
+                                                                                                style="background-color: #083e70"
+                                                                                                type="submit"
+                                                                                                class="btn btn-primary"><i
+                                                                                                    class="fa fa-pencil"></i>
+                                                                                                Modificar</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav aria-label="..." style="text-align: center;">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link">Anterior</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item active" aria-current="page">
+                                                        <a class="page-link" href="#">2</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="#">Siguiente</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
 
                                         <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                             aria-labelledby="pills-profile-tab">
@@ -413,7 +629,7 @@ ini_set('display_errors', 1);
 
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="table-success">
+                                                    <tr>
                                                         <th scope="row">1</th>
                                                         <td>2</td>
                                                         <td>Emmanuel Cervantes</td>
@@ -448,8 +664,7 @@ ini_set('display_errors', 1);
                                                                                     <div class="modal-header bg-blue">
                                                                                         <h4 class="modal-title"><i
                                                                                                 class="fa fa-pencil"></i>
-                                                                                            Crear
-                                                                                            nuevo usuario</h4>
+                                                                                            Usuario</h4>
                                                                                         <button type="button"
                                                                                             class="btn-close"
                                                                                             data-bs-dismiss="modal"
@@ -543,7 +758,7 @@ ini_set('display_errors', 1);
 
                                                         </td>
                                                     </tr>
-                                                    <tr class="table-success">
+                                                    <tr>
                                                         <th scope="row">2</th>
                                                         <td>2</td>
                                                         <td>Luis Cervantes</td>

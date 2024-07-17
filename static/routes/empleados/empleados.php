@@ -106,7 +106,7 @@ ini_set('display_errors', 1);
                                                 Empleados</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                                                        <button type="button" class="btn btn-success"
+                                                                        <button type="button" class="btn btn-outline-primary"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#newIssue">Ajustes de perfil
                                                                         </button>
@@ -120,7 +120,7 @@ ini_set('display_errors', 1);
                                                                                     <div class="modal-header bg-blue">
                                                                                         <h4 class="modal-title"><i
                                                                                                 class="fa fa-pencil"></i>
-                                                                                            Modificar Empleado</h4>
+                                                                                            Empleado</h4>
                                                                                         <button type="button"
                                                                                             class="btn-close"
                                                                                             data-bs-dismiss="modal"
@@ -174,8 +174,8 @@ ini_set('display_errors', 1);
                                                                         </div>
                                                                     </li>
 
-                                        <li class="btn btn-success pull-right" role="presentation">
-                                            <a class="nav-item"
+                                        <li class="btn btn-outline-primary" role="presentation">
+                                            <a class="nav-item" style="text-decoration: none;"
                                                 href="/SC-502-Web-ClienteServidor/static/routes/tiquetes/tiquetes.php">Tiquetes</a>
                                         </li>
 
@@ -189,8 +189,7 @@ ini_set('display_errors', 1);
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-blue">
-                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i> Crear
-                                                                nuevo Empleado</h4>
+                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i> Empleado</h4>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
@@ -266,7 +265,7 @@ ini_set('display_errors', 1);
 
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="table-success">
+                                                    <tr>
                                                         <th scope="row">1</th>
                                                         <td>Marco Gonzalez Chaves</td>
                                                         <td>Cajero</td>
@@ -395,7 +394,7 @@ ini_set('display_errors', 1);
 
                                                         </td>
                                                     </tr>
-                                                    <tr class="table-success">
+                                                    <tr>
                                                         <th scope="row">2</th>
                                                         <td>Luis Ramirez Acosta</td>
                                                         <td>Finanzas</td>
