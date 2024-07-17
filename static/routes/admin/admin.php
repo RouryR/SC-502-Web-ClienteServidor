@@ -24,8 +24,8 @@ ini_set('display_errors', 1);
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black;">
-                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Empleados (Opción
-                    disponible cuando se ha logeado un usuario)
+                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Admin (Opción
+                    disponible cuando se ha logeado un admin)
                 </p>
 
                 <div class="container">
@@ -47,8 +47,8 @@ ini_set('display_errors', 1);
                                         ?>
                                         <img src="/SC-502-Web-ClienteServidor/static/img/profile.png" alt="Perfil"
                                             class="circular-image" />
-                                        <h3>Diego Ramirez Corrales</h3>
-                                        <p>Gerente Manza Té</p>
+                                        <h3>Emmanuel Cervantes</h3>
+                                        <p>Gerente Excalibur-Tech</p>
                                         <div class="d-flex align-items-center justify-content-center mb-3">
                                             <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/10.png"
                                                 class="card-img-top" alt="...">
@@ -57,9 +57,9 @@ ini_set('display_errors', 1);
                                     <div class="personal-info">
                                         <h3>Información Personal</h3>
                                         <ul class="personal-list">
-                                            <li><i class="fas fa-briefcase "></i><span>Areas de Finanzas</span></li>
+                                            <li><i class="fas fa-briefcase "></i><span>Gerencia</span></li>
                                             <li><i class="fas fa-map-marker-alt "></i><span>Heredia, Aurora</span></li>
-                                            <li><i class="far fa-envelope "></i><span>Rouryffx@hotmail.com</span></li>
+                                            <li><i class="far fa-envelope "></i><span>emacervantes21@gmail.com</span></li>
                                             <li><i class="fas fa-mobile "></i><span>+506 89432784</span></li>
                                         </ul>
                                     </div>
@@ -102,13 +102,25 @@ ini_set('display_errors', 1);
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary active" id="pills-home-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
-                                                role="tab" aria-controls="pills-home" aria-selected="true">Gestionar
-                                                Empleados</button>
+                                                role="tab" aria-controls="pills-home" aria-selected="true">Ver Usuarios</button>
+                                        </li>
+                                        
+                                        <li class="nav-item" role="presentation">
+                                            <button class="btn btn-outline-primary" id="pills-profile-tab"
+                                                data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
+                                                role="tab" aria-controls="pills-profile"
+                                                aria-selected="false">Tiquetes</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="btn btn-outline-primary" id="pills-profile-tab"
+                                                data-bs-toggle="pill" data-bs-target="#pills-profile2" type="button"
+                                                role="tab" aria-controls="pills-profile"
+                                                aria-selected="false">Tiquetes Contáctenos</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                                                         <button type="button" class="btn btn-success"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Ajustes de perfil
+                                                                            data-bs-target="#newIssue">Crear Empresas Cliente
                                                                         </button>
 
                                                                         <div class="modal fade" id="newIssue"
@@ -120,7 +132,7 @@ ini_set('display_errors', 1);
                                                                                     <div class="modal-header bg-blue">
                                                                                         <h4 class="modal-title"><i
                                                                                                 class="fa fa-pencil"></i>
-                                                                                            Modificar Empleado</h4>
+                                                                                            Empresas Cliente</h4>
                                                                                         <button type="button"
                                                                                             class="btn-close"
                                                                                             data-bs-dismiss="modal"
@@ -133,7 +145,7 @@ ini_set('display_errors', 1);
                                                                                                 <input name="subject"
                                                                                                     type="text"
                                                                                                     class="form-control"
-                                                                                                    placeholder="Nombre Completo"
+                                                                                                    placeholder="Nombre de la Empresa"
                                                                                                     required>
                                                                                             </div>
                                                                                             
@@ -174,14 +186,12 @@ ini_set('display_errors', 1);
                                                                         </div>
                                                                     </li>
 
-                                        <li class="btn btn-success pull-right" role="presentation">
-                                            <a class="nav-item"
-                                                href="/SC-502-Web-ClienteServidor/static/routes/tiquetes/tiquetes.php">Tiquetes</a>
-                                        </li>
+
+
 
                                         <li class="nav-item" role="presentation">
                                             <button type="button" class="btn btn-success pull-right"
-                                                data-bs-toggle="modal" data-bs-target="#newIssue2">Crear Empleado
+                                                data-bs-toggle="modal" data-bs-target="#newIssue2">Crear nuevo Usuario
                                             </button>
 
                                             <div class="modal fade" id="newIssue2" tabindex="-1"
@@ -190,7 +200,7 @@ ini_set('display_errors', 1);
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-blue">
                                                             <h4 class="modal-title"><i class="fa fa-pencil"></i> Crear
-                                                                nuevo Empleado</h4>
+                                                                nuevo Usuario</h4>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
@@ -215,13 +225,31 @@ ini_set('display_errors', 1);
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group mb-3">
-                                                                    <input name="subject" type="email"
-                                                                        class="form-control" placeholder="Correo"
+                                                                    <select name="department" class="form-control"
                                                                         required>
+                                                                        <option value="" disabled selected>Seleccionar
+                                                                            rol </option>
+                                                                        <option value="admin">Administrador</option>
+                                                                        <option value="usuario">Usuario</option>
+
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group mb-3">
-                                                                    <input name="subject" type="number"
-                                                                        class="form-control" placeholder="Salario"
+                                                                    <select name="department" class="form-control"
+                                                                        required>
+                                                                        <option value="" disabled selected>Seleccionar
+                                                                            Empresa </option>
+                                                                        <option value="te">Manza Té</option>
+                                                                        <option value="exca">Excalibur-Tech
+                                                                            </option>
+                                                                        <option value="dc">Dicersa</option>
+                                                                        <option value="iqn">IQN</option>
+
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group mb-3">
+                                                                    <input name="subject" type="email"
+                                                                        class="form-control" placeholder="Correo"
                                                                         required>
                                                                 </div>
                                                                 <div class="form-group mb-3">
@@ -246,20 +274,139 @@ ini_set('display_errors', 1);
 
                                     </ul>
                                     <div class="tab-content" id="pills-tabContent">
+
+
+                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                            aria-labelledby="pills-profile-tab">
+                                            <div class:="titulo" style="text-align: center; color: white; ">
+                                                <h2>Tiquetes</h2>
+                                            </div>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Asunto</th>
+                                                        <th scope="col">Fecha creción</th>
+                                                        <th scope="col">Estado</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="table-warning">
+                                                        <th scope="row">1</th>
+                                                        <td>Error 404</td>
+                                                        <td>12 julio 2024</td>
+                                                        <td><strong>En revisión</strong></td>
+                                                    </tr>
+                                                    <tr class="table-danger">
+                                                        <th scope="row">2</th>
+                                                        <td>Comunicación con gerencia</td>
+                                                        <td>03 marzo 2024</td>
+                                                        <td><strong>Pendiente</strong></td>
+                                                    </tr>
+                                                    <tr class="table-warning">
+                                                        <th scope="row">3</th>
+                                                        <td>Recuperar datos</td>
+                                                        <td>28 noviembre 2023</td>
+                                                        <td><strong>En revisión</strong></td>
+                                                    </tr>
+                                                    <tr class="table-danger">
+                                                        <th scope="row">4</th>
+                                                        <td>Cambio de contraseña</td>
+                                                        <td>28 noviembre 2023</td>
+                                                        <td><strong>Pendiente</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav aria-label="..." style="text-align: center;">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link">Anterior</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item active" aria-current="page">
+                                                        <a class="page-link" href="#">2</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="#">Siguiente</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-content" id="pills-tabContent">
+
+
+<div class="tab-pane fade" id="pills-profile2" role="tabpanel"
+    aria-labelledby="pills-profile-tab">
+    <div class:="titulo" style="text-align: center; color: white; ">
+        <h2>Tiquetes Contáctenos</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-warning">
+                <th scope="row">1</th>
+                <td>juanito@gmail.com</td>
+                <td>12341234</td>
+                <td>Interés de negocio</td>
+            </tr>
+            <tr class="table-warning">
+                <th scope="row">2</th>
+                <td>pedro@gmail.com</td>
+                <td>12341232</td>
+                <td>Consulta sobre contrato</td>
+            </tr>
+            <tr class="table-warning">
+                <th scope="row">3</th>
+                <td>marta@gmail.com</td>
+                <td>22341234</td>
+                <td>Cita</td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="..." style="text-align: center;">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link">Anterior</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</div>
+                                    <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                             aria-labelledby="pills-home-tab">
                                             <div class:="titulo" style="text-align: center; color: white;">
-                                                <h2>Gestionar Empleados</h2>
+                                                <h2>Ver Usuarios</h2>
                                             </div>
 
                                             <table class="table">
                                                 <thead>
-                                                    <tr>
+                                                    <tr>                                                       
                                                         <th scope="col">ID</th>
+                                                        <th scope="col">rol</th>
                                                         <th scope="col">Nombre</th>
-                                                        <th scope="col">Puesto</th>
+                                                        <th scope="col">Usuario</th>
                                                         <th scope="col">Correo</th>
-                                                        <th scope="col">Salario</th>
+                                                        <th scope="col">Empresa</th>
+                                                        <th scope="col">Puesto</th>
                                                         <th scope="col">Teléfono</th>
                                                         <th scope="col">Acción</th>
                                                     </tr>
@@ -268,11 +415,13 @@ ini_set('display_errors', 1);
                                                 <tbody>
                                                     <tr class="table-success">
                                                         <th scope="row">1</th>
-                                                        <td>Marco Gonzalez Chaves</td>
-                                                        <td>Cajero</td>
-                                                        <td>marcochaves1909@gmail.com</td>
-                                                        <td>1000</td>
-                                                        <td>84364114</td>
+                                                        <td>2</td>
+                                                        <td>Emmanuel Cervantes</td>
+                                                        <td>Cerem0208</td>
+                                                        <td>emacervantes21@gmail.com</td>
+                                                        <td>Excalibur-Tech</td>
+                                                        <td>Gerente</td>
+                                                        <td>84119889</td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button type="button"
@@ -287,10 +436,10 @@ ini_set('display_errors', 1);
                                                                     <li class="nav-item" role="presentation">
                                                                         <button type="button" class="dropdown-item"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Modificar
+                                                                            data-bs-target="#newIssue2">Modificar
                                                                         </button>
 
-                                                                        <div class="modal fade" id="newIssue"
+                                                                        <div class="modal fade" id="newIssue2"
                                                                             tabindex="-1" aria-labelledby="newIssue"
                                                                             aria-hidden="true">
                                                                             <div
@@ -300,7 +449,7 @@ ini_set('display_errors', 1);
                                                                                         <h4 class="modal-title"><i
                                                                                                 class="fa fa-pencil"></i>
                                                                                             Crear
-                                                                                            nuevo Empleado</h4>
+                                                                                            nuevo usuario</h4>
                                                                                         <button type="button"
                                                                                             class="btn-close"
                                                                                             data-bs-dismiss="modal"
@@ -319,28 +468,27 @@ ini_set('display_errors', 1);
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <select
-                                                                                                    name="department"
+                                                                                                    name="empresa"
                                                                                                     class="form-control"
                                                                                                     required>
                                                                                                     <option value=""
                                                                                                         disabled
                                                                                                         selected>
-                                                                                                        Seleccionar
-                                                                                                        Puesto </option>
+                                                                                                        Seleccionar empresa </option>
                                                                                                     <option
-                                                                                                        value="Cajero">
-                                                                                                        Cajero</option>
+                                                                                                        value="te">
+                                                                                                        Manza Té</option>
                                                                                                     <option
-                                                                                                        value="Recursos Humanos">
-                                                                                                        Recursos Humanos
+                                                                                                        value="dc">
+                                                                                                        Dicersa
                                                                                                     </option>
                                                                                                     <option
-                                                                                                        value="Asistente">
-                                                                                                        Asistente
+                                                                                                        value="iqn">
+                                                                                                        IQN
                                                                                                     </option>
                                                                                                     <option
-                                                                                                        value="Finanzas">
-                                                                                                        Finanzas
+                                                                                                        value="ctr">
+                                                                                                        Cetransa
                                                                                                     </option>
 
                                                                                                 </select>
@@ -356,9 +504,9 @@ ini_set('display_errors', 1);
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <input name="subject"
-                                                                                                    type="number"
+                                                                                                    type="text"
                                                                                                     class="form-control"
-                                                                                                    placeholder="Salario"
+                                                                                                    placeholder="Puesto"
                                                                                                     required>
                                                                                             </div>
                                                                                             <div
@@ -397,11 +545,13 @@ ini_set('display_errors', 1);
                                                     </tr>
                                                     <tr class="table-success">
                                                         <th scope="row">2</th>
-                                                        <td>Luis Ramirez Acosta</td>
-                                                        <td>Finanzas</td>
-                                                        <td>Luis@gmail.com</td>
-                                                        <td>1000</td>
-                                                        <td>84364112</td>
+                                                        <td>2</td>
+                                                        <td>Luis Cervantes</td>
+                                                        <td>Luis0208</td>
+                                                        <td>luis21@gmail.com</td>
+                                                        <td>Manza Té</td>
+                                                        <td>Cajero</td>
+                                                        <td>84119881</td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button type="button"
@@ -416,11 +566,11 @@ ini_set('display_errors', 1);
                                                                     <li class="nav-item" role="presentation">
                                                                         <button type="button" class="dropdown-item"
                                                                             data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Modificar
+                                                                            data-bs-target="#newIssue2">Modificar
                                                                         </button>
 
-                                                                        <div class="modal fade" id="newIssue"
-                                                                            tabindex="-1" aria-labelledby="newIssue"
+                                                                        <div class="modal fade" id="newIssue2"
+                                                                            tabindex="-1" aria-labelledby="newIssue2"
                                                                             aria-hidden="true">
                                                                             <div
                                                                                 class="modal-dialog modal-dialog-centered">
@@ -429,7 +579,7 @@ ini_set('display_errors', 1);
                                                                                         <h4 class="modal-title"><i
                                                                                                 class="fa fa-pencil"></i>
                                                                                             Crear
-                                                                                            nuevo Empleado</h4>
+                                                                                            nuevo usuario</h4>
                                                                                         <button type="button"
                                                                                             class="btn-close"
                                                                                             data-bs-dismiss="modal"
@@ -448,28 +598,27 @@ ini_set('display_errors', 1);
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <select
-                                                                                                    name="department"
+                                                                                                    name="empresa"
                                                                                                     class="form-control"
                                                                                                     required>
                                                                                                     <option value=""
                                                                                                         disabled
                                                                                                         selected>
-                                                                                                        Seleccionar
-                                                                                                        Puesto </option>
+                                                                                                        Seleccionar empresa </option>
                                                                                                     <option
-                                                                                                        value="Cajero">
-                                                                                                        Cajero</option>
+                                                                                                        value="te">
+                                                                                                        Manza Té</option>
                                                                                                     <option
-                                                                                                        value="Recursos Humanos">
-                                                                                                        Recursos Humanos
+                                                                                                        value="dc">
+                                                                                                        Dicersa
                                                                                                     </option>
                                                                                                     <option
-                                                                                                        value="Asistente">
-                                                                                                        Asistente
+                                                                                                        value="iqn">
+                                                                                                        IQN
                                                                                                     </option>
                                                                                                     <option
-                                                                                                        value="Finanzas">
-                                                                                                        Finanzas
+                                                                                                        value="ctr">
+                                                                                                        Cetransa
                                                                                                     </option>
 
                                                                                                 </select>
@@ -485,9 +634,9 @@ ini_set('display_errors', 1);
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <input name="subject"
-                                                                                                    type="number"
+                                                                                                    type="text"
                                                                                                     class="form-control"
-                                                                                                    placeholder="Salario"
+                                                                                                    placeholder="Usuario"
                                                                                                     required>
                                                                                             </div>
                                                                                             <div
@@ -550,7 +699,7 @@ ini_set('display_errors', 1);
                             </div>
                         </div>
                     </div>
-
+                    
 
 
                 </div>

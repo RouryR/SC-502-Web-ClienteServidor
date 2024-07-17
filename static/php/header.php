@@ -104,7 +104,7 @@
                                 href="/SC-502-Web-ClienteServidor/static/routes/empleados/empleados.php">Usuarios</a>
                         </li>
                         <li><a class="dropdown-item"
-                                href="">xxxx</a></li>
+                                href="/SC-502-Web-ClienteServidor/static/routes/admin/admin.php">Admin</a></li>
                     </ul>
                 </div>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
