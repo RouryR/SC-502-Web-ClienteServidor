@@ -1,7 +1,37 @@
 /* NavBar --------------------*/
 .logo-img {
     height: 79px;
-    ;
+    width: auto;
+}
+
+@media (max-width: 1200px) {
+    .logo-img {
+        height: 70px;
+    }
+}
+
+@media (max-width: 992px) {
+    .logo-img {
+        height: 60px;/
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        height: 35px;
+    }
 }
 
 .active {
@@ -10,28 +40,106 @@
 }
 
 .nav-container .btn {
-    font-size: 15px;
+    font-size: 14px;
     color: #ffffff;
     background-color: #083e70;
-    margin-top: 14px;
+    margin-top: 10px;
     border: 1px solid #ffffff;
-    transition: all .5s ease-in-out;
+    /*transition: all .5s ease-in-out;*/
 }
 
+.nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.nav-container .btn {
+    font-size: 14px;
+    margin: 5px;
+}
+
+@media (max-width: 992px) {
+    .nav-container .btn {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container .btn {
+        font-size: 10px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-container .btn {
+        font-size: 8px;
+        margin: 5px;
+    }
+}
+
+.offcanvas-body {
+    overflow-y: auto;
+}
 
 .btn:hover {
     color: #2069AD !important;
     background-color: #ffffff !important;
-    border: 2px solid #0a345c !important;
+    border: 1px solid #0a345c !important;
+}
+
+.greeting-text {
+    color: #083E70;
+}
+
+.img-circular {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #083E70;
+}
+
+.personal-info {
+    text-align: center;
+}
+
+.personal-list {
+    list-style: none;
+    padding: 0;
+}
+
+.personal-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.personal-list i {
+    margin-right: 10px;
 }
 
 
+.uniform-button {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-align: center;
+}
+
+.uniform-button i {
+    margin-right: 8px;
+}
+
+/* carousel --------------------*/
 .carousel {
     background-color: lightgray;
     width: 100%;
     padding: 0px;
-    margin-top: 50px;
 }
 
 .rounded-button {
@@ -64,8 +172,6 @@
     color: #0a345c;
 }
 
-
-
 /* body --------------------*/
 .container-fluid {
     position: fixed;
@@ -82,7 +188,6 @@
     margin-left: 1%;
 }
 
-
 /* Estilos para Sections --------------------*/
 section {
     width: 70%;
@@ -97,7 +202,15 @@ section {
     display: flex;
     justify-content: space-between;
     padding: 0px;
-    margin-top: 20px;
+    margin-top: 100px;
+}
+
+/*Contenedor unico para el index ya que las rutas tiene diferente margig y asi evitar el overlapping*/
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    margin-top: 30px;
 }
 
 /* Estilos para el aside --------------------*/
@@ -134,9 +247,6 @@ aside {
     border: 0;
 }
 
-
-
-
 /* Card Icons Servicios --------------------*/
 .card-hidden {
     opacity: 0;
@@ -151,8 +261,9 @@ aside {
 }
 
 .card-visible:hover {
-    background-color: #3f99ed49;
+    background-color: #edb8186b;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #2069AD;
 }
 
 .card-no-effect {
@@ -197,7 +308,7 @@ aside {
 }
 
 .grid-item:hover span {
-    color: #ffffff;
+    color: #2069AD;
 }
 
 .espaciado-p {
@@ -258,8 +369,6 @@ footer p {
 }
 
 
-
-
 /* Estilos para el modo oscuro --------------------*/
 .dark-mode .card-text,
 .dark-mode .grid-item,
@@ -268,7 +377,6 @@ footer p {
 .dark-mode .card-title2 {
     color: white;
 }
-
 
 body.dark-mode {
     background-color: #121212;
@@ -321,7 +429,6 @@ footer.dark-mode {
 section.dark-mode {
     color: white;
 }
-
 
 body.dark-mode,
 .container-fluid.dark-mode,

@@ -20,7 +20,7 @@ ini_set('display_errors', 1);
 
     <main>
 
-        <div class="content-container">
+        <div class="content-container" style=" margin-top: 100px;">
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black;">

@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 <html>
 
 <head>
-    <title>EPR</title>
+    <title>TITULO</title>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/head.php'; ?>
     <link rel="stylesheet"
         href="/SC-502-Web-ClienteServidor/static/css/general_routes_style.css?n=<?php echo (rand()); ?>">
@@ -28,24 +28,21 @@ ini_set('display_errors', 1);
                                 <div class="vtimeline-content">
                                     <p
                                         style="color: white; font-size: 30px; background-color: #2069AD; border-radius: 10px; margin-top: 0; text-align: center; border-bottom: 1px solid black;">
-                                        ERP
+                                        TITULO
                                     </p>
                                     <div class="zoom-effect">
                                         <a href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php"
                                             id="popupLink">
-                                            <p><img class="custom-image"
+                                            <p>
+                                                <!--------------------------------------- IMAGEN --------------------------------------->
+                                                <img class="custom-image"
                                                     src="/SC-502-Web-ClienteServidor/static/img/productos/GRAFICO-1.jpg"
                                                     alt="Acerca de Nosotros" />
                                             </p>
                                         </a>
                                     </div>
                                     <p>
-                                        Para toda empresa es importante poseer una herramienta
-                                        multi-usuarios, multi-compañía y multi-moneda que sea ágil, sencilla de
-                                        utilizar, que
-                                        permita a sus trabajadores el cumplimiento de funciones de forma ordenada,
-                                        controlando todo
-                                        proceso administrativo, operativo y financiero.
+                                       *********************************************texto 1*********************************************
                                     </p>
                                 </div>
                             </div>
@@ -53,18 +50,9 @@ ini_set('display_errors', 1);
                         <div class="vtimeline-point">
                             <div class="vtimeline-block">
                                 <div class="vtimeline-content">
-                                    <h3>Más de ERP</h3>
+                                    <h3>Más de TITULO</h3>
                                     <p>
-                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                        nulla pariatur.
-                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit
-                                        anim id est laborum."
+                                        *********************************************texto 1*********************************************
                                     </p>
                                 </div>
                             </div>

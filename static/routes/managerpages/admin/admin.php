@@ -9,8 +9,7 @@ ini_set('display_errors', 1);
 <head>
     <title>Tiquetes</title>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/head.php'; ?>
-    <link rel="stylesheet"
-        href="/SC-502-Web-ClienteServidor/static/css/tiquetes/tiquetes.css?n=<?php echo (rand()); ?>">
+    <link rel="stylesheet" href="/SC-502-Web-ClienteServidor/static/css/tiquetes/tiquetes.css?n=<?php echo (rand()); ?>">
 </head>
 
 <body>
@@ -19,8 +18,7 @@ ini_set('display_errors', 1);
     </header>
 
     <main>
-
-        <div class="content-container">
+        <div class="content-container" style=" margin-top: 100px;">
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black;">
@@ -45,8 +43,9 @@ ini_set('display_errors', 1);
                                             echo '<p><strong>¡Buenas noches!</strong></p>';
                                         }
                                         ?>
-                                        <img src="/SC-502-Web-ClienteServidor/static/img/profile.png" alt="Perfil"
-                                            class="circular-image" />
+
+                                        <img src="<?php echo $_SESSION['imagen']; ?>" alt="Perfil" class="circular-image" />
+                                     
                                         <h3>Emmanuel Cervantes</h3>
                                         <p>Gerente Excalibur-Tech</p>
                                         <div class="d-flex align-items-center justify-content-center mb-3">
@@ -59,7 +58,8 @@ ini_set('display_errors', 1);
                                         <ul class="personal-list">
                                             <li><i class="fas fa-briefcase "></i><span>Gerencia</span></li>
                                             <li><i class="fas fa-map-marker-alt "></i><span>Heredia, Aurora</span></li>
-                                            <li><i class="far fa-envelope "></i><span>emacervantes21@gmail.com</span></li>
+                                            <li><i class="far fa-envelope "></i><span>emacervantes21@gmail.com</span>
+                                            </li>
                                             <li><i class="fas fa-mobile "></i><span>+506 89432784</span></li>
                                         </ul>
                                     </div>
@@ -89,8 +89,6 @@ ini_set('display_errors', 1);
                                         <script async
                                             src="https://app2.weatherwidget.org/js/?id=ww_f79ac8d81ad3f"></script>
 
-
-
                                     </div>
                                 </div>
                             </div>
@@ -102,16 +100,17 @@ ini_set('display_errors', 1);
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary active" id="pills-home-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
-                                                role="tab" aria-controls="pills-home" aria-selected="true">Ver Usuarios</button>
+                                                role="tab" aria-controls="pills-home" aria-selected="true">Ver
+                                                Usuarios</button>
                                         </li>
-                                        
+
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary" id="pills-profile-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-profile3" type="button"
-                                                role="tab" aria-controls="pills-profile"
-                                                aria-selected="false">Ver Empresas</button>
-                                        </li> 
-                                        
+                                                role="tab" aria-controls="pills-profile" aria-selected="false">Ver
+                                                Empresas</button>
+                                        </li>
+
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary" id="pills-profile-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
@@ -121,77 +120,57 @@ ini_set('display_errors', 1);
                                         <li class="nav-item" role="presentation">
                                             <button class="btn btn-outline-primary" id="pills-profile-tab"
                                                 data-bs-toggle="pill" data-bs-target="#pills-profile2" type="button"
-                                                role="tab" aria-controls="pills-profile"
-                                                aria-selected="false">Tiquetes Contáctenos</button>
+                                                role="tab" aria-controls="pills-profile" aria-selected="false">Tiquetes
+                                                Contáctenos</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                                                        <button type="button" class="btn btn-success"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Crear Empresas Cliente
-                                                                        </button>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#newIssue">Crear Empresas Cliente
+                                            </button>
 
-                                                                        <div class="modal fade" id="newIssue"
-                                                                            tabindex="-1" aria-labelledby="newIssue"
-                                                                            aria-hidden="true">
-                                                                            <div
-                                                                                class="modal-dialog modal-dialog-centered">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header bg-blue">
-                                                                                        <h4 class="modal-title"><i
-                                                                                                class="fa fa-pencil"></i>
-                                                                                            Empresas Cliente</h4>
-                                                                                        <button type="button"
-                                                                                            class="btn-close"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close"></button>
-                                                                                    </div>
-                                                                                    <form action="#" method="post">
-                                                                                        <div class="modal-body">
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Nombre de la Empresa"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="email"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Correo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Teléfono"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button"
-                                                                                                class="btn btn-secondary"
-                                                                                                data-bs-dismiss="modal"><i
-                                                                                                    class="fa fa-times"></i>
-                                                                                                Cancelar</button>
-                                                                                            <button
-                                                                                                style="background-color: #083e70"
-                                                                                                type="submit"
-                                                                                                class="btn btn-primary"><i
-                                                                                                    class="fa fa-pencil"></i>
-                                                                                                Modificar</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
+                                            <div class="modal fade" id="newIssue" tabindex="-1"
+                                                aria-labelledby="newIssue" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-blue">
+                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i>
+                                                                Empresas Cliente</h4>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <form action="#" method="post">
+                                                            <div class="modal-body">
+                                                                <div class="form-group mb-3">
+                                                                    <input name="subject" type="text"
+                                                                        class="form-control"
+                                                                        placeholder="Nombre de la Empresa" required>
+                                                                </div>
+
+                                                                <div class="form-group mb-3">
+                                                                    <input name="subject" type="email"
+                                                                        class="form-control" placeholder="Correo"
+                                                                        required>
+                                                                </div>
+
+                                                                <div class="form-group mb-3">
+                                                                    <input name="subject" type="text"
+                                                                        class="form-control" placeholder="Teléfono"
+                                                                        required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal"><i class="fa fa-times"></i>
+                                                                    Cancelar</button>
+                                                                <button style="background-color: #083e70" type="submit"
+                                                                    class="btn btn-primary"><i class="fa fa-pencil"></i>
+                                                                    Modificar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
 
 
 
@@ -206,7 +185,8 @@ ini_set('display_errors', 1);
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-blue">
-                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i>Usuario</h4>
+                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i>Usuario
+                                                            </h4>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
@@ -247,7 +227,7 @@ ini_set('display_errors', 1);
                                                                             Empresa </option>
                                                                         <option value="te">Manza Té</option>
                                                                         <option value="exca">Excalibur-Tech
-                                                                            </option>
+                                                                        </option>
                                                                         <option value="dc">Dicersa</option>
                                                                         <option value="iqn">IQN</option>
 
@@ -296,16 +276,17 @@ ini_set('display_errors', 1);
                                                         <th scope="col">Teléfono</th>
                                                         <th scope="col">Acción</th>
 
-                                                        
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr >
+                                                    <tr>
                                                         <th scope="row">1</th>
                                                         <td>Manza Té</td>
                                                         <td>manzaTe@gmail.com</td>
                                                         <td>12341234</td>
-                                                        <td> <div class="btn-group">
+                                                        <td>
+                                                            <div class="btn-group">
                                                                 <button type="button"
                                                                     class="btn btn-primary dropdown-toggle"
                                                                     data-bs-toggle="dropdown" aria-expanded="false"
@@ -346,7 +327,7 @@ ini_set('display_errors', 1);
                                                                                                     placeholder="Nombre de la Empresa"
                                                                                                     required>
                                                                                             </div>
-                                                                                            
+
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <input name="subject"
@@ -355,7 +336,7 @@ ini_set('display_errors', 1);
                                                                                                     placeholder="Correo"
                                                                                                     required>
                                                                                             </div>
-                                                                                            
+
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <input name="subject"
@@ -384,15 +365,17 @@ ini_set('display_errors', 1);
                                                                         </div>
                                                                     </li>
                                                                 </ul>
-                                                            </div></td>
-                                                        
+                                                            </div>
+                                                        </td>
+
                                                     </tr>
-                                                    <tr >
+                                                    <tr>
                                                         <th scope="row">2</th>
                                                         <td>Trigo Miel</td>
                                                         <td>trigomiel@gmail.com</td>
                                                         <td>43214321</td>
-                                                        <td> <div class="btn-group">
+                                                        <td>
+                                                            <div class="btn-group">
                                                                 <button type="button"
                                                                     class="btn btn-primary dropdown-toggle"
                                                                     data-bs-toggle="dropdown" aria-expanded="false"
@@ -433,7 +416,7 @@ ini_set('display_errors', 1);
                                                                                                     placeholder="Nombre de la Empresa"
                                                                                                     required>
                                                                                             </div>
-                                                                                            
+
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <input name="subject"
@@ -442,7 +425,7 @@ ini_set('display_errors', 1);
                                                                                                     placeholder="Correo"
                                                                                                     required>
                                                                                             </div>
-                                                                                            
+
                                                                                             <div
                                                                                                 class="form-group mb-3">
                                                                                                 <input name="subject"
@@ -471,7 +454,8 @@ ini_set('display_errors', 1);
                                                                         </div>
                                                                     </li>
                                                                 </ul>
-                                                            </div></td>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -554,58 +538,58 @@ ini_set('display_errors', 1);
                                     <div class="tab-content" id="pills-tabContent">
 
 
-<div class="tab-pane fade" id="pills-profile2" role="tabpanel"
-    aria-labelledby="pills-profile-tab">
-    <div class:="titulo" style="text-align: center; color: white; ">
-        <h2>Tiquetes Contáctenos</h2>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Teléfono</th>
-                <th scope="col">Detalles</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-warning">
-                <th scope="row">1</th>
-                <td>juanito@gmail.com</td>
-                <td>12341234</td>
-                <td>Interés de negocio</td>
-            </tr>
-            <tr class="table-warning">
-                <th scope="row">2</th>
-                <td>pedro@gmail.com</td>
-                <td>12341232</td>
-                <td>Consulta sobre contrato</td>
-            </tr>
-            <tr class="table-warning">
-                <th scope="row">3</th>
-                <td>marta@gmail.com</td>
-                <td>22341234</td>
-                <td>Cita</td>
-            </tr>
-        </tbody>
-    </table>
-    <nav aria-label="..." style="text-align: center;">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link">Anterior</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Siguiente</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-</div>
+                                        <div class="tab-pane fade" id="pills-profile2" role="tabpanel"
+                                            aria-labelledby="pills-profile-tab">
+                                            <div class:="titulo" style="text-align: center; color: white; ">
+                                                <h2>Tiquetes Contáctenos</h2>
+                                            </div>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Correo</th>
+                                                        <th scope="col">Teléfono</th>
+                                                        <th scope="col">Detalles</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="table-warning">
+                                                        <th scope="row">1</th>
+                                                        <td>juanito@gmail.com</td>
+                                                        <td>12341234</td>
+                                                        <td>Interés de negocio</td>
+                                                    </tr>
+                                                    <tr class="table-warning">
+                                                        <th scope="row">2</th>
+                                                        <td>pedro@gmail.com</td>
+                                                        <td>12341232</td>
+                                                        <td>Consulta sobre contrato</td>
+                                                    </tr>
+                                                    <tr class="table-warning">
+                                                        <th scope="row">3</th>
+                                                        <td>marta@gmail.com</td>
+                                                        <td>22341234</td>
+                                                        <td>Cita</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav aria-label="..." style="text-align: center;">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link">Anterior</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item active" aria-current="page">
+                                                        <a class="page-link" href="#">2</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="#">Siguiente</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                             aria-labelledby="pills-home-tab">
@@ -615,7 +599,7 @@ ini_set('display_errors', 1);
 
                                             <table class="table">
                                                 <thead>
-                                                    <tr>                                                       
+                                                    <tr>
                                                         <th scope="col">ID</th>
                                                         <th scope="col">rol</th>
                                                         <th scope="col">Nombre</th>
@@ -682,27 +666,25 @@ ini_set('display_errors', 1);
                                                                                             </div>
                                                                                             <div
                                                                                                 class="form-group mb-3">
-                                                                                                <select
-                                                                                                    name="empresa"
+                                                                                                <select name="empresa"
                                                                                                     class="form-control"
                                                                                                     required>
                                                                                                     <option value=""
                                                                                                         disabled
                                                                                                         selected>
-                                                                                                        Seleccionar empresa </option>
-                                                                                                    <option
-                                                                                                        value="te">
-                                                                                                        Manza Té</option>
-                                                                                                    <option
-                                                                                                        value="dc">
+                                                                                                        Seleccionar
+                                                                                                        empresa
+                                                                                                    </option>
+                                                                                                    <option value="te">
+                                                                                                        Manza Té
+                                                                                                    </option>
+                                                                                                    <option value="dc">
                                                                                                         Dicersa
                                                                                                     </option>
-                                                                                                    <option
-                                                                                                        value="iqn">
+                                                                                                    <option value="iqn">
                                                                                                         IQN
                                                                                                     </option>
-                                                                                                    <option
-                                                                                                        value="ctr">
+                                                                                                    <option value="ctr">
                                                                                                         Cetransa
                                                                                                     </option>
 
@@ -812,27 +794,25 @@ ini_set('display_errors', 1);
                                                                                             </div>
                                                                                             <div
                                                                                                 class="form-group mb-3">
-                                                                                                <select
-                                                                                                    name="empresa"
+                                                                                                <select name="empresa"
                                                                                                     class="form-control"
                                                                                                     required>
                                                                                                     <option value=""
                                                                                                         disabled
                                                                                                         selected>
-                                                                                                        Seleccionar empresa </option>
-                                                                                                    <option
-                                                                                                        value="te">
-                                                                                                        Manza Té</option>
-                                                                                                    <option
-                                                                                                        value="dc">
+                                                                                                        Seleccionar
+                                                                                                        empresa
+                                                                                                    </option>
+                                                                                                    <option value="te">
+                                                                                                        Manza Té
+                                                                                                    </option>
+                                                                                                    <option value="dc">
                                                                                                         Dicersa
                                                                                                     </option>
-                                                                                                    <option
-                                                                                                        value="iqn">
+                                                                                                    <option value="iqn">
                                                                                                         IQN
                                                                                                     </option>
-                                                                                                    <option
-                                                                                                        value="ctr">
+                                                                                                    <option value="ctr">
                                                                                                         Cetransa
                                                                                                     </option>
 
@@ -888,7 +868,7 @@ ini_set('display_errors', 1);
 
                                                         </td>
                                                     </tr>
-                                                    
+
                                                 </tbody>
                                             </table>
                                             <nav aria-label="..." style="text-align: center;">
@@ -908,13 +888,13 @@ ini_set('display_errors', 1);
                                             </nav>
                                         </div>
 
-                                        
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
 
 
                 </div>

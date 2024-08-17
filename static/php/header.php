@@ -1,4 +1,8 @@
-<nav class="navbar navbar-light bg-light fixed-top" style="list-style: none;">
+<?php
+session_start();
+?>
+
+<nav class="navbar navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <div class="d-flex justify-content-start align-items-center">
             <div class="logo-container">
@@ -99,12 +103,14 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                         <li><a class="dropdown-item"
-                                href="/SC-502-Web-ClienteServidor/static/routes/tiquetes/tiquetes.php">Tiquetes</a></li>
-                        <li><a class="dropdown-item"
-                                href="/SC-502-Web-ClienteServidor/static/routes/empleados/empleados.php">Usuarios</a>
+                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/tiquetes/tiquetes.php">Tiquetes</a>
                         </li>
                         <li><a class="dropdown-item"
-                                href="/SC-502-Web-ClienteServidor/static/routes/admin/admin.php">Admin</a></li>
+                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/empleados/empleados.php">Usuarios</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php">Admin</a>
+                        </li>
                     </ul>
                 </div>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
@@ -112,38 +118,108 @@
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php">Contáctenos</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
-                    href="/SC-502-Web-ClienteServidor/static/routes/acercade1.php">Sobre Nosotros</a>
-                
+                    href="/SC-502-Web-ClienteServidor/static/routes/acercade.php">Sobre Nosotros</a>
+                <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
+                    href="/SC-502-Web-ClienteServidor/static/index2.php">Index 2</a>
             </div>
         </div>
-        <div class="d-flex justify-content-end align-items-center">
-            <div class="nav-container">
-                <div>
-                    <img src="/SC-502-Web-ClienteServidor/static/img/user.png" alt="Perfil" class="img-circular" />
-                    <a id="botonSesion" class="btn bg-warning text-dark  " tabindex="-1" role="button"
-                        aria-disabled="true" href="/SC-502-Web-ClienteServidor/static/routes/signin.php">Iniciar
-                        Sesión</a>
-                    </a>
-                    <a id="botonSesion" class="btn bg-danger text-white  " tabindex="-1" role="button"
-                        aria-disabled="true" href="/SC-502-Web-ClienteServidor/static/routes/signin.php">Cerrar
-                        Sesión</a>
-                    </a>
-                    <!-- <button id="darkModeToggle" class="btn btn-secondary">
-    <i id="darkModeIcon" class="fas fa-sun"></i>
-</button> -->
 
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column">
+                <div class="text-center mb-3">
+                    <?php if (isset($_SESSION['usuario_id'])): ?>
+                        <?php
+                        date_default_timezone_set('America/Costa_Rica');
+                        $hour = date('H');
+
+                        if ($hour < 12) {
+                            $greeting = '¡Buenos días';
+                            $icon_url = 'https://img.icons8.com/emoji/48/sun-emoji.png'; // Icono de 
+                        } elseif ($hour < 18) {
+                            $greeting = '¡Buenas tardes';
+                            $icon_url = 'https://img.icons8.com/emoji/48/sunset-emoji.png'; // Icono 
+                        } else {
+                            $greeting = '¡Buenas noches';
+                            $icon_url = 'https://img.icons8.com/emoji/48/crescent-moon-emoji.png'; // 
+                        }
+                        ?>
+                        <h4 class="greeting-text">
+                            <img width="30" height="30" src="<?php echo $icon_url; ?>" alt="greeting-icon" />
+                            <strong><?php echo $greeting . ' ' . $_SESSION['Nombre']; ?>!</strong>
+                        </h4>
+                        <img src="<?php echo $_SESSION['usuario_imagen']; ?>" alt="Perfil" class="img-circular mb-3" />
+                        <h4><img width="30" height="30" src="https://img.icons8.com/color/30/company.png" alt="company" />
+                            <?php echo $_SESSION['empresa_nombre']; ?></h4>
+                        <p><img width="30" height="30" src="https://img.icons8.com/office/30/briefcase.png"
+                                alt="briefcase" /> <?php echo $_SESSION['puesto']; ?></p>
+                        <p><img width="30" height="30" src="https://img.icons8.com/fluency/30/mail--v1.png"
+                                alt="mail--v1" /> <?php echo $_SESSION['correo']; ?></p>
+                        <p><img width="30" height="30" src="https://img.icons8.com/plasticine/30/000000/phone.png"
+                                alt="phone" /> <?php echo $_SESSION['telefono']; ?></p>
+                        <p><?php echo $_SESSION['usuario_id']; ?></p>
+                        <p><?php echo $_SESSION['rol']; ?></p>
+                        <?php if ($_SESSION['rol'] == 1): ?>
+                            <a class="btn btn-danger btn-lg mb-2 "
+                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php">
+                                <i class="fas fa-user-shield"></i> Admin
+                            </a>
+                        <?php else: ?>
+                            <div class="d-flex flex-column align-items-center">
+                                <a class="btn btn-warning btn-lg mb-2 uniform-button"
+                                    href="/SC-502-Web-ClienteServidor/static/routes/managerpages/empleados/empleados.php">
+                                    <i class="fas fa-users-cog"></i> Administrar
+                                </a>
+                                <a class="btn btn-warning btn-lg mb-2 uniform-button"
+                                    href="/SC-502-Web-ClienteServidor/static/routes/managerpages/tiquetes/tiquetes.php">
+                                    <i class="fas fa-ticket-alt"></i> Tiquetes
+                                </a>
+                                <div class="d-flex justify-content-end mb-3">
+                                    <button id="darkModeToggle" class="btn btn-secondary">
+                                        <i id="darkModeIcon" class="fas fa-sun"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="d-flex flex-column align-items-center">
+                            <a id="botonSesion" class="btn bg-warning text-dark btn-lg mb-2"
+                                href="/SC-502-Web-ClienteServidor/static/routes/signin.php">
+                                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                            </a>
+                            <a class="btn bg-warning text-dark btn-lg mb-2"
+                                href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php">
+                                <i class="fas fa-envelope"></i> Contáctenos
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
+                <?php if (isset($_SESSION['usuario_id'])): ?>
+                    <div class="mt-auto">
+                        <a id="botonSesion" class="btn bg-danger text-white btn-lg w-100"
+                            href="/SC-502-Web-ClienteServidor/static/routes/logout.php">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
-    </div>
     </div>
 </nav>
-<!-- Alerta de cookies -->
-<div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert" style="text-align: center;">
-    <i class="bi bi-exclamation-triangle-fill me-2"></i>
-    <strong> Esta página usa Cookies 🍪 para su funcionamiento. </strong>
-    <button type="button" class="btn btn-success" data-bs-dismiss="alert" id="acceptButton">ACEPTAR</button>
-</div>
+
+<a href="https://wa.me/50684119889?text=Hola%20mundo" class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+</a>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -160,30 +236,16 @@
         }
     });
 
-   document.getElementById("darkModeToggle").addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-    const icon = document.getElementById("darkModeIcon");
-    
-    if (document.body.classList.contains("dark-mode")) {
-        icon.classList.remove("fas", "fa-sun");
-        icon.classList.add("fas", "fa-moon");
-    } else {
-        icon.classList.remove("fas", "fa-moon");
-        icon.classList.add("fas", "fa-sun");
-    }
-});
+    document.getElementById("darkModeToggle").addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        const icon = document.getElementById("darkModeIcon");
+
+        if (document.body.classList.contains("dark-mode")) {
+            icon.classList.remove("fas", "fa-sun");
+            icon.classList.add("fas", "fa-moon");
+        } else {
+            icon.classList.remove("fas", "fa-moon");
+            icon.classList.add("fas", "fa-sun");
+        }
+    });
 </script>
-
-<style>
-    .img-circular {
-    background-color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover; 
-}
-</style>
-
-<a href="https://wa.me/50684119889?text=Hola%20mundo" class="float" target="_blank">
-        <i class="fa fa-whatsapp my-float"></i>
-    </a>

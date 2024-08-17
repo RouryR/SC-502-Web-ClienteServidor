@@ -1,6 +1,23 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+session_start();
+if (isset($_SESSION['login_exitoso']) && $_SESSION['login_exitoso'] == true) {
+    $nombre = $_SESSION['Nombre'];
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+    echo "<script>
+    window.onload = function() {
+        Swal.fire({
+            title: 'Bienvenido!',
+            text: 'Bienvenido, $nombre!',
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    }
+</script>";
+    unset($_SESSION['login_exitoso']);
+}
 ?>
 
 <!DOCTYPE html>

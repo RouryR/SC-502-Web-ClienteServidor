@@ -9,12 +9,19 @@
 }
 
 .zoom-effect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 
 .custom-image {
-    width: auto;
+    max-width: 70%;
+    height: auto;
     transition: transform 0.3s ease-in-out;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .zoom-effect:hover .custom-image {
@@ -29,9 +36,9 @@
 }
 
 .page-timeline {
-    margin: 30px auto 0 auto;
+    margin: 0 auto 0 auto; /*1111*/
     position: relative;
-    max-width: 1000px;
+    max-width: 900px; /*1111*/
 }
 
 .page-timeline:before {
@@ -39,7 +46,7 @@
     content: '';
     top: 0;
     bottom: 0;
-    left: 303px;
+    left: 10px;/*1111*/
     right: auto;
     height: 100%;
     width: 3px;
@@ -59,14 +66,14 @@
     background: -webkit-linear-gradient(top, #4782d3, rgba(52, 152, 219, 0));
     background: linear-gradient(to bottom, #4782d3, rgba(52, 152, 219, 0));
     top: 100%;
-    left: 303px;
+    left: 10px;/*1111*/
 
     -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .vtimeline-content {
-    margin-left: 350px;
+    margin-left: 80px; /*1111*/
     background: #fff;
     border: 1px solid #e6e6e6;
     padding: 35px 20px;
@@ -138,7 +145,7 @@
 
 h3 {
     font-family: "Montserrat", sans-serif;
-    color: #252525;
+    color: #083e70;
     font-weight: 700;
     font-variant-ligatures: common-ligatures;
     margin-top: 0;
@@ -148,4 +155,19 @@ h3 {
 
 .mb20 {
     margin-bottom: 20px !important;
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    color: #303030;
+    font-weight: 400;
+    font-variant-ligatures: common-ligatures;
+    margin-top: 0;
+    letter-spacing: -0.2px;
+    line-height: 1.6;
+}
+
+ul{
+    font-size: 20px;
+    color: #083e70;
 }
