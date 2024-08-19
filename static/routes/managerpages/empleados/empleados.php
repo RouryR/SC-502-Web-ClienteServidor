@@ -1,16 +1,31 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/empleado/leer_empleados.php';
+
+if (!isset($_SESSION['rol'])) {
+    header("Location: /SC-502-Web-ClienteServidor/static/routes/signin.php");
+    exit();
+}
+
+
+
+$mensaje = isset($_GET['mensaje']) ? htmlspecialchars($_GET['mensaje']) : '';
+$numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
+
+$id = $_SESSION['usuario_id'];
+
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Tiquetes</title>
+    <title>Empleados</title>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/head.php'; ?>
     <link rel="stylesheet"
         href="/SC-502-Web-ClienteServidor/static/css/tiquetes/tiquetes.css?n=<?php echo (rand()); ?>">
+    <script src="/SC-502-Web-ClienteServidor/static/js/routesJS/empleados/empleados.js"></script>
 </head>
 
 <body>
@@ -19,13 +34,12 @@ ini_set('display_errors', 1);
     </header>
 
     <main>
-
-        <div class="content-container" style=" margin-top: 100px;">
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/routes/managerpages/empleados/modales_empleados.php'; ?>
+        <div class="content-container">
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black;">
-                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Empleados (Opción
-                    disponible cuando se ha logeado un usuario)
+                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Empleados
                 </p>
 
                 <div class="container">
@@ -45,22 +59,30 @@ ini_set('display_errors', 1);
                                             echo '<p><strong>¡Buenas noches!</strong></p>';
                                         }
                                         ?>
-                                        <img src="/SC-502-Web-ClienteServidor/static/img/profile.png" alt="Perfil"
-                                            class="circular-image" />
-                                        <h3>Diego Ramirez Corrales</h3>
-                                        <p>Gerente Manza Té</p>
+                                        <img src="<?php echo $_SESSION['usuario_imagen']; ?>" alt="Perfil"
+                                            class="circular-image mb-3" />
+                                        <h3><?php echo $_SESSION['Nombre']; ?></h3>
+                                        <p><?php echo $_SESSION['empresa_nombre']; ?></p>
                                         <div class="d-flex align-items-center justify-content-center mb-3">
-                                            <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/10.png"
-                                                class="card-img-top" alt="...">
+                                            <img src="<?php echo $_SESSION['empresa_imagen']; ?>" class="card-img-top"
+                                                alt="...">
                                         </div>
                                     </div>
                                     <div class="personal-info">
                                         <h3>Información Personal</h3>
                                         <ul class="personal-list">
-                                            <li><i class="fas fa-briefcase "></i><span>Areas de Finanzas</span></li>
-                                            <li><i class="fas fa-map-marker-alt "></i><span>Heredia, Aurora</span></li>
-                                            <li><i class="far fa-envelope "></i><span>Rouryffx@hotmail.com</span></li>
-                                            <li><i class="fas fa-mobile "></i><span>+506 89432784</span></li>
+                                            <li><i
+                                                    class="fas fa-briefcase "></i><span><?php echo $_SESSION['puesto']; ?></span>
+                                            </li>
+                                            <li><i
+                                                    class="fas fa-map-marker-alt "></i><span><?php echo $_SESSION['direccion']; ?></span>
+                                            </li>
+                                            <li><i
+                                                    class="far fa-envelope "></i><span><?php echo $_SESSION['correo']; ?></span>
+                                            </li>
+                                            <li><i
+                                                    class="fas fa-mobile "></i><span><?php echo $_SESSION['telefono']; ?></span>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="Aside">
@@ -88,9 +110,6 @@ ini_set('display_errors', 1);
                                         </div>
                                         <script async
                                             src="https://app2.weatherwidget.org/js/?id=ww_f79ac8d81ad3f"></script>
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -98,461 +117,94 @@ ini_set('display_errors', 1);
                         <div class="col-lg-9">
                             <div class="card right-profile-card">
                                 <div class="card-header alert-primary">
-                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="btn btn-outline-primary active" id="pills-home-tab"
-                                                data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
-                                                role="tab" aria-controls="pills-home" aria-selected="true">Gestionar
-                                                Empleados</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                                                        <button type="button" class="btn btn-outline-primary"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Ajustes de perfil
-                                                                        </button>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                         
+                                            <li class="nav-item" role="presentation">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                    data-bs-toggle="modal" data-bs-target="#editIssueModal2"
+                                                    onclick='loadEditForm2(<?php echo json_encode($id); ?>)'>
+                                                    Ajustar mi perfil
+                                                </button>
+                                            </li>
+                                        </ul>
 
-                                                                        <div class="modal fade" id="newIssue"
-                                                                            tabindex="-1" aria-labelledby="newIssue"
-                                                                            aria-hidden="true">
-                                                                            <div
-                                                                                class="modal-dialog modal-dialog-centered">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header bg-blue">
-                                                                                        <h4 class="modal-title"><i
-                                                                                                class="fa fa-pencil"></i>
-                                                                                            Empleado</h4>
-                                                                                        <button type="button"
-                                                                                            class="btn-close"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close"></button>
-                                                                                    </div>
-                                                                                    <form action="#" method="post">
-                                                                                        <div class="modal-body">
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Nombre Completo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="email"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Correo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Teléfono"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button"
-                                                                                                class="btn btn-secondary"
-                                                                                                data-bs-dismiss="modal"><i
-                                                                                                    class="fa fa-times"></i>
-                                                                                                Cancelar</button>
-                                                                                            <button
-                                                                                                style="background-color: #083e70"
-                                                                                                type="submit"
-                                                                                                class="btn btn-primary"><i
-                                                                                                    class="fa fa-pencil"></i>
-                                                                                                Modificar</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-
-                                        <li class="btn btn-outline-primary" role="presentation">
-                                            <a class="nav-item" style="text-decoration: none;"
-                                                href="/SC-502-Web-ClienteServidor/static/routes/tiquetes/tiquetes.php">Tiquetes</a>
-                                        </li>
-
-                                        <li class="nav-item" role="presentation">
-                                            <button type="button" class="btn btn-success pull-right"
-                                                data-bs-toggle="modal" data-bs-target="#newIssue2">Crear Empleado
-                                            </button>
-
-                                            <div class="modal fade" id="newIssue2" tabindex="-1"
-                                                aria-labelledby="newIssue" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header bg-blue">
-                                                            <h4 class="modal-title"><i class="fa fa-pencil"></i> Empleado</h4>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <form action="#" method="post">
-                                                            <div class="modal-body">
-                                                                <div class="form-group mb-3">
-                                                                    <input name="subject" type="text"
-                                                                        class="form-control"
-                                                                        placeholder="Nombre Completo" required>
-                                                                </div>
-                                                                <div class="form-group mb-3">
-                                                                    <select name="department" class="form-control"
-                                                                        required>
-                                                                        <option value="" disabled selected>Seleccionar
-                                                                            Puesto </option>
-                                                                        <option value="Cajero">Cajero</option>
-                                                                        <option value="Recursos Humanos">Recursos
-                                                                            Humanos</option>
-                                                                        <option value="Asistente">Asistente</option>
-                                                                        <option value="Finanzas">Finanzas</option>
-
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group mb-3">
-                                                                    <input name="subject" type="email"
-                                                                        class="form-control" placeholder="Correo"
-                                                                        required>
-                                                                </div>
-                                                                <div class="form-group mb-3">
-                                                                    <input name="subject" type="number"
-                                                                        class="form-control" placeholder="Salario"
-                                                                        required>
-                                                                </div>
-                                                                <div class="form-group mb-3">
-                                                                    <input name="subject" type="text"
-                                                                        class="form-control" placeholder="Teléfono"
-                                                                        required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal"><i class="fa fa-times"></i>
-                                                                    Cancelar</button>
-                                                                <button style="background-color: #083e70" type="submit"
-                                                                    class="btn btn-primary"><i class="fa fa-pencil"></i>
-                                                                    Crear</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                            aria-labelledby="pills-home-tab">
-                                            <div class:="titulo" style="text-align: center; color: white;">
-                                                <h2>Gestionar Empleados</h2>
-                                            </div>
-
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Nombre</th>
-                                                        <th scope="col">Puesto</th>
-                                                        <th scope="col">Correo</th>
-                                                        <th scope="col">Salario</th>
-                                                        <th scope="col">Teléfono</th>
-                                                        <th scope="col">Acción</th>
-                                                    </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Marco Gonzalez Chaves</td>
-                                                        <td>Cajero</td>
-                                                        <td>marcochaves1909@gmail.com</td>
-                                                        <td>1000</td>
-                                                        <td>84364114</td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <button type="button"
-                                                                    class="btn btn-primary dropdown-toggle"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                                                    style="background-color: #083e70">
-                                                                    Edición
-                                                                </button>
-                                                                <ul class="dropdown-menu dropdown-menu-dark"
-                                                                    aria-labelledby="dropdownMenuButton2">
-                                                                    <li><a class="dropdown-item">Eliminar</a></li>
-                                                                    <li class="nav-item" role="presentation">
-                                                                        <button type="button" class="dropdown-item"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Modificar
-                                                                        </button>
-
-                                                                        <div class="modal fade" id="newIssue"
-                                                                            tabindex="-1" aria-labelledby="newIssue"
-                                                                            aria-hidden="true">
-                                                                            <div
-                                                                                class="modal-dialog modal-dialog-centered">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header bg-blue">
-                                                                                        <h4 class="modal-title"><i
-                                                                                                class="fa fa-pencil"></i>
-                                                                                            Crear
-                                                                                            nuevo Empleado</h4>
-                                                                                        <button type="button"
-                                                                                            class="btn-close"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close"></button>
-                                                                                    </div>
-                                                                                    <form action="#" method="post">
-                                                                                        <div class="modal-body">
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Nombre Completo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <select
-                                                                                                    name="department"
-                                                                                                    class="form-control"
-                                                                                                    required>
-                                                                                                    <option value=""
-                                                                                                        disabled
-                                                                                                        selected>
-                                                                                                        Seleccionar
-                                                                                                        Puesto </option>
-                                                                                                    <option
-                                                                                                        value="Cajero">
-                                                                                                        Cajero</option>
-                                                                                                    <option
-                                                                                                        value="Recursos Humanos">
-                                                                                                        Recursos Humanos
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        value="Asistente">
-                                                                                                        Asistente
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        value="Finanzas">
-                                                                                                        Finanzas
-                                                                                                    </option>
-
-                                                                                                </select>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="email"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Correo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="number"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Salario"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Teléfono"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button"
-                                                                                                class="btn btn-secondary"
-                                                                                                data-bs-dismiss="modal"><i
-                                                                                                    class="fa fa-times"></i>
-                                                                                                Cancelar</button>
-                                                                                            <button
-                                                                                                style="background-color: #083e70"
-                                                                                                type="submit"
-                                                                                                class="btn btn-primary"><i
-                                                                                                    class="fa fa-pencil"></i>
-                                                                                                Crear</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Luis Ramirez Acosta</td>
-                                                        <td>Finanzas</td>
-                                                        <td>Luis@gmail.com</td>
-                                                        <td>1000</td>
-                                                        <td>84364112</td>
-                                                        <td>
-                                                            <div class="btn-group">
-                                                                <button type="button"
-                                                                    class="btn btn-primary dropdown-toggle"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                                                    style="background-color: #083e70">
-                                                                    Edición
-                                                                </button>
-                                                                <ul class="dropdown-menu dropdown-menu-dark"
-                                                                    aria-labelledby="dropdownMenuButton2">
-                                                                    <li><a class="dropdown-item">Eliminar</a></li>
-                                                                    <li class="nav-item" role="presentation">
-                                                                        <button type="button" class="dropdown-item"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#newIssue">Modificar
-                                                                        </button>
-
-                                                                        <div class="modal fade" id="newIssue"
-                                                                            tabindex="-1" aria-labelledby="newIssue"
-                                                                            aria-hidden="true">
-                                                                            <div
-                                                                                class="modal-dialog modal-dialog-centered">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header bg-blue">
-                                                                                        <h4 class="modal-title"><i
-                                                                                                class="fa fa-pencil"></i>
-                                                                                            Crear
-                                                                                            nuevo Empleado</h4>
-                                                                                        <button type="button"
-                                                                                            class="btn-close"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close"></button>
-                                                                                    </div>
-                                                                                    <form action="#" method="post">
-                                                                                        <div class="modal-body">
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Nombre Completo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <select
-                                                                                                    name="department"
-                                                                                                    class="form-control"
-                                                                                                    required>
-                                                                                                    <option value=""
-                                                                                                        disabled
-                                                                                                        selected>
-                                                                                                        Seleccionar
-                                                                                                        Puesto </option>
-                                                                                                    <option
-                                                                                                        value="Cajero">
-                                                                                                        Cajero</option>
-                                                                                                    <option
-                                                                                                        value="Recursos Humanos">
-                                                                                                        Recursos Humanos
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        value="Asistente">
-                                                                                                        Asistente
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        value="Finanzas">
-                                                                                                        Finanzas
-                                                                                                    </option>
-
-                                                                                                </select>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="email"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Correo"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="number"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Salario"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="form-group mb-3">
-                                                                                                <input name="subject"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder="Teléfono"
-                                                                                                    required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button"
-                                                                                                class="btn btn-secondary"
-                                                                                                data-bs-dismiss="modal"><i
-                                                                                                    class="fa fa-times"></i>
-                                                                                                Cancelar</button>
-                                                                                            <button
-                                                                                                style="background-color: #083e70"
-                                                                                                type="submit"
-                                                                                                class="btn btn-primary"><i
-                                                                                                    class="fa fa-pencil"></i>
-                                                                                                Crear</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-
-
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </tbody>
-                                            </table>
-                                            <nav aria-label="..." style="text-align: center;">
-                                                <ul class="pagination justify-content-center">
-                                                    <li class="page-item disabled">
-                                                        <a class="page-link">Anterior</a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item active" aria-current="page">
-                                                        <a class="page-link" href="#">2</a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#">Siguiente</a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
+                                        <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
+                                            data-bs-target="#newIssue">
+                                            <i class="fa fa-pencil"></i> Crear Nuevo Empleado
+                                        </button>
+                                    </div>
+                                </div>
+                                </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-completados" role="tabpanel"
+                                        aria-labelledby="pills-completados-tab">
+                                        <div class:="titulo" style="text-align: center; color: white;">
+                                            <h2>Gestionar Empleados</h2>
                                         </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Correo</th>
+                                                    <th scope="col">Puesto</th>
+                                                    <th scope="col">Salario</th>
+                                                    <th scope="col">Teléfono</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($empleados) > 0): ?>
+                                                    <?php foreach ($empleados as $empleado): ?>
+                                                        <tr class="table-success">
+                                                            <th scope="row">
+                                                                <?php echo $empleado['id_empleado']; ?>
+                                                            </th>
+                                                            <td><?php echo $empleado['nombre_completo']; ?></td>
+                                                            <td><?php echo $empleado['correo']; ?></td>
+                                                            <td><?php echo $empleado['puesto']; ?></td>
+                                                            <td><?php echo $empleado['salario']; ?></td>
+                                                            <td><?php echo $empleado['telefono']; ?></td>
+                                                            <td>
 
-                                        
+
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                                    data-bs-toggle="modal" data-bs-target="#editIssueModal"
+                                                                    onclick='loadEditForm(<?php echo json_encode($empleado); ?>)'>
+                                                                    Editar
+                                                                </button>
+                                                                <!--eliminar -->
+                                                                <button type="button" class="btn btn-danger rounded-pill"
+                                                                    onclick="confirmDeletion(<?php echo $empleado['id_empleado']; ?>)">
+                                                                    Eliminar
+                                                                </button>
+
+                                                                <!-- eliminación -->
+                                                                <form id="delete-form-<?php echo $empleado['id_empleado']; ?>"
+                                                                    action="/SC-502-Web-ClienteServidor/static/managment/empleado/delete_empleados.php"
+                                                                    method="POST" style="display:inline;">
+                                                                    <input type="hidden" name="id_empleado"
+                                                                        value="<?php echo $empleado['id_empleado']; ?>">
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-                </div>
             </section>
 
             <aside class="text-center">
@@ -560,6 +212,21 @@ ini_set('display_errors', 1);
             </aside>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var mensaje = '<?php echo $mensaje; ?>';
+            var numero = '<?php echo $numero; ?>';
+            if (mensaje) {
+                Swal.fire({
+                    title: 'Notificación',
+                    text: mensaje,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    </script>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/footer.php'; ?>
 </body>

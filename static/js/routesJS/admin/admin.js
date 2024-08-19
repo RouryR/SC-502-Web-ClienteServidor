@@ -16,17 +16,13 @@ function confirmDeletion(tiqueteId) {
     });
 }
 
-//Para ver el tiquete
-function showDetail(title, description, response) {
-    document.getElementById('issueTitle').innerText = title;
-    document.getElementById('issueDescription').innerText = description;
-    document.getElementById('issueResponse').innerText = response;
-}
-//Para editar el tiquete
-function loadEditForm(tiquete) {
-    document.getElementById('editTiqueteId').value = tiquete.id_tiquete;
-    document.getElementById('editTitulo').value = tiquete.titulo;
-    document.getElementById('editDescripcion').value = tiquete.descripcion;
+//Para editar la empresa
+function loadEditForm(empresa) {
+    document.getElementById('editEmpresaId').value = empresa.id;
+    document.getElementById('editNombre').value = empresa.nombre;
+    document.getElementById('editCorreo').value = empresa.correo;
+    document.getElementById('editTelefono').value = empresa.telefono;
+    document.getElementById('editImagen').value = empresa.imagen;
 }
 
 //Para ver el tiquete pending

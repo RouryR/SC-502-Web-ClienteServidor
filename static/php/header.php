@@ -7,7 +7,7 @@ session_start();
         <div class="d-flex justify-content-start align-items-center">
             <div class="logo-container">
                 <a class="justify-content-start align-items-center navbar-brand"
-                    href="/SC-502-Web-ClienteServidor//static/index.php">
+                    href="/SC-502-Web-ClienteServidor//static/index2.php">
                     <img src="/SC-502-Web-ClienteServidor/static/img/logo.svg" alt="" class="logo-img" />
                 </a>
             </div>
@@ -119,8 +119,6 @@ session_start();
                     href="/SC-502-Web-ClienteServidor/static/routes/contactenos.php">Contáctenos</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/SC-502-Web-ClienteServidor/static/routes/acercade.php">Sobre Nosotros</a>
-                <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
-                    href="/SC-502-Web-ClienteServidor/static/index2.php">Index 2</a>
             </div>
         </div>
 
