@@ -1,23 +1,19 @@
 <?php
-session_start();
 require $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/validation/DBManager.php';
 
-$empleados = [];
+$usuarios = [];
 
-$userId = $_SESSION['usuario_id'];
-$sql = "SELECT id_empleado, nombre_completo, correo, puesto, salario, telefono,id_usuario FROM empleados where id_usuario =?";
+
+$sql = "SELECT id, correo, nombre_completo, empresa_id, puesto, telefono FROM usuarios";
 $sentencia = $conexion->prepare($sql);
-$sentencia->bind_param("i", $userId);
 $sentencia->execute();
 $result = $sentencia->get_result();
 
-$empleados = [];
+$usuarios = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $empleados[] = $row;
+        $usuarios[] = $row;
     }
 }
-
-
 $sentencia->close();
 $conexion->close();

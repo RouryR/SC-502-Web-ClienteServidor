@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_empresas.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_usuarios.php';
 
 if (!isset($_SESSION['rol'])) {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/signin.php");
@@ -119,19 +120,38 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                             <li class="nav-item" role="presentation">
                                                 <button class="btn btn-outline-primary btn-custom active"
-                                                    id="pills-completados-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-completados" type="button" role="tab"
-                                                    aria-controls="pills-completados"
-                                                    aria-selected="true">Ver Usuarios</button>
+                                                    id="pills-usuarios-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-usuarios" type="button" role="tab"
+                                                    aria-controls="pills-usuarios"
+                                                    aria-selected="true">Usuarios</button>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <button class="btn btn-outline-primary btn-custom"
                                                     id="pills-empresa-tab" data-bs-toggle="pill"
                                                     data-bs-target="#pills-empresa" type="button" role="tab"
                                                     aria-controls="pills-empresa"
-                                                    aria-selected="false">Ver Empresas</button>
+                                                    aria-selected="false">Empresas</button>
                                             </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="btn btn-outline-primary btn-custom"
+                                                    id="pills-empresa-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-empresa" type="button" role="tab"
+                                                    aria-controls="pills-empresa"
+                                                    aria-selected="false">Tiquetes</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="btn btn-outline-primary btn-custom"
+                                                    id="pills-empresa-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-empresa" type="button" role="tab"
+                                                    aria-controls="pills-empresa"
+                                                    aria-selected="false">Tiquetes contactenos</button>
+                                            </li>
+                                          
                                         </ul>
+                                        <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
+                                            data-bs-target="#newIssue2">
+                                            <i class="fa fa-pencil"></i> Crear Nueva Usuario
+                                        </button>
 
                                         <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
                                             data-bs-target="#newIssue">
@@ -142,7 +162,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                 </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-empresa" role="tabpanel"
+                                    <div class="tab-pane fade show " id="pills-empresa" role="tabpanel"
                                         aria-labelledby="pills-empresa-tab">
                                         <div class:="titulo" style="text-align: center; color: white;">
                                             <h2>Empresas</h2>
@@ -194,7 +214,69 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                        <td colspan="5">No se encontraron empresas.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade show active" id="pills-usuarios" role="tabpanel"
+                                        aria-labelledby="pills-usuarios-tab">
+                                        <div class:="titulo" style="text-align: center; color: white;">
+                                            <h2>Usuarios</h2>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Correo</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Empresa</th>
+                                                    <th scope="col">Puesto</th>
+                                                    <th scope="col">Teléfono</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($usuarios) > 0): ?>
+                                                    <?php foreach ($usuarios as $usuario): ?>
+                                                        <tr class="table-success">
+                                                            <th scope="row">
+                                                                <?php echo $usuario['id']; ?></th>
+                                                            <td><?php echo $usuario['correo']; ?></td>
+                                                            <td><?php echo $usuario['nombre_completo']; ?></td>
+                                                            <td><?php echo $usuario['empresa_id']; ?></td>
+                                                            <td><?php echo $usuario['puesto']; ?></td>
+                                                            <td><?php echo $usuario['telefono']; ?></td>
+
+                                                            <td>
+
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                                    data-bs-toggle="modal" data-bs-target="#editIssueModal3"
+                                                                    onclick='loadEditForm(<?php echo json_encode($usuario); ?>)'>
+                                                                    Editar
+                                                                </button>
+
+                                                                <!--eliminar -->
+                                                                <button type="button" class="btn btn-danger rounded-pill"
+                                                                    onclick="confirmDeletion(<?php echo $usuario['id']; ?>)">
+                                                                    Eliminar
+                                                                </button>
+
+                                                                <!-- eliminación -->
+                                                                <form id="delete-form-<?php echo $usuario['id']; ?>"
+                                                                    action="/SC-502-Web-ClienteServidor/static/managment/admin/delete_usuario.php"
+                                                                    method="POST" style="display:inline;">
+                                                                    <input type="hidden" name="id"
+                                                                        value="<?php echo $usuario['id']; ?>">
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5">No se encontraron usuarios.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>

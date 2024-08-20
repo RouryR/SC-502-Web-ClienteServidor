@@ -25,6 +25,15 @@ function loadEditForm(empresa) {
     document.getElementById('editImagen').value = empresa.imagen;
 }
 
+//Para editar el usuarios
+function loadEditForm(usuario) {
+    document.getElementById('editUsuarioId').value = usuario.id;
+    document.getElementById('editCorreo').value = usuario.correo;
+    document.getElementById('editTelefono').value = usuario.telefono;
+    document.getElementById('editDireccion').value = usuario.direccion;
+    document.getElementById('editImagen').value = usuario.imagen;
+}
+
 //Para ver el tiquete pending
 function showDetailPending(id, title, description) {
     document.getElementById('ticketId').innerText = id;
