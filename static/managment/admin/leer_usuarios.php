@@ -4,7 +4,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managmen
 $usuarios = [];
 
 
-$sql = "SELECT id, correo, nombre_completo, empresa_id, puesto, telefono FROM usuarios";
+$sql = "SELECT id, correo, nombre_completo, empresa_id, puesto, telefono,direccion,imagen FROM usuarios";
 $sentencia = $conexion->prepare($sql);
 $sentencia->execute();
 $result = $sentencia->get_result();

@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_empresas.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_usuarios.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/tiquetes_mgmt.php';
 
 if (!isset($_SESSION['rol'])) {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/signin.php");
@@ -132,21 +133,57 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     aria-controls="pills-empresa"
                                                     aria-selected="false">Empresas</button>
                                             </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="btn btn-outline-primary btn-custom"
-                                                    id="pills-empresa-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-empresa" type="button" role="tab"
-                                                    aria-controls="pills-empresa"
-                                                    aria-selected="false">Tiquetes</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="btn btn-outline-primary btn-custom"
-                                                    id="pills-empresa-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-empresa" type="button" role="tab"
-                                                    aria-controls="pills-empresa"
-                                                    aria-selected="false">Tiquetes contactenos</button>
-                                            </li>
-                                          
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-custom dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Tiquetes
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-light"
+                                                    aria-labelledby="dropdownMenuButton2">
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="btn btn-outline-primary btn-custom"
+                                                            id="pills-pendiente-tab" data-bs-toggle="pill"
+                                                            data-bs-target="#pills-pendiente" type="button" role="tab"
+                                                            aria-controls="pills-pendiente" aria-selected="false">Tiquetes
+                                                            Pendientes</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="btn btn-outline-primary btn-custom"
+                                                            id="pills-completados-tab" data-bs-toggle="pill"
+                                                            data-bs-target="#pills-completados" type="button" role="tab"
+                                                            aria-controls="#pills-completados" aria-selected="false">Tiquetes
+                                                            Completados</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-custom dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    T. Contáctenos
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-light"
+                                                    aria-labelledby="dropdownMenuButton2">
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="btn btn-outline-primary btn-custom"
+                                                            id="pills-empresa-tab" data-bs-toggle="pill"
+                                                            data-bs-target="#pills-empresa" type="button" role="tab"
+                                                            aria-controls="pills-empresa" aria-selected="false">Tiquetes
+                                                            Pendientes</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="btn btn-outline-primary btn-custom"
+                                                            id="pills-empresa-tab" data-bs-toggle="pill"
+                                                            data-bs-target="#pills-empresa" type="button" role="tab"
+                                                            aria-controls="pills-empresa" aria-selected="false">Tiquetes
+                                                            Completados</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
                                         </ul>
                                         <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
                                             data-bs-target="#newIssue2">
@@ -242,7 +279,8 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     <?php foreach ($usuarios as $usuario): ?>
                                                         <tr class="table-success">
                                                             <th scope="row">
-                                                                <?php echo $usuario['id']; ?></th>
+                                                                <?php echo $usuario['id']; ?>
+                                                            </th>
                                                             <td><?php echo $usuario['correo']; ?></td>
                                                             <td><?php echo $usuario['nombre_completo']; ?></td>
                                                             <td><?php echo $usuario['empresa_id']; ?></td>
@@ -282,8 +320,101 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="tab-pane fade show " id="pills-completados" role="tabpanel"
+                                        aria-labelledby="pills-completados-tab">
+                                        <div class:="titulo" style="text-align: center; color: white;">
+                                            <h2>Tiquetes completados</h2>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Asunto</th>
+                                                    <th scope="col">Fecha creación</th>
+                                                    <th scope="col">Fecha de cierre</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($tiquetes) > 0): ?>
+                                                    <?php foreach ($tiquetes as $tiquete): ?>
+                                                        <tr class="table-success">
+                                                            <th scope="row">
+                                                                <?php echo $tiquete['id_tiquete']; ?>
+                                                            </th>
+                                                            <td><?php echo $tiquete['titulo']; ?></td>
+                                                            <td><?php echo $tiquete['fecha_apertura']; ?></td>
+                                                            <td><?php echo $tiquete['fecha_cierre']; ?></td>
+                                                            <td>
+                                                                <!--detalle -->
+                                                                <button type="button" class="btn btn-success rounded-pill"
+                                                                    data-bs-toggle="modal" data-bs-target="#issue"
+                                                                    onclick="showDetail('<?php echo $tiquete['titulo']; ?>', 
+                                                                                            '<?php echo $tiquete['descripcion']; ?>', 
+                                                                                            '<?php echo $tiquete['respuesta_recibida']; ?>')">
+                                                                    Ver
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-pendiente" role="tabpanel"
+                                        aria-labelledby="pills-pendiente-tab">
+                                        <div class="titulo" style="text-align: center; color: white;">
+                                            <h2>Tiquetes Pendientes</h2>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Asunto</th>
+                                                    <th scope="col">Fecha creación</th>
+                                                    <th scope="col">Estado</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($tiquetesPendientes) > 0): ?>
+                                                    <?php foreach ($tiquetesPendientes as $tiquete): ?>
+                                                        <tr
+                                                            class="<?php echo $tiquete['estado'] === 'Pendiente' ? 'table-danger' : 'table-warning'; ?>">
+                                                            <th scope="row">
+                                                                <?php echo $tiquete['id_tiquete']; ?>
+                                                            </th>
+                                                            <td><?php echo $tiquete['titulo']; ?></td>
+                                                            <td><?php echo date('d F Y', strtotime($tiquete['fecha_apertura'])); ?>
+                                                            </td>
+                                                            <td><strong><?php echo $tiquete['estado']; ?></strong>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-success rounded-pill"
+                                                                    data-bs-toggle="modal" data-bs-target="#viewTicketModal"
+                                                                    onclick='showDetailPending("<?php echo $tiquete['id_tiquete']; ?>","<?php echo $tiquete['titulo']; ?>", "<?php echo $tiquete['descripcion']; ?>")'>
+                                                                    Ver
+                                                                </button>
+                                                            </td>
 
-                                   
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
             </section>
 
             <aside class="text-center">
@@ -299,7 +430,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
             if (mensaje) {
                 Swal.fire({
                     title: 'Notificación',
-                    text: mensaje + ' #' + numero,
+                    text: mensaje + '' + numero,
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });

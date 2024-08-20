@@ -13,6 +13,8 @@ $query = "UPDATE usuarios SET  correo = ?, telefono = ?,direccion =?, imagen=?  
 $sentencia = $conexion->prepare($query);
 $sentencia->bind_param("ssssi", $correo, $telefono,$direccion,$imagen, $id);
 
+    
+
 if ($sentencia->execute()) {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Usuario actualizado correctamente");
 } else {

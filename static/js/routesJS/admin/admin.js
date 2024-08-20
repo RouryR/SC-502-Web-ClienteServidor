@@ -27,11 +27,12 @@ function loadEditForm(empresa) {
 
 //Para editar el usuarios
 function loadEditForm(usuario) {
-    document.getElementById('editUsuarioId').value = usuario.id;
-    document.getElementById('editCorreo').value = usuario.correo;
-    document.getElementById('editTelefono').value = usuario.telefono;
-    document.getElementById('editDireccion').value = usuario.direccion;
-    document.getElementById('editImagen').value = usuario.imagen;
+    console.log(usuario);
+    document.getElementById('editUsuarioId2').value = usuario.id;
+    document.getElementById('editCorreo2').value = usuario.correo;
+    document.getElementById('editTelefono2').value = usuario.telefono;
+    document.getElementById('editDireccion2').value = usuario.direccion;
+    document.getElementById('editImagen2').value = usuario.imagen;
 }
 
 //Para ver el tiquete pending

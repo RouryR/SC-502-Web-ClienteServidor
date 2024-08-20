@@ -183,22 +183,22 @@
             <form id="editIssueForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_usuarios.php"
                 method="post">
                 <div class="modal-body">
-                    <input type="hidden" id="editUsuarioId" name="id">
+                    <input type="hidden" id="editUsuarioId2" name="id">
                     <div class="form-group mb-3">
-                        <label for="editCorreo">Correo</label>
-                        <input id="editCorreo" name="correo" type="text" class="form-control" required>
+                        <label for="editCorreo2">Correo</label>
+                        <input id="editCorreo2" name="correo" type="text" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editTelefono">Teléfono</label>
-                        <input  id="editTelefono" name="telefono" class="form-control" required></input>
+                        <label for="editTelefono2">Teléfono</label>
+                        <input  id="editTelefono2" name="telefono" class="form-control" required></input>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editDireccion">Direccion</label>
-                        <input id="editDireccion" name="direccion" class="form-control" required></input>
+                        <label for="editDireccion2">Direccion</label>
+                        <input id="editDireccion2" name="direccion" class="form-control" required></input>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editImagen">Imagen</label>
-                        <input id="editImagen" name="imagen" class="form-control" required></input>
+                        <label for="editImagen2">Imagen</label>
+                        <input id="editImagen2" name="imagen" class="form-control" required></input>
                     </div>
                 </div>
                 <div class="modal-footer">
