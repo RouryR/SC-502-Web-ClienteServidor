@@ -58,3 +58,21 @@ function showDetail(title, description, response) {
     document.getElementById('issueDescription').innerText = description;
     document.getElementById('issueResponse').innerText = response;
 }
+
+//Para confirmar el tiquete contactenos
+function confirmCompletion(tiqueteId_p) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esta acción.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, Completar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('complete-form-' + tiqueteId_p).submit();
+        }
+    });
+}

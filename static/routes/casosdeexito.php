@@ -36,7 +36,7 @@ ini_set('display_errors', 1);
                                         <div class="col-sm-6 mb-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Distriubuidora Gonzalez</h5>
+                                                    <h5 class="card-title">Distribuidora Gonzalez</h5>
                                                     <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/1.jpg"
                                                         class="card-img-top" alt="...">
                                                     <i class="fa-solid fa-star" style="color: #ffd500;"></i><i
@@ -78,7 +78,7 @@ ini_set('display_errors', 1);
                                         <div class="col-sm-6 mb-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Distriubuidora Cervantes</h5>
+                                                    <h5 class="card-title">Distribuidora Cervantes</h5>
                                                     <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/4.jpg"
                                                         class="card-img-top" alt="...">
                                                     <i class="fa-solid fa-star" style="color: #ffd500;"></i><i
@@ -92,7 +92,7 @@ ini_set('display_errors', 1);
                                         <div class="col-sm-6 mb-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">alserro</h5>
+                                                    <h5 class="card-title">Alserro</h5>
                                                     <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/5.png"
                                                         class="card-img-top" alt="...">
                                                     <i class="fa-solid fa-star" style="color: #ffd500;"></i><i
@@ -106,7 +106,7 @@ ini_set('display_errors', 1);
                                         <div class="col-sm-6 mb-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title"> Quimica Del Norte</h5>
+                                                    <h5 class="card-title"> Química Del Norte</h5>
                                                     <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/6.jpg"
                                                         class="card-img-top" alt="...">
                                                     <i class="fa-solid fa-star" style="color: #ffd500;"></i><i
@@ -134,7 +134,7 @@ ini_set('display_errors', 1);
                                         <div class="col-sm-6 mb-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Distriubuidora Naranjo</h5>
+                                                    <h5 class="card-title">Distribuidora Naranjo</h5>
                                                     <img src="/SC-502-Web-ClienteServidor/static/img/CasosExito/8.jpg"
                                                         class="card-img-top" alt="...">
                                                     <i class="fa-solid fa-star" style="color: #ffd500;"></i><i

@@ -96,23 +96,6 @@ session_start();
                                 href="/SC-502-Web-ClienteServidor/static/routes/servicios/soporte.php">Soporte</a></li>
                     </ul>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary btn-lg me-2 dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        CRUDs
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item"
-                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/tiquetes/tiquetes.php">Tiquetes</a>
-                        </li>
-                        <li><a class="dropdown-item"
-                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/empleados/empleados.php">Usuarios</a>
-                        </li>
-                        <li><a class="dropdown-item"
-                                href="/SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php">Admin</a>
-                        </li>
-                    </ul>
-                </div>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
                     href="/SC-502-Web-ClienteServidor/static/routes/casosdeexito.php">Casos de Éxito</a>
                 <a class="btn btn-primary btn-lg me-2" tabindex="-1" role="button" aria-disabled="true"
@@ -215,7 +198,7 @@ session_start();
     </div>
 </nav>
 
-<a href="https://wa.me/50684119889?text=Hola%20mundo" class="float" target="_blank">
+<a href="https://wa.me/50684119889?text=Buenas%2C%20tengo%20una%20consulta%20sobre%20sus%20servicios%21" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
 </a>
 

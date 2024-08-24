@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_empresas.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_usuarios.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/tiquetes_mgmt.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leerTiquete_contactenos.php';
 
 if (!isset($_SESSION['rol'])) {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/signin.php");
@@ -37,7 +38,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
             <section>
                 <p style=" border-radius: 10px; color: white; font-weight: bold; font-size: 25px; background-color:
             #2069AD; text-align: center; border-bottom: 1px solid black;">
-                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Administracion
+                    <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Administración
                 </p>
 
                 <div>
@@ -165,16 +166,16 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 <ul class="dropdown-menu dropdown-menu-light"
                                                     aria-labelledby="dropdownMenuButton2">
                                                     <li class="nav-item" role="presentation">
-                                                        <a class="dropdown-item" id="pills-empresa-tab"
-                                                            data-bs-toggle="pill" href="#pills-empresa" role="tab"
-                                                            aria-controls="pills-empresa" aria-selected="false">
+                                                        <a class="dropdown-item" id="pills-c_pendientes-tab"
+                                                            data-bs-toggle="pill" href="#pills-c_pendientes" role="tab"
+                                                            aria-controls="pills-c_pendientes" aria-selected="false">
                                                             Pendientes
                                                         </a>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <a class="dropdown-item" id="pills-empresa-tab"
-                                                            data-bs-toggle="pill" href="#pills-empresa" role="tab"
-                                                            aria-controls="pills-empresa" aria-selected="false">
+                                                        <a class="dropdown-item" id="pills-c_completados-tab"
+                                                            data-bs-toggle="pill" href="#pills-c_completados" role="tab"
+                                                            aria-controls="pills-c_completados" aria-selected="false">
                                                             Completados
                                                         </a>
                                                     </li>
@@ -420,6 +421,96 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     </tr>
                                                 <?php endif; ?>
 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade show " id="pills-c_completados" role="tabpanel"
+                                        aria-labelledby="pills-c_completados-tab">
+                                        <div class:="titulo" style="text-align: center; color: white;">
+                                            <h2>Tiquetes completados</h2>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Nombre Completo</th>
+                                                    <th scope="col">Asunto</th>
+                                                    <th scope="col">Correo</th>
+                                                    <th scope="col">Teléfono</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($tiquetes_contactenos) > 0): ?>
+                                                    <?php foreach ($tiquetes_contactenos as $tiquete_c): ?>
+                                                        <tr class="table-success">
+                                                            <th scope="row">
+                                                                <?php echo $tiquete_c['id_tiquete']; ?>
+                                                            </th>
+                                                            <td><?php echo $tiquete_c['nombre_completo']; ?></td>
+                                                            <td><?php echo $tiquete_c['asunto']; ?></td>
+                                                            <td><?php echo $tiquete_c['correo']; ?></td>
+                                                            <td><?php echo $tiquete_c['telefono']; ?></td>
+                                                            <td>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade show " id="pills-c_pendientes" role="tabpanel"
+                                        aria-labelledby="pills-c_pendientes-tab">
+                                        <div class:="titulo" style="text-align: center; color: white;">
+                                            <h2>Tiquetes pendientes</h2>
+                                        </div>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Nombre Completo</th>
+                                                    <th scope="col">Asunto</th>
+                                                    <th scope="col">Correo</th>
+                                                    <th scope="col">Teléfono</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($tiquetesPendientes_contactenos) > 0): ?>
+                                                    <?php foreach ($tiquetesPendientes_contactenos as $tiquete_p): ?>
+                                                        <tr class="table-success">
+                                                            <th scope="row">
+                                                                <?php echo $tiquete_p['id_tiquete']; ?>
+                                                            </th>
+                                                            <td><?php echo $tiquete_p['nombre_completo']; ?></td>
+                                                            <td><?php echo $tiquete_p['asunto']; ?></td>
+                                                            <td>     <a href="mailto:<?php echo $tiquete_p['correo']; ?>">         <?php echo $tiquete_p['correo']; ?> </a> </td>
+                                                            <td><?php echo $tiquete_p['telefono']; ?></td>
+                                                            <td>
+                                                                <!--completar -->
+                                                                <button type="button" class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                                    onclick="confirmCompletion(<?php echo $tiquete_p['id_tiquete']; ?>)">
+                                                                    Completar
+                                                                </button>
+
+                                                                <!-- completar -->
+                                                                <form id="complete-form-<?php echo $tiquete_p['id_tiquete']; ?>"
+                                                                    action="/SC-502-Web-ClienteServidor/static/managment/admin/update_contactenos.php"
+                                                                    method="POST" style="display:inline;">
+                                                                    <input type="hidden" name="id_tiquete"
+                                                                        value="<?php echo $tiquete_p['id_tiquete']; ?>">
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                    </tr>
+                                                <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
