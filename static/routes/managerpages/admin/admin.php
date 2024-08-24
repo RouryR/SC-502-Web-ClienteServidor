@@ -403,12 +403,14 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                             <td><strong><?php echo $tiquete['estado']; ?></strong>
                                                             </td>
                                                             <td>
-                                                                <button type="button" class="btn btn-success rounded-pill"
-                                                                    data-bs-toggle="modal" data-bs-target="#viewTicketModal"
-                                                                    onclick='showDetailPending("<?php echo $tiquete['id_tiquete']; ?>","<?php echo $tiquete['titulo']; ?>", "<?php echo $tiquete['descripcion']; ?>")'>
-                                                                    Ver
-                                                                </button>
+                                                            <button type="button"
+                                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                                    data-bs-toggle="modal" data-bs-target="#editAnswer"
+                                                                    onclick='showDetailTiquete(<?php echo json_encode($tiquete); ?>)'>
+                                                                    Responder
+                                                                </button>                                            
                                                             </td>
+
 
                                                         </tr>
                                                     <?php endforeach; ?>

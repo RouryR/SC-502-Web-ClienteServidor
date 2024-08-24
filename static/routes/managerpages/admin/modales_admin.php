@@ -220,3 +220,71 @@
 
 
 <!-------------------------------------------------- FIN DE MODAL EDITAR Usuarios ----------------------------------------------->
+<!-------------------------------------------------- Inicio DE MODAL Editar Tiquetes ------------------------------------------------>
+
+<div class="modal fade" id="editAnswer" tabindex="-1" aria-labelledby="editAnswerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-blue">
+                <h4 class="modal-title" id="editAnswerModalLabel"><i class="fa fa-pencil"></i>Responder Tiquete</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editIssueForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/responder_tiquetes.php"
+                method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="editTiqueteId" name="id_tiquete">
+                    <div class="form-group mb-3">
+                        <label for="ticketDescription2">Descripción</label>
+                        <input id="ticketDescription2" name="descripcion" type="text" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="editRespuesta">Respuesta</label>
+                        <textarea id="editRespuesta" name="respuesta_recibida" class="form-control" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+<!-------------------------------------------------- INICIO DE MODAL VER TIQUETE ----------------------------------------------->
+<div class="modal fade" id="issue" tabindex="-1" role="dialog" aria-labelledby="issue" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-blue">
+                <h4 class="modal-title"><i class="fa fa-cog"></i> Detalles del Tiquete</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="<?php echo $_SESSION['usuario_imagen']; ?>" class="img-circle" />
+                    </div>
+                    <div class="col-md-10">
+                        <p>Asunto: <strong id="issueTitle"></strong></p>
+                        <p>Detalles del tiquete: <span id="issueDescription"></span></p>
+                    </div>
+                </div>
+                <div class="row support-content-comment">
+                    <div class="col-md-2">
+                        <img src="https://it-solutions.com.mx/web/wp-content/uploads/2019/11/it-solutiones-soporte-introduccion-imagen.png"
+                            class="img-circle" alt="" width="50">
+                    </div>
+                    <div class="col-md-10">
+                        <p>Respuesta: <span id="issueResponse"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-times"></i>
+                    Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------------------- FIN DE MODAL VER TIQUETE -------------------------------------------------->

@@ -45,4 +45,16 @@ function showDetailPending(id, title, description) {
     document.getElementById('ticketDescription').innerText = description;
 }
 
+//Para editar el usuarios
+function showDetailTiquete(tiquete) {
+    console.log(tiquete);
+    document.getElementById('editTiqueteId').value = tiquete.id_tiquete;
+    document.getElementById('ticketDescription2').value = tiquete.descripcion;
+}
 
+//Para ver el tiquete
+function showDetail(title, description, response) {
+    document.getElementById('issueTitle').innerText = title;
+    document.getElementById('issueDescription').innerText = description;
+    document.getElementById('issueResponse').innerText = response;
+}
