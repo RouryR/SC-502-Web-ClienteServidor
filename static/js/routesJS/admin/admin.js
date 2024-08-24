@@ -17,23 +17,26 @@ function confirmDeletion(tiqueteId) {
 }
 
 //Para editar la empresa
-function loadEditForm(empresa) {
+function loadEditFormEmpresa(empresa) {
     document.getElementById('editEmpresaId').value = empresa.id;
-    document.getElementById('editNombre').value = empresa.nombre;
-    document.getElementById('editCorreo').value = empresa.correo;
-    document.getElementById('editTelefono').value = empresa.telefono;
-    document.getElementById('editImagen').value = empresa.imagen;
+    document.getElementById('editNombreEmpresa').value = empresa.nombre;
+    document.getElementById('editCorreoEmpresa').value = empresa.correo;
+    document.getElementById('editTelefonoEmpresa').value = empresa.telefono;
+    document.getElementById('editImagenEmpresa').value = empresa.imagen;
+    document.getElementById('editImagenPreviewEmpresa').src = empresa.imagen;
 }
 
 //Para editar el usuarios
-function loadEditForm(usuario) {
+function loadEditFormUsuario(usuario) {
     console.log(usuario);
-    document.getElementById('editUsuarioId2').value = usuario.id;
-    document.getElementById('editCorreo2').value = usuario.correo;
-    document.getElementById('editTelefono2').value = usuario.telefono;
-    document.getElementById('editDireccion2').value = usuario.direccion;
-    document.getElementById('editImagen2').value = usuario.imagen;
+    document.getElementById('editUsuarioId').value = usuario.id;
+    document.getElementById('editCorreoUsuario').value = usuario.correo;
+    document.getElementById('editTelefonoUsuario').value = usuario.telefono;
+    document.getElementById('editDireccionUsuario').value = usuario.direccion;
+    document.getElementById('editImagenUsuario').value = usuario.imagen;
+    document.getElementById('editImagenPreview').src = usuario.imagen;
 }
+
 
 //Para ver el tiquete pending
 function showDetailPending(id, title, description) {

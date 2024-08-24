@@ -10,8 +10,6 @@ if (!isset($_SESSION['rol'])) {
     exit();
 }
 
-
-
 $mensaje = isset($_GET['mensaje']) ? htmlspecialchars($_GET['mensaje']) : '';
 $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
 
@@ -42,7 +40,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                     <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Administracion
                 </p>
 
-                <div class="container">
+                <div>
                     <div class="row">
                         <div class="col-lg-3 ">
                             <div class="card left-profile-card">
@@ -135,25 +133,25 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                             </li>
                                             <div class="btn-group">
                                                 <button type="button"
-                                                    class="btn btn-outline-primary btn-custom dropdown-toggle"
+                                                    class="btn btn-outline-primary me-2 btn-custom dropdown-toggle"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     Tiquetes
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-light"
                                                     aria-labelledby="dropdownMenuButton2">
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="btn btn-outline-primary btn-custom"
-                                                            id="pills-pendiente-tab" data-bs-toggle="pill"
-                                                            data-bs-target="#pills-pendiente" type="button" role="tab"
-                                                            aria-controls="pills-pendiente" aria-selected="false">Tiquetes
-                                                            Pendientes</button>
+                                                        <a class="dropdown-item" id="pills-pendiente-tab"
+                                                            data-bs-toggle="pill" href="#pills-pendiente" role="tab"
+                                                            aria-controls="pills-pendiente" aria-selected="false">
+                                                            Pendientes
+                                                        </a>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="btn btn-outline-primary btn-custom"
-                                                            id="pills-completados-tab" data-bs-toggle="pill"
-                                                            data-bs-target="#pills-completados" type="button" role="tab"
-                                                            aria-controls="#pills-completados" aria-selected="false">Tiquetes
-                                                            Completados</button>
+                                                        <a class="dropdown-item" id="pills-completados-tab"
+                                                            data-bs-toggle="pill" href="#pills-completados" role="tab"
+                                                            aria-controls="#pills-completados" aria-selected="false">
+                                                            Completados
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -167,37 +165,39 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 <ul class="dropdown-menu dropdown-menu-light"
                                                     aria-labelledby="dropdownMenuButton2">
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="btn btn-outline-primary btn-custom"
-                                                            id="pills-empresa-tab" data-bs-toggle="pill"
-                                                            data-bs-target="#pills-empresa" type="button" role="tab"
-                                                            aria-controls="pills-empresa" aria-selected="false">Tiquetes
-                                                            Pendientes</button>
+                                                        <a class="dropdown-item" id="pills-empresa-tab"
+                                                            data-bs-toggle="pill" href="#pills-empresa" role="tab"
+                                                            aria-controls="pills-empresa" aria-selected="false">
+                                                            Pendientes
+                                                        </a>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="btn btn-outline-primary btn-custom"
-                                                            id="pills-empresa-tab" data-bs-toggle="pill"
-                                                            data-bs-target="#pills-empresa" type="button" role="tab"
-                                                            aria-controls="pills-empresa" aria-selected="false">Tiquetes
-                                                            Completados</button>
+                                                        <a class="dropdown-item" id="pills-empresa-tab"
+                                                            data-bs-toggle="pill" href="#pills-empresa" role="tab"
+                                                            aria-controls="pills-empresa" aria-selected="false">
+                                                            Completados
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
-
-
                                         </ul>
-                                        <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
-                                            data-bs-target="#newIssue2">
-                                            <i class="fa fa-pencil"></i> Crear Nueva Usuario
-                                        </button>
 
-                                        <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"
-                                            data-bs-target="#newIssue">
-                                            <i class="fa fa-pencil"></i> Crear Nueva Empresa
-                                        </button>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <button type="button" class="btn btn-success  me-2 btn-custom"
+                                                    data-bs-toggle="modal" data-bs-target="#newIssue2">
+                                                    <i class="fa fa-plus"></i> Crear Nueva Usuario
+                                                </button>
+
+                                                <button type="button" class="btn btn-success btn-custom"
+                                                    data-bs-toggle="modal" data-bs-target="#newIssue">
+                                                    <i class="fa fa-plus"></i> Crear Nueva Empresa
+                                                </button>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                </li>
-                                </ul>
+
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show " id="pills-empresa" role="tabpanel"
                                         aria-labelledby="pills-empresa-tab">
@@ -208,6 +208,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
+                                                    <th scope="col">Imagen</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Correo</th>
                                                     <th scope="col">Telefono</th>
@@ -221,6 +222,10 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                             <th scope="row">
                                                                 <?php echo $empresa['id']; ?>
                                                             </th>
+                                                            <td>
+                                                                <img src="<?php echo $empresa['imagen']; ?>" alt="Imagen de <?php echo $empresa['nombre']; ?>"
+                                                                    class="img-thumbnail" style="width: 50px; height: 50px;">
+                                                            </td>
                                                             <td><?php echo $empresa['nombre']; ?></td>
                                                             <td><?php echo $empresa['correo']; ?></td>
                                                             <td><?php echo $empresa['telefono']; ?></td>
@@ -228,8 +233,8 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
 
                                                                 <button type="button"
                                                                     class="btn btn-outline-primary btn-custom active rounded-pill"
-                                                                    data-bs-toggle="modal" data-bs-target="#editIssueModal"
-                                                                    onclick='loadEditForm(<?php echo json_encode($empresa); ?>)'>
+                                                                    data-bs-toggle="modal" data-bs-target="#editEmpresaModal"
+                                                                    onclick='loadEditFormEmpresa(<?php echo json_encode($empresa); ?>)'>
                                                                     Editar
                                                                 </button>
 
@@ -266,6 +271,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
+                                                    <th scope="col">Imagen</th>
                                                     <th scope="col">Correo</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Empresa</th>
@@ -281,18 +287,21 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                             <th scope="row">
                                                                 <?php echo $usuario['id']; ?>
                                                             </th>
+                                                            <td>
+                                                                <img src="<?php echo $usuario['imagen']; ?>"
+                                                                    alt="Imagen de <?php echo $usuario['nombre_completo']; ?>"
+                                                                    class="img-thumbnail" style="width: 50px; height: 50px;">
+                                                            </td>
                                                             <td><?php echo $usuario['correo']; ?></td>
                                                             <td><?php echo $usuario['nombre_completo']; ?></td>
                                                             <td><?php echo $usuario['empresa_id']; ?></td>
                                                             <td><?php echo $usuario['puesto']; ?></td>
                                                             <td><?php echo $usuario['telefono']; ?></td>
-
                                                             <td>
-
                                                                 <button type="button"
                                                                     class="btn btn-outline-primary btn-custom active rounded-pill"
-                                                                    data-bs-toggle="modal" data-bs-target="#editIssueModal3"
-                                                                    onclick='loadEditForm(<?php echo json_encode($usuario); ?>)'>
+                                                                    data-bs-toggle="modal" data-bs-target="#editUsuario"
+                                                                    onclick='loadEditFormUsuario(<?php echo json_encode($usuario); ?>)'>
                                                                     Editar
                                                                 </button>
 
@@ -414,7 +423,10 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                     </div>
                                 </div>
 
-
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <aside class="text-center">

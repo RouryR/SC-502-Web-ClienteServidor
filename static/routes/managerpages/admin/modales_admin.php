@@ -1,32 +1,34 @@
-
-
 <!-------------------------------------------------- INICIO DE MODAL EDITAR Empresa -------------------------------------------->
-<div class="modal fade" id="editIssueModal" tabindex="-1" aria-labelledby="editIssueModalLabel" aria-hidden="true">
+<div class="modal fade" id="editEmpresaModal" tabindex="-1" aria-labelledby="editEmpresaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-blue">
-                <h4 class="modal-title" id="editIssueModalLabel"><i class="fa fa-pencil"></i> Editar Empresa</h4>
+                <h4 class="modal-title" id="editEmpresaModalLabel"><i class="fa fa-pencil"></i> Editar Empresa</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editIssueForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_empresa.php"
-                method="post">
+            <form id="editEmpresaForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_empresa.php" method="post">
                 <div class="modal-body">
                     <input type="hidden" id="editEmpresaId" name="id">
                     <div class="form-group mb-3">
-                        <label for="editNombre">Nombre</label>
-                        <input id="editNombre" name="nombre" type="text" class="form-control" required>
+                        <label for="editNombreEmpresa">Nombre</label>
+                        <input id="editNombreEmpresa" name="nombre" type="text" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editCorreo">Correo</label>
-                        <input id="editCorreo" name="correo" class="form-control" required></input>
+                        <label for="editCorreoEmpresa">Correo</label>
+                        <input id="editCorreoEmpresa" name="correo" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editTelefono">Telefono</label>
-                        <input id="editTelefono" name="telefono" class="form-control" required></input>
+                        <label for="editTelefonoEmpresa">Teléfono</label>
+                        <input id="editTelefonoEmpresa" name="telefono" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editImagen">Imagen</label>
-                        <input id="editImagen" name="imagen" class="form-control" required></input>
+                        <label for="editImagenEmpresa">Imagen</label>
+                        <input id="editImagenEmpresa" name="imagen" class="form-control" required></input>
+                    </div>
+                    <div class="form-group mb-3 d-flex justify-content-center">
+                        <input id="editImagenEmpresa" name="imagen" class="form-control" type="hidden">
+                        <img id="editImagenPreviewEmpresa" src="" alt="Imagen del usuario"
+                            class="img-fluid rounded img-thumbnail" style="width: 100px; height: 100px;">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -107,16 +109,14 @@
                 </div>
 
                 <?php echo $_SESSION['usuario_id']; ?>
- 
-                <?PHP 
-                
-                
+
+                <?PHP
                 echo $_SESSION['usuario_id'];
                 echo $_SESSION['correo'];
                 echo $_SESSION['direccion'];
                 echo $_SESSION['telefono'];
 
-                
+
                 ?>
             </form>
         </div>
@@ -172,33 +172,41 @@
     </div>
 </div>
 <!-------------------------------------------------- FIN DE MODAL CREAR Empleado ------------------------------------------------>
+
 <!-------------------------------------------------- INICIO DE MODAL EDITAR Usuarios -------------------------------------------->
-<div class="modal fade" id="editIssueModal3" tabindex="-1" aria-labelledby="editIssueModalLabel" aria-hidden="true">
+
+
+<div class="modal fade" id="editUsuario" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-blue">
-                <h4 class="modal-title" id="editIssueModalLabel"><i class="fa fa-pencil"></i> Editar Usuario</h4>
+                <h4 class="modal-title" id="editUsuarioModalLabel"><i class="fa fa-pencil"></i> Editar Usuario</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="editIssueForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_usuarios.php"
                 method="post">
                 <div class="modal-body">
-                    <input type="hidden" id="editUsuarioId2" name="id">
+                    <input type="hidden" id="editUsuarioId" name="id">
                     <div class="form-group mb-3">
-                        <label for="editCorreo2">Correo</label>
-                        <input id="editCorreo2" name="correo" type="text" class="form-control" required>
+                        <label for="editCorreoUsuario">Correo</label>
+                        <input id="editCorreoUsuario" name="correo" type="text" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editTelefono2">Teléfono</label>
-                        <input  id="editTelefono2" name="telefono" class="form-control" required></input>
+                        <label for="editTelefonoUsuario">Teléfono</label>
+                        <input id="editTelefonoUsuario" name="telefono" class="form-control" required></input>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editDireccion2">Direccion</label>
-                        <input id="editDireccion2" name="direccion" class="form-control" required></input>
+                        <label for="editDireccionUsuario">Direccion</label>
+                        <input id="editDireccionUsuario" name="direccion" class="form-control" required></input>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="editImagen2">Imagen</label>
-                        <input id="editImagen2" name="imagen" class="form-control" required></input>
+                        <label for="editImagenUsuario">Imagen</label>
+                        <input id="editImagenUsuario" name="imagen" class="form-control" required></input>
+                    </div>
+                    <div class="form-group mb-3 d-flex justify-content-center">
+                        <input id="editImagenUsuario" name="imagen" class="form-control" type="hidden">
+                        <img id="editImagenPreview" src="" alt="Imagen del usuario"
+                            class="img-fluid rounded img-thumbnail" style="width: 100px; height: 100px;">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -212,4 +220,3 @@
 
 
 <!-------------------------------------------------- FIN DE MODAL EDITAR Usuarios ----------------------------------------------->
-
