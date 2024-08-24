@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 <html>
 
 <head>
-    <title>TITULO</title>
+    <title>Cuentas por Cobrar</title>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/head.php'; ?>
     <link rel="stylesheet"
         href="/SC-502-Web-ClienteServidor/static/css/general_routes_style.css?n=<?php echo (rand()); ?>">
