@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($sentencia->execute()) {
             $id = $conexion->insert_id;
+            $_SESSION['mensaje'] = "Usuario creado con éxito";
             header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Usuario creado con éxito&numero=$id");
             exit();
         } else {

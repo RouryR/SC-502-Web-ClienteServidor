@@ -1,5 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/validation/DBManager.php';
+session_start();
 
 $id = $_POST['id'];
 $nombre = $_POST['nombre'];
@@ -25,6 +26,9 @@ $sentencia = $conexion->prepare($query);
 $sentencia->bind_param("ssssi", $nombre, $correo, $telefono, $imagen, $id);
 
 if ($sentencia->execute()) {
+
+    $_SESSION['mensaje'] = "Empresa actualizada con éxito";
+
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Empresa actualizada correctamente");
 } else {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Error al actualizar la empresa");

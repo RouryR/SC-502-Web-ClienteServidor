@@ -2,6 +2,7 @@
 session_start();
 require $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/validation/DBManager.php';
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nombre_completo = isset($_POST['name']) ? $_POST['name'] : null;
@@ -30,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($sentencia->execute()) {
             $id_empleado = $conexion->insert_id;
+            $_SESSION['mensaje'] = "Empleado creado con éxito";
             header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/empleados/empleados.php?mensaje=Empleado creado con éxito&numero=$id_empleado");
             exit();
         } else {

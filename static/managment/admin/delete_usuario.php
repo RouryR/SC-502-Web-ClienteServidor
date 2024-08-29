@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
         $sentencia_delete->execute();
 
         $conexion->commit();
-
+        $_SESSION['mensaje'] = "Usuario eliminado con éxito";
         header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Eliminado con éxito el usuario");
         exit();
     } catch (Exception $e) {

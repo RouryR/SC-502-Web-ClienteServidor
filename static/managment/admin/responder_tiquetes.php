@@ -1,5 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/validation/DBManager.php';
+session_start();
 
 $id = $_POST['id_tiquete'];
 $descripcion = $_POST['descripcion'];
@@ -15,6 +16,7 @@ $sentencia->bind_param("sssi", $respuesta_recibida, $estado, $fecha_cierre, $id)
 
 
 if ($sentencia->execute()) {
+    $_SESSION['mensaje'] = "Tiquete respondido con éxito";
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Respuesta registrada exitosamente");
 } else {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Error al registrar la respuesta");

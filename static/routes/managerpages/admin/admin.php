@@ -13,8 +13,15 @@ if (!isset($_SESSION['rol'])) {
     exit();
 }
 
-$mensaje = isset($_GET['mensaje']) ? htmlspecialchars($_GET['mensaje']) : '';
-$numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
+if (!isset($_SESSION['mensaje_mostrado'])) {
+    $_SESSION['mensaje_mostrado'] = false; 
+}
+
+$mensaje = '';
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    unset($_SESSION['mensaje']); 
+}
 
 ?>
 
@@ -277,7 +284,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                                 </button>
 
                                                                 <!-- Eliminación -->
-                                                                <form id="delete-form-<?php echo $empresa['id']; ?>"
+                                                                <form id="delete-formEmpresa-<?php echo $empresa['id']; ?>"
                                                                     action="/SC-502-Web-ClienteServidor/static/managment/admin/delete_empresa.php"
                                                                     method="POST" style="display:inline;">
                                                                     <input type="hidden" name="id"
@@ -741,17 +748,16 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var mensaje = '<?php echo $mensaje; ?>';
-            var numero = '<?php echo $numero; ?>';
-            if (mensaje) {
-                Swal.fire({
-                    title: 'Notificación',
-                    text: mensaje + '' + numero,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
+        var mensaje = '<?php echo $mensaje; ?>';
+                if (mensaje) {
+                    Swal.fire({
+                        title: 'Notificación',
+                        text: mensaje,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
 
 
         document.addEventListener('DOMContentLoaded', function () {

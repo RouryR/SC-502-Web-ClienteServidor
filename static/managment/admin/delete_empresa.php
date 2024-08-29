@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
 
     if ($sentencia->execute()) {
         $id_empleado = $_POST['id'];
+        $_SESSION['mensaje'] = "Empresa eliminada con éxito";
         header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Eliminado con éxito la empresa");
         exit();
     } else {
