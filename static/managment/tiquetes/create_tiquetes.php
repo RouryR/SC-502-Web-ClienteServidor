@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($sentencia->execute()) {
             $id_tiquete = $conexion->insert_id;
             $_SESSION['mensaje'] = "Tiquete creado con éxito";
+            $_SESSION['numero'] = $id_tiquete;
             header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/tiquetes/tiquetes.php?mensaje=Tiquete creado con éxito&numero=$id_tiquete");
             exit();
         } else {

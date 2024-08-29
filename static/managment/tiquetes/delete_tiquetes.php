@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_tiquete'])) {
     if ($sentencia->execute()) {
         $id_tiquete = $_POST['id_tiquete'];
         $_SESSION['mensaje'] = "Tiquete eliminado con éxito";
+        $_SESSION['numero'] = $id_tiquete;
+
         header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/tiquetes/tiquetes.php?mensaje=Eliminado con éxito el tiquete&numero=$id_tiquete");
         exit();
     } else {

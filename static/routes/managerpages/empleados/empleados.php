@@ -9,9 +9,15 @@ if (!isset($_SESSION['rol'])) {
 }
 
 
+if (!isset($_SESSION['mensaje_mostrado'])) {
+    $_SESSION['mensaje_mostrado'] = false;
+}
 
-$mensaje = isset($_GET['mensaje']) ? htmlspecialchars($_GET['mensaje']) : '';
-$numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
+$mensaje = '';
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    unset($_SESSION['mensaje']);
+}
 
 $id = $_SESSION['usuario_id'];
 
@@ -231,17 +237,16 @@ $id = $_SESSION['usuario_id'];
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var mensaje = '<?php echo $mensaje; ?>';
-            var numero = '<?php echo $numero; ?>';
-            if (mensaje) {
-                Swal.fire({
-                    title: 'Notificación',
-                    text: mensaje,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
+        var mensaje = '<?php echo $mensaje; ?>';
+                if (mensaje) {
+                    Swal.fire({
+                        title: 'Notificación',
+                        text: mensaje,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
     </script>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/footer.php'; ?>

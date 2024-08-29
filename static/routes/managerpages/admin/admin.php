@@ -71,6 +71,7 @@ if (isset($_SESSION['mensaje'])) {
                                             class="circular-image mb-3" />
                                         <h3><?php echo $_SESSION['Nombre']; ?></h3>
                                         <p><?php echo $_SESSION['empresa_nombre']; ?></p>
+                                        <p><?php echo $_SESSION['usuario_id']; ?></p>
                                         <button type="button"
                                             class="btn btn-outline-primary btn-custom active rounded-pill"
                                             data-bs-toggle="modal" data-bs-target="#editAdmin"
@@ -403,14 +404,6 @@ if (isset($_SESSION['mensaje'])) {
 
                                         </table>
                                     </div>
-
-
-
-
-
-
-
-
 
                                     <!-- Tiquetes Completados -->
                                     <div class="tab-pane fade show" id="pills-completados" role="tabpanel"

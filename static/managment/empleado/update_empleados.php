@@ -15,10 +15,6 @@ $sentencia = $conexion->prepare($query);
 $sentencia->bind_param("sssdsi", $nombre_completo, $correo,$puesto,$salario,$telefono, $id_empleado);
 
 if ($sentencia->execute()) {
-    $_SESSION['correo'] = $correo;
-    $_SESSION['telefono'] = $telefono;
-    $_SESSION['direccion'] = $direccion;
-    $_SESSION['usuario_imagen'] = $imagen;
     $_SESSION['mensaje'] = "Empleado actualizado con éxito";
     
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/empleados/empleados.php?mensaje=Empleado actualizado correctamente");

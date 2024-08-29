@@ -9,9 +9,20 @@ if (!isset($_SESSION['rol'])) {
 }
 
 
+if (!isset($_SESSION['mensaje_mostrado']) && !isset($_SESSION['numero'])) {
+    $_SESSION['mensaje_mostrado'] = false;
+    $_SESSION['numero'] = false;
 
-$mensaje = isset($_GET['mensaje']) ? htmlspecialchars($_GET['mensaje']) : '';
-$numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
+}
+
+$mensaje = '';
+$numero = '';
+if (isset($_SESSION['mensaje']) && isset($_SESSION['numero'])) {
+    $mensaje = $_SESSION['mensaje'];
+    $numero = $_SESSION['numero'];
+    unset($_SESSION['mensaje']);
+    unset($_SESSION['numero']);
+}
 
 ?>
 
@@ -290,6 +301,32 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                 });
             }
         });
+
+         document.addEventListener('DOMContentLoaded', function () {
+            const activeTab = sessionStorage.getItem('activeTab');
+            if (activeTab) {
+                const tabElement = document.getElementById(activeTab);
+                if (tabElement) {
+                    new bootstrap.Tab(tabElement).show();
+                }
+            }
+
+            function saveActiveTab(event) {
+                const tabId = event.target.getAttribute('id');
+                if (tabId) {
+                    sessionStorage.setItem('activeTab', tabId);
+                }
+            }
+
+            document.querySelectorAll('.nav-item button').forEach(button => {
+                button.addEventListener('click', saveActiveTab);
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', saveActiveTab);
+            });
+        });
+
     </script>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/footer.php'; ?>

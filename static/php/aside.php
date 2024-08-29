@@ -17,7 +17,7 @@
 </div>
 <div class="card card-no-effect mb-3 mx-auto" style="width: 100%;">
     <div class="card-header" style="color: white; background: #475152; font-size: 25px;">
-        Accesos Rapidos
+        Accesos Rápidos
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">
