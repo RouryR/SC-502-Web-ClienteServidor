@@ -16,8 +16,8 @@
 //Para eliminar el tiquete
 function confirmDeletiondeleteUser(usuario_id) {
     Swal.fire({
-        title: '¿Estás seguro111?',
-        text: "No podrás revertir esta acción11111.",
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esta acción.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

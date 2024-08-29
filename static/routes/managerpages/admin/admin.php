@@ -239,7 +239,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Imagen</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Correo</th>
@@ -320,7 +320,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Imagen</th>
                                                     <th scope="col">Correo</th>
                                                     <th scope="col">Nombre</th>
@@ -427,7 +427,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Empresa</th>
                                                     <th scope="col">Usuario</th>
                                                     <th scope="col">Asunto</th>
@@ -493,7 +493,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Empresa</th>
                                                     <th scope="col">Usuario</th>
                                                     <th scope="col">Asunto</th>
@@ -561,8 +561,8 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
                                                     <th scope="col">ID</th>
+                                                    <th scope="col">Número de Tiquete</th>
                                                     <th scope="col">Titulo</th>
                                                     <th scope="col">Fecha cierre</th>
                                                     <th scope="col">Creado por</th>
@@ -626,7 +626,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Nombre Completo</th>
                                                     <th scope="col">Asunto</th>
                                                     <th scope="col">Correo</th>
@@ -681,7 +681,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Nombre Completo</th>
                                                     <th scope="col">Asunto</th>
                                                     <th scope="col">Correo</th>

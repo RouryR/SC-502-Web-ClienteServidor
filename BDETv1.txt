@@ -84,7 +84,7 @@ INSERT INTO empresas (nombre, correo, telefono, imagen) VALUES
 ('Excalibur-Tech', 'Admin@excaliburtech.com', '8652-5341','/SC-502-Web-ClienteServidor/static/img/logo.svg');
 
 INSERT INTO usuarios (correo, nombre_completo, password, empresa_id, puesto, telefono, direccion, rol, imagen) VALUES
-('john.doe@techsolutions.com', 'John Doe', '$2a$12$MEny.72BP4kZvzVyJVaB9.UGgixRdHIFAA7HU0T/q43BGUO/dq/Nm', 1, 'Developer', '8888-9999','Heredia, Aurora', TRUE, 'https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg'),
+('john.doe@techsolutions.com', 'John Doe', '$2a$12$MEny.72BP4kZvzVyJVaB9.UGgixRdHIFAA7HU0T/q43BGUO/dq/Nm', 1, 'Developer', '8888-9999','Heredia, Aurora', FALSE, 'https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg'),
 ('jane.smith@innovatech.com', 'Jane Smith', '$2a$12$fMMQoBrJkynD1FnV9Q3PZuhMvB9pnxZ70unnDNZ1z9gROWQVE9fPS', 2, 'Project Manager', '8777-8888','San Jose, Desamparados', FALSE, 'https://img.freepik.com/foto-gratis/hombre-feliz-pie-playa_107420-9868.jpg?size=626&ext=jpg'),
 ('peter.parker@cybercorp.com', 'Peter Parker', '$2a$12$69ixoDMZpP6ah81IOB17R.F7VbveD5qJtl4wZT1sVC/yHtg8jk/Te', 3, 'Technician', '8666-7777','Catago, San Isidro', FALSE, 'https://static.vecteezy.com/system/resources/previews/002/010/370/large_2x/asian-handsome-man-with-a-mustache-smiling-and-laughing-isolated-on-white-background-free-photo.jpg'),
 ('mary.jones@techsolutions.com', 'Mary Jones', '$2a$12$M0q8iUbU2TiK5gMjY2e2zOcCFxdqcFQUJGSpONOj8z.RHRnM3Kt3O', 1, 'QA Engineer', '8555-6666','Guanacaste, Flamingo', FALSE, 'https://www.santanderopenacademy.com/es/blog/mujeres-empresarias/_jcr_content/root/container/responsivegrid/image_688851163_copy.coreimg.jpeg/1641997612895/mujeres-empresarias-becas.jpeg'),

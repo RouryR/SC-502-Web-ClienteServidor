@@ -93,7 +93,7 @@
                 <h4 class="modal-title" id="editUsuarioModalLabel"><i class="fa fa-pencil"></i> Editar Usuario</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editUsuarioForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_usuarios.php" method="post">
+            <form id="editUsuarioForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_usuariosEmpleado.php" method="post">
                 <div class="modal-body">
                     <input type="hidden" id="editUsuarioId" name="id">
                     <div class="form-group mb-3">

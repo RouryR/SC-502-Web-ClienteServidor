@@ -371,9 +371,7 @@ document.getElementById('editImagenUsuario').addEventListener('input', function(
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-2">
-                        <img id="userImage" src="" alt="Imagen del usuario" class="img-circle" />
-                    </div>
+                    
                     <div class="col-md-10">
                         <p>Asunto: <strong id="issueTitle"></strong></p>
                         <p>Detalles del tiquete: <span id="issueDescription"></span></p>
