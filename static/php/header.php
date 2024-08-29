@@ -7,7 +7,7 @@ session_start();
         <div class="d-flex justify-content-start align-items-center">
             <div class="logo-container">
                 <a class="justify-content-start align-items-center navbar-brand"
-                    href="/SC-502-Web-ClienteServidor//static/index2.php">
+                    href="/SC-502-Web-ClienteServidor//static/index.php">
                     <img src="/SC-502-Web-ClienteServidor/static/img/logo.svg" alt="" class="logo-img" />
                 </a>
             </div>
@@ -146,8 +146,6 @@ session_start();
                                 alt="mail--v1" /> <?php echo $_SESSION['correo']; ?></p>
                         <p><img width="30" height="30" src="https://img.icons8.com/plasticine/30/000000/phone.png"
                                 alt="phone" /> <?php echo $_SESSION['telefono']; ?></p>
-                        <p><?php echo $_SESSION['usuario_id']; ?></p>
-                        <p><?php echo $_SESSION['rol']; ?></p>
                         <?php if ($_SESSION['rol'] == 1): ?>
                             <a class="btn btn-danger btn-lg mb-2 "
                                 href="/SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php">

@@ -42,7 +42,7 @@ $id = $_SESSION['usuario_id'];
                     <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Empleados
                 </p>
 
-                <div class="container">
+                <div>
                     <div class="row">
                         <div class="col-lg-3 ">
                             <div class="card left-profile-card">
@@ -63,6 +63,29 @@ $id = $_SESSION['usuario_id'];
                                             class="circular-image mb-3" />
                                         <h3><?php echo $_SESSION['Nombre']; ?></h3>
                                         <p><?php echo $_SESSION['empresa_nombre']; ?></p>
+
+
+
+                                        <script>
+                                            function loadEditFormUsuario(usuario) {
+                                                document.getElementById('editUsuarioId').value = usuario.usuario_id;
+                                                document.getElementById('editCorreoUsuario').value = usuario.correo;
+                                                document.getElementById('editTelefonoUsuario').value = usuario.telefono;
+                                                document.getElementById('editDireccionUsuario').value = usuario.direccion;
+                                                document.getElementById('editImagenUsuario').value = usuario.usuario_imagen;
+                                                document.getElementById('editImagenPreviewUsuario').src = usuario.usuario_imagen;
+                                                document.getElementById('editImagenPreviewUsuario').style.display = 'block';
+                                            }
+                                        </script>
+
+
+                                        <button type="button"
+                                            class="btn btn-outline-primary btn-custom active rounded-pill"
+                                            data-bs-toggle="modal" data-bs-target="#editUsuario"
+                                            onclick='loadEditFormUsuario(<?php echo json_encode($_SESSION); ?>)'>
+                                            Editar
+                                        </button>
+
                                         <div class="d-flex align-items-center justify-content-center mb-3">
                                             <img src="<?php echo $_SESSION['empresa_imagen']; ?>" class="card-img-top"
                                                 alt="...">
@@ -119,15 +142,8 @@ $id = $_SESSION['usuario_id'];
                                 <div class="card-header alert-primary">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                         
-                                            <li class="nav-item" role="presentation">
-                                                <button type="button"
-                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
-                                                    data-bs-toggle="modal" data-bs-target="#editIssueModal2"
-                                                    onclick='loadEditForm2(<?php echo json_encode($id); ?>)'>
-                                                    Ajustar mi perfil
-                                                </button>
-                                            </li>
+
+
                                         </ul>
 
                                         <button type="button" class="btn btn-success btn-custom" data-bs-toggle="modal"

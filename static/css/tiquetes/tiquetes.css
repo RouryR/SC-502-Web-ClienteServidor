@@ -130,3 +130,9 @@
     margin-bottom: 20px;
     padding: 10px;
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+
+}

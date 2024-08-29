@@ -1,8 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Para eliminar el tiquete
-function confirmDeletion(tiqueteId) {
+function confirmDeletiondeleteUser(usuario_id) {
     Swal.fire({
-        title: '¿Estás seguro?',
-        text: "No podrás revertir esta acción.",
+        title: '¿Estás seguro111?',
+        text: "No podrás revertir esta acción11111.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -11,7 +26,7 @@ function confirmDeletion(tiqueteId) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('delete-form-' + tiqueteId).submit();
+            document.getElementById('delete-formUser-' + usuario_id).submit();
         }
     });
 }
@@ -26,15 +41,26 @@ function loadEditFormEmpresa(empresa) {
     document.getElementById('editImagenPreviewEmpresa').src = empresa.imagen;
 }
 
+
+
 //Para editar el usuarios
 function loadEditFormUsuario(usuario) {
-    console.log(usuario);
     document.getElementById('editUsuarioId').value = usuario.id;
     document.getElementById('editCorreoUsuario').value = usuario.correo;
     document.getElementById('editTelefonoUsuario').value = usuario.telefono;
     document.getElementById('editDireccionUsuario').value = usuario.direccion;
     document.getElementById('editImagenUsuario').value = usuario.imagen;
     document.getElementById('editImagenPreview').src = usuario.imagen;
+}
+
+//Para editar el admin
+function loadEditFormAdmin(usuario) {
+    document.getElementById('editAdminId').value = usuario.usuario_id;
+    document.getElementById('editCorreoAdmin').value = usuario.correo;
+    document.getElementById('editTelefonoAdmin').value = usuario.telefono;
+    document.getElementById('editDireccionAdmin').value = usuario.direccion;
+    document.getElementById('editImagenAdmin').value = usuario.usuario_imagen;
+    document.getElementById('editImagenPreviewAdmin').src = usuario.usuario_imagen;
 }
 
 
@@ -45,7 +71,7 @@ function showDetailPending(id, title, description) {
     document.getElementById('ticketDescription').innerText = description;
 }
 
-//Para editar el usuarios
+//Para editar el tiquete
 function showDetailTiquete(tiquete) {
     console.log(tiquete);
     document.getElementById('editTiqueteId').value = tiquete.id_tiquete;
@@ -53,11 +79,13 @@ function showDetailTiquete(tiquete) {
 }
 
 //Para ver el tiquete
-function showDetail(title, description, response) {
+function showDetail(title, description, response, userImage) {
     document.getElementById('issueTitle').innerText = title;
     document.getElementById('issueDescription').innerText = description;
     document.getElementById('issueResponse').innerText = response;
+    document.getElementById('userImage').src = userImage; 
 }
+
 
 //Para confirmar el tiquete contactenos
 function confirmCompletion(tiqueteId_p) {

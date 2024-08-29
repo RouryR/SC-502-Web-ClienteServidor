@@ -25,12 +25,8 @@ function loadEditForm(empleado) {
     document.getElementById('editTelefono').value = empleado.telefono;
 }
 
-function loadEditForm2(id) {
-    document.getElementById('editId').value = $_SESSION['usuario_id'];
-    document.getElementById('editCorreo').value = $_SESSION['correo'];
-    document.getElementById('editDireccion').value = id.direccion;
-    document.getElementById('editTelefono').value = id.telefono;
-}
+
+
 
 
 

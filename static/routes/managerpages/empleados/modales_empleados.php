@@ -84,6 +84,62 @@
 <!-------------------------------------------------- FIN DE MODAL CREAR Empleado ------------------------------------------------>
 
 
+
+<!-------------------------------------------------- Inicio DE MODAL Editar perfil ------------------------------------------------>
+<div class="modal fade" id="editUsuario" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-blue">
+                <h4 class="modal-title" id="editUsuarioModalLabel"><i class="fa fa-pencil"></i> Editar Usuario</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editUsuarioForm" action="/SC-502-Web-ClienteServidor/static/managment/admin/update_usuarios.php" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="editUsuarioId" name="id">
+                    <div class="form-group mb-3">
+                        <label for="editCorreoUsuario">Correo</label>
+                        <input id="editCorreoUsuario" name="correo" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="editTelefonoUsuario">Teléfono</label>
+                        <input id="editTelefonoUsuario" name="telefono" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="editDireccionUsuario">Dirección</label>
+                        <input id="editDireccionUsuario" name="direccion" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="editImagenUsuario">Imagen</label>
+                        <input id="editImagenUsuario" name="imagen" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3 d-flex justify-content-center">
+                        <img id="editImagenPreviewUsuario" src="" alt="Imagen del usuario" class="img-fluid rounded img-thumbnail" style="width: 100px; height: 100px; display: none;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('editImagenUsuario').addEventListener('input', function() {
+    var imageUrl = this.value;
+    var imagePreview = document.getElementById('editImagenPreviewUsuario');
+    
+    if (imageUrl) {
+        imagePreview.src = imageUrl;
+        imagePreview.style.display = 'block';
+    } else {
+        imagePreview.style.display = 'none';
+    }
+});
+</script>
+<!-------------------------------------------------- FIN DE MODAL Editar perfil ------------------------------------------------>
+
 <!-------------------------------------------------- Inicio DE MODAL Editar Perfil ------------------------------------------------>
 <div class="modal fade" id="editIssueModal2" tabindex="-1" aria-labelledby="editIssueModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

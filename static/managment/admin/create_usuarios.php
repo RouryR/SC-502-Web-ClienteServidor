@@ -11,32 +11,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $puesto = isset($_POST['puesto']) ? $_POST['puesto'] : null;
     $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : null;
     $direccion = isset($_POST['direccion']) ? $_POST['direccion'] : null;
-    $rol = isset($_POST['rol']) ? $_POST['rol'] : null;
-    $imagen = isset($_POST['imagen']) ? $_POST['imagen'] : null;
- 
+    $rol = isset($_POST['rol']) ? (bool) $_POST['rol'] : null;
 
-    if (!$correo || !$nombre_completo || !$password||!$empresaid||!$puesto||!$telefono||!$direccion||!$rol||!$imagen){
-        echo $correo . "<br>";
-        echo $nombre_completo . "<br>";
-        echo $password . "<br>";
-        echo $empresaid. "<br>";
-        echo $puesto . "<br>";
-        echo $telefono . "<br>";
-        echo $direccion . "<br>";
-        echo $rol . "<br>";
-        echo $imagen . "<br>";
-        die("aqui el debug de creacion-------");
+    $imagen = null;
+    if (isset($_FILES['imagen_file']) && $_FILES['imagen_file']['error'] === UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES['imagen_file']['tmp_name'];
+        $name = basename($_FILES['imagen_file']['name']);
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/img/perfiles/';
+        $upload_file = $upload_dir . $name;
+
+        if (move_uploaded_file($tmp_name, $upload_file)) {
+            $imagen = '/SC-502-Web-ClienteServidor/static/img/perfiles/' . $name;
+        } else {
+            die("Error al subir la imagen.");
+        }
+    }
+    if (!$imagen && isset($_POST['imagen_url']) && filter_var($_POST['imagen_url'], FILTER_VALIDATE_URL)) {
+        $imagen = $_POST['imagen_url'];
     }
 
-    $query = "INSERT INTO usuarios (correo, nombre_completo, password, empresa_id, puesto,telefono,direccion,rol,imagen) 
+    if (!$correo || !$nombre_completo || !$password || !$empresaid || !$puesto || !$telefono || !$direccion || $rol === null || !$imagen) {
+        die("Faltan datos en el formulario.");
+    }
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO usuarios (correo, nombre_completo, password, empresa_id, puesto, telefono, direccion, rol, imagen) 
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($sentencia = $conexion->prepare($query)) {
-        $sentencia->bind_param("sssisssis", $correo, $nombre_completo, $password, $empresaid,$puesto,$telefono,$direccion,$rol,$imagen);
+        $rol = $rol ? 1 : 0;
+        $sentencia->bind_param("sssisssis", $correo, $nombre_completo, $hashed_password, $empresaid, $puesto, $telefono, $direccion, $rol, $imagen);
 
         if ($sentencia->execute()) {
             $id = $conexion->insert_id;
-            header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Usuarios creado con éxito&numero=$id");
+            header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Usuario creado con éxito&numero=$id");
             exit();
         } else {
             echo "Error al crear el usuario: " . $sentencia->error;

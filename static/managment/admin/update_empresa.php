@@ -7,11 +7,22 @@ $correo = $_POST['correo'];
 $telefono = $_POST['telefono'];
 $imagen = $_POST['imagen'];
 
-
-
-$query = "UPDATE empresas SET  nombre = ?, correo = ?,telefono =?, imagen=?  WHERE id = ?";
+$query = "SELECT imagen FROM empresas WHERE id = ?";
 $sentencia = $conexion->prepare($query);
-$sentencia->bind_param("ssssi", $nombre, $correo,$telefono,$imagen, $id);
+$sentencia->bind_param("i", $id);
+$sentencia->execute();
+$result = $sentencia->get_result();
+$empresa = $result->fetch_assoc();
+$current_imagen = $empresa['imagen'];
+
+
+if (empty($imagen)) {
+    $imagen = $current_imagen;
+}
+
+$query = "UPDATE empresas SET nombre = ?, correo = ?, telefono = ?, imagen = ? WHERE id = ?";
+$sentencia = $conexion->prepare($query);
+$sentencia->bind_param("ssssi", $nombre, $correo, $telefono, $imagen, $id);
 
 if ($sentencia->execute()) {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php?mensaje=Empresa actualizada correctamente");
@@ -22,5 +33,3 @@ if ($sentencia->execute()) {
 $sentencia->close();
 $conexion->close();
 ?>
-
-

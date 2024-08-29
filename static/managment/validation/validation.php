@@ -5,7 +5,6 @@ require 'DBManager.php';
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //ojo con el real_escape_string, si no se usa la consulta no se ejecuta por los coracteres de la regioón de cada pc donde se ejecute, la unica opcion que me sirvío fue esta (https://www.php.net/manual/es/mysqli.real-escape-string.php)
     $correo = $conexion->real_escape_string($_POST['correo']);
     $password = $conexion->real_escape_string($_POST['password']);
 
@@ -15,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         JOIN empresas e ON u.empresa_id = e.id
         WHERE u.correo = ?
     ";
+
     $sentencia = $conexion->prepare($sql);
     $sentencia->bind_param("s", $correo);
     $sentencia->execute();
@@ -22,7 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        if ($password === $row['password']) {
+        
+        if (password_verify($password, $row['password'])) {
             $_SESSION['Nombre'] = $row['nombre_completo'];
             $_SESSION['usuario_id'] = $row['id'];
             $_SESSION['rol'] = $row['rol'];
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['direccion'] = $row['direccion'];
             $_SESSION['telefono'] = $row['telefono'];
             $_SESSION['correo'] = $row['correo'];
-            $_SESSION['login_exitoso'] = true; // login exitoso (esto no esta en la base de datos solo es para validar que el login fue exitoso)
+            $_SESSION['login_exitoso'] = true; // login exitoso (esto no está en la base de datos, solo es para validar que el login fue exitoso)
             header("Location: /SC-502-Web-ClienteServidor/static/index.php");
             exit();
         } else {

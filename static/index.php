@@ -45,7 +45,7 @@ if (isset($_SESSION['login_exitoso']) && $_SESSION['login_exitoso'] == true) {
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="4000">
                     <img src="/SC-502-Web-ClienteServidor/static/img/carousel/slide1.jpg" class="d-block mx-auto"
-                        alt="Soporte" style="width: 70%; max-height: 350px;">
+                        alt="Soporte" style="width: 50%; max-height: 350px;">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-size: 30px;">Soporte</h5>
                         <p style="font-size: 38px; color: #163A59;">Contamos con personal altamente capacitado</p>
@@ -53,7 +53,7 @@ if (isset($_SESSION['login_exitoso']) && $_SESSION['login_exitoso'] == true) {
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
                     <img src="/SC-502-Web-ClienteServidor/static/img/carousel/slide2.jpg" class="d-block mx-auto"
-                        alt="Soluciones" style="width: 70%; max-height: 350px;">
+                        alt="Soluciones" style="width: 50%; max-height: 350px;">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-size: 30px;">Soluciones</h5>
                         <p style="font-size: 38px; color: #163A59;">Visitamos y brindamos soluciones inmediatas</p>
@@ -61,7 +61,7 @@ if (isset($_SESSION['login_exitoso']) && $_SESSION['login_exitoso'] == true) {
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
                     <img src="/SC-502-Web-ClienteServidor/static/img/carousel/slide3.jpg" class="d-block mx-auto"
-                        alt="Tutoría" style="width: 70%; max-height: 350px;">
+                        alt="Tutoría" style="width: 50%; max-height: 350px;">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-size: 30px;">Tutoría</h5>
                         <p style="font-size: 38px; color: #163A59;">Capacitaciones en la comodidad de su empresa</p>

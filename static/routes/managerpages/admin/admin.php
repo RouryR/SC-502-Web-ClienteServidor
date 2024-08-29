@@ -1,10 +1,12 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_empresas.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leer_usuarios.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/tiquetes_mgmt.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/leerTiquete_contactenos.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/managment/admin/tiquetes_auditorias.php';
 
 if (!isset($_SESSION['rol'])) {
     header("Location: /SC-502-Web-ClienteServidor/static/routes/signin.php");
@@ -62,6 +64,12 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                             class="circular-image mb-3" />
                                         <h3><?php echo $_SESSION['Nombre']; ?></h3>
                                         <p><?php echo $_SESSION['empresa_nombre']; ?></p>
+                                        <button type="button"
+                                            class="btn btn-outline-primary btn-custom active rounded-pill"
+                                            data-bs-toggle="modal" data-bs-target="#editAdmin"
+                                            onclick='loadEditFormAdmin (<?php echo json_encode($_SESSION); ?>)'>
+                                            Editar
+                                        </button>
                                         <div class="d-flex align-items-center justify-content-center mb-3">
                                             <img src="<?php echo $_SESSION['empresa_imagen']; ?>" class="card-img-top"
                                                 alt="...">
@@ -154,6 +162,13 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                             Completados
                                                         </a>
                                                     </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <a class="dropdown-item" id="pills-auditoria-tab"
+                                                            data-bs-toggle="pill" href="#pills-auditoria" role="tab"
+                                                            aria-controls="#pills-auditoria" aria-selected="false">
+                                                            Auditoria
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
 
@@ -200,11 +215,27 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                 </div>
 
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show " id="pills-empresa" role="tabpanel"
+
+                                    <!-- Empresa -->
+                                    <div class="tab-pane fade show" id="pills-empresa" role="tabpanel"
                                         aria-labelledby="pills-empresa-tab">
-                                        <div class:="titulo" style="text-align: center; color: white;">
+                                        <div class="titulo" style="text-align: center; color: white;">
                                             <h2>Empresas</h2>
                                         </div>
+
+                                        <form method="POST" action="" class="mb-3"
+                                            style="max-width: 600px; margin: auto;">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="search_term" placeholder="Buscar por nombre de empresa"
+                                                    aria-label="Buscar por nombre de empresa"
+                                                    value="<?php echo isset($_POST['search_term']) ? htmlspecialchars($_POST['search_term']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar Todos</a>
+                                            </div>
+                                        </form>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -212,7 +243,8 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     <th scope="col">Imagen</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Correo</th>
-                                                    <th scope="col">Telefono</th>
+                                                    <th scope="col">Teléfono</th>
+                                                    <th scope="col"># Usuarios</th>
                                                     <th scope="col">Acción</th>
                                                 </tr>
                                             </thead>
@@ -220,18 +252,17 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 <?php if (count($empresas) > 0): ?>
                                                     <?php foreach ($empresas as $empresa): ?>
                                                         <tr class="table-success">
-                                                            <th scope="row">
-                                                                <?php echo $empresa['id']; ?>
-                                                            </th>
+                                                            <th scope="row"><?php echo $empresa['id']; ?></th>
                                                             <td>
-                                                                <img src="<?php echo $empresa['imagen']; ?>" alt="Imagen de <?php echo $empresa['nombre']; ?>"
+                                                                <img src="<?php echo $empresa['imagen']; ?>"
+                                                                    alt="Imagen de <?php echo $empresa['nombre']; ?>"
                                                                     class="img-thumbnail" style="width: 50px; height: 50px;">
                                                             </td>
                                                             <td><?php echo $empresa['nombre']; ?></td>
                                                             <td><?php echo $empresa['correo']; ?></td>
                                                             <td><?php echo $empresa['telefono']; ?></td>
+                                                            <td><?php echo $empresa['cantidad_usuarios']; ?></td>
                                                             <td>
-
                                                                 <button type="button"
                                                                     class="btn btn-outline-primary btn-custom active rounded-pill"
                                                                     data-bs-toggle="modal" data-bs-target="#editEmpresaModal"
@@ -239,13 +270,13 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                                     Editar
                                                                 </button>
 
-                                                                <!--eliminar -->
                                                                 <button type="button" class="btn btn-danger rounded-pill"
+                                                                    style="visibility: <?php echo ($empresa['cantidad_usuarios'] == 0 && $empresa['nombre'] !== 'Excalibur-Tech') ? 'visible' : 'hidden'; ?>;"
                                                                     onclick="confirmDeletion(<?php echo $empresa['id']; ?>)">
                                                                     Eliminar
                                                                 </button>
 
-                                                                <!-- eliminación -->
+                                                                <!-- Eliminación -->
                                                                 <form id="delete-form-<?php echo $empresa['id']; ?>"
                                                                     action="/SC-502-Web-ClienteServidor/static/managment/admin/delete_empresa.php"
                                                                     method="POST" style="display:inline;">
@@ -257,17 +288,35 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5">No se encontraron empresas.</td>
+                                                        <td colspan="7">No se encontraron empresas.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
+
+
+
+                                    <!-- Usuarios -->
                                     <div class="tab-pane fade show active" id="pills-usuarios" role="tabpanel"
                                         aria-labelledby="pills-usuarios-tab">
-                                        <div class:="titulo" style="text-align: center; color: white;">
+                                        <div class="titulo" style="text-align: center; color: white;">
                                             <h2>Usuarios</h2>
                                         </div>
+                                        <form method="POST" action="" class="mb-3"
+                                            style="max-width: 600px; margin: auto;">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="search_term" placeholder="Buscar por nombre de usuario"
+                                                    aria-label="Buscar por nombre de usuario"
+                                                    value="<?php echo isset($_POST['search_term']) ? htmlspecialchars($_POST['search_term']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar Todos</a>
+                                            </div>
+                                        </form>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -285,9 +334,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 <?php if (count($usuarios) > 0): ?>
                                                     <?php foreach ($usuarios as $usuario): ?>
                                                         <tr class="table-success">
-                                                            <th scope="row">
-                                                                <?php echo $usuario['id']; ?>
-                                                            </th>
+                                                            <th scope="row"><?php echo $usuario['id']; ?></th>
                                                             <td>
                                                                 <img src="<?php echo $usuario['imagen']; ?>"
                                                                     alt="Imagen de <?php echo $usuario['nombre_completo']; ?>"
@@ -295,50 +342,94 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                             </td>
                                                             <td><?php echo $usuario['correo']; ?></td>
                                                             <td><?php echo $usuario['nombre_completo']; ?></td>
-                                                            <td><?php echo $usuario['empresa_id']; ?></td>
+                                                            <td><?php echo $usuario['empresa_nombre']; ?></td>
                                                             <td><?php echo $usuario['puesto']; ?></td>
                                                             <td><?php echo $usuario['telefono']; ?></td>
                                                             <td>
-                                                                <button type="button"
-                                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
-                                                                    data-bs-toggle="modal" data-bs-target="#editUsuario"
-                                                                    onclick='loadEditFormUsuario(<?php echo json_encode($usuario); ?>)'>
-                                                                    Editar
-                                                                </button>
-
-                                                                <!--eliminar -->
-                                                                <button type="button" class="btn btn-danger rounded-pill"
-                                                                    onclick="confirmDeletion(<?php echo $usuario['id']; ?>)">
-                                                                    Eliminar
-                                                                </button>
-
-                                                                <!-- eliminación -->
-                                                                <form id="delete-form-<?php echo $usuario['id']; ?>"
-                                                                    action="/SC-502-Web-ClienteServidor/static/managment/admin/delete_usuario.php"
-                                                                    method="POST" style="display:inline;">
-                                                                    <input type="hidden" name="id"
-                                                                        value="<?php echo $usuario['id']; ?>">
-                                                                </form>
+                                                                <div class="dropdown">
+                                                                    <button
+                                                                        class="btn btn-outline-primary active rounded-pill dropdown-toggle"
+                                                                        type="button" id="dropdownMenuButton"
+                                                                        aria-expanded="false">
+                                                                        <i class="fas fa-pencil-alt"></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu"
+                                                                        aria-labelledby="dropdownMenuButton">
+                                                                        <li>
+                                                                            <button type="button" class="dropdown-item"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#editUsuario"
+                                                                                onclick='loadEditFormUsuario(<?php echo json_encode($usuario); ?>)'>
+                                                                                Editar
+                                                                            </button>
+                                                                        </li>
+                                                                        <?php if ($usuario['puesto'] !== 'Administrador Excalibur-Tech'): ?>
+                                                                            <li>
+                                                                                <button type="button"
+                                                                                    class="dropdown-item text-danger"
+                                                                                    onclick="confirmDeletiondeleteUser(<?php echo $usuario['id']; ?>)">
+                                                                                    Eliminar
+                                                                                </button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <!-- Formulario para eliminar -->
+                                                                                <form
+                                                                                    id="delete-formUser-<?php echo $usuario['id']; ?>"
+                                                                                    action="/SC-502-Web-ClienteServidor/static/managment/admin/delete_usuario.php"
+                                                                                    method="POST" style="display:inline;">
+                                                                                    <input type="hidden" name="id"
+                                                                                        value="<?php echo $usuario['id']; ?>">
+                                                                                </form>
+                                                                            </li>
+                                                                        <?php endif; ?>
+                                                                    </ul>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5">No se encontraron usuarios.</td>
+                                                        <td colspan="8">No se encontraron usuarios.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
+
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade show " id="pills-completados" role="tabpanel"
+
+
+
+
+
+
+
+
+
+                                    <!-- Tiquetes Completados -->
+                                    <div class="tab-pane fade show" id="pills-completados" role="tabpanel"
                                         aria-labelledby="pills-completados-tab">
-                                        <div class:="titulo" style="text-align: center; color: white;">
+                                        <div class="titulo" style="text-align: center; color: white;">
                                             <h2>Tiquetes completados</h2>
                                         </div>
+                                        <form method="POST" action="">
+                                            <div class="input-group mb-3" style="max-width: 600px; margin: auto;">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="id_tiquete" placeholder="Buscar por ID de tiquete"
+                                                    aria-label="Buscar por ID de tiquete"
+                                                    value="<?php echo isset($_POST['id_tiquete']) ? htmlspecialchars($_POST['id_tiquete']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar
+                                                    Todos</a>
+                                            </div>
+                                        </form>
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
+                                                    <th scope="col">Empresa</th>
+                                                    <th scope="col">Usuario</th>
                                                     <th scope="col">Asunto</th>
                                                     <th scope="col">Fecha creación</th>
                                                     <th scope="col">Fecha de cierre</th>
@@ -346,44 +437,65 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if (count($tiquetes) > 0): ?>
-                                                    <?php foreach ($tiquetes as $tiquete): ?>
+                                                <?php if (count($tiquetesCompletados) > 0): ?>
+                                                    <?php foreach ($tiquetesCompletados as $tiquete): ?>
                                                         <tr class="table-success">
-                                                            <th scope="row">
-                                                                <?php echo $tiquete['id_tiquete']; ?>
-                                                            </th>
+                                                            <th scope="row"><?php echo $tiquete['id_tiquete']; ?></th>
+                                                            <td><?php echo $tiquete['nombre_empresa']; ?></td>
+                                                            <td><?php echo $tiquete['nombre_usuario']; ?></td>
                                                             <td><?php echo $tiquete['titulo']; ?></td>
-                                                            <td><?php echo $tiquete['fecha_apertura']; ?></td>
-                                                            <td><?php echo $tiquete['fecha_cierre']; ?></td>
+                                                            <td><?php echo date('d F Y', strtotime($tiquete['fecha_apertura'])); ?>
+                                                            </td>
+                                                            <td><?php echo date('d F Y', strtotime($tiquete['fecha_cierre'])); ?>
+                                                            </td>
                                                             <td>
-                                                                <!--detalle -->
                                                                 <button type="button" class="btn btn-success rounded-pill"
                                                                     data-bs-toggle="modal" data-bs-target="#issue"
                                                                     onclick="showDetail('<?php echo $tiquete['titulo']; ?>', 
-                                                                                            '<?php echo $tiquete['descripcion']; ?>', 
-                                                                                            '<?php echo $tiquete['respuesta_recibida']; ?>')">
+                                                                                             '<?php echo $tiquete['descripcion']; ?>', 
+                                                                                             '<?php echo $tiquete['respuesta_recibida']; ?>',
+                                                                                             '<?php echo $tiquete['usuario_imagen']; ?>')">
                                                                     Ver
                                                                 </button>
+
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                        <td colspan="7">No se encontraron tiquetes completados.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
+
+
+
+                                    <!-- Tiquetes Pendientes -->
                                     <div class="tab-pane fade" id="pills-pendiente" role="tabpanel"
                                         aria-labelledby="pills-pendiente-tab">
                                         <div class="titulo" style="text-align: center; color: white;">
                                             <h2>Tiquetes Pendientes</h2>
                                         </div>
+                                        <form method="POST" action="">
+                                            <div class="input-group mb-3" style="max-width: 600px; margin: auto;">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="id_tiquete" placeholder="Buscar por ID de tiquete"
+                                                    aria-label="Buscar por ID de tiquete"
+                                                    value="<?php echo isset($_POST['id_tiquete']) ? htmlspecialchars($_POST['id_tiquete']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar Todos</a>
+                                            </div>
+                                        </form>
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
+                                                    <th scope="col">Empresa</th>
+                                                    <th scope="col">Usuario</th>
                                                     <th scope="col">Asunto</th>
                                                     <th scope="col">Fecha creación</th>
                                                     <th scope="col">Estado</th>
@@ -395,40 +507,122 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     <?php foreach ($tiquetesPendientes as $tiquete): ?>
                                                         <tr
                                                             class="<?php echo $tiquete['estado'] === 'Pendiente' ? 'table-danger' : 'table-warning'; ?>">
-                                                            <th scope="row">
-                                                                <?php echo $tiquete['id_tiquete']; ?>
-                                                            </th>
+                                                            <th scope="row"><?php echo $tiquete['id_tiquete']; ?></th>
+                                                            <td><?php echo $tiquete['nombre_empresa']; ?></td>
+                                                            <td><?php echo $tiquete['nombre_usuario']; ?></td>
                                                             <td><?php echo $tiquete['titulo']; ?></td>
                                                             <td><?php echo date('d F Y', strtotime($tiquete['fecha_apertura'])); ?>
                                                             </td>
-                                                            <td><strong><?php echo $tiquete['estado']; ?></strong>
-                                                            </td>
+                                                            <td><strong><?php echo $tiquete['estado']; ?></strong></td>
                                                             <td>
-                                                            <button type="button"
-                                                                    class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                                <button type="button" class="btn btn-success rounded-pill"
                                                                     data-bs-toggle="modal" data-bs-target="#editAnswer"
                                                                     onclick='showDetailTiquete(<?php echo json_encode($tiquete); ?>)'>
                                                                     Responder
-                                                                </button>                                            
+                                                                </button>
                                                             </td>
-
-
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                        <td colspan="7">No se encontraron tiquetes pendientes.</td>
                                                     </tr>
                                                 <?php endif; ?>
-
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade show " id="pills-c_completados" role="tabpanel"
+
+
+
+
+
+
+                                    <!-- Tiquetes Auditoria -->
+                                    <div class="tab-pane fade show" id="pills-auditoria" role="tabpanel"
+                                        aria-labelledby="pills-auditoria-tab">
+                                        <div class="titulo" style="text-align: center; color: white;">
+                                            <h2>Tiquetes de Auditoría</h2>
+                                        </div>
+
+                                        <form method="POST" action="" class="mb-3"
+                                            style="max-width: 600px; margin: auto;">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="search_id_tiquete" placeholder="Buscar por ID de tiquete"
+                                                    aria-label="Buscar por ID de tiquete"
+                                                    value="<?php echo isset($_POST['search_id_tiquete']) ? htmlspecialchars($_POST['search_id_tiquete']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar Todos</a>
+                                            </div>
+                                        </form>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Titulo</th>
+                                                    <th scope="col">Fecha cierre</th>
+                                                    <th scope="col">Creado por</th>
+                                                    <th scope="col">Empresa</th>
+                                                    <th scope="col">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (count($auditoria) > 0): ?>
+                                                    <?php foreach ($auditoria as $auditoria_p): ?>
+                                                        <tr class="table-success">
+                                                            <th scope="row"><?php echo $auditoria_p['id_auditoria']; ?></th>
+                                                            <td><?php echo $auditoria_p['id_tiquete']; ?></td>
+                                                            <td><?php echo $auditoria_p['titulo']; ?></td>
+                                                            <td><?php echo $auditoria_p['fecha_cierre']; ?></td>
+                                                            <td><?php echo $auditoria_p['nombre_usuario']; ?></td>
+                                                            <td><?php echo $auditoria_p['nombre_empresa']; ?></td>
+                                                            <td>
+                                                                <!-- Detalle -->
+                                                                <button type="button" class="btn btn-success rounded-pill"
+                                                                    data-bs-toggle="modal" data-bs-target="#issue" onclick="showDetail('<?php echo $auditoria_p['titulo']; ?>', 
+                                                    '<?php echo $auditoria_p['descripcion']; ?>', 
+                                                    '<?php echo $auditoria_p['respuesta_recibida']; ?>')">
+                                                                    Ver
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="7">No se encontraron tiquetes de auditoría.</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+
+                                    <!-- Tiquetes Contactenos completados -->
+                                    <div class="tab-pane fade show" id="pills-c_completados" role="tabpanel"
                                         aria-labelledby="pills-c_completados-tab">
-                                        <div class:="titulo" style="text-align: center; color: white;">
+                                        <div class="titulo" style="text-align: center; color: white;">
                                             <h2>Tiquetes completados</h2>
                                         </div>
+
+                                        <form method="POST" action="" class="mb-3"
+                                            style="max-width: 600px; margin: auto;">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="search_id_completados" placeholder="Buscar por ID de tiquete"
+                                                    aria-label="Buscar por ID de tiquete"
+                                                    value="<?php echo isset($_POST['search_id_completados']) ? htmlspecialchars($_POST['search_id_completados']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar Todos</a>
+                                            </div>
+                                        </form>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -443,15 +637,11 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 <?php if (count($tiquetes_contactenos) > 0): ?>
                                                     <?php foreach ($tiquetes_contactenos as $tiquete_c): ?>
                                                         <tr class="table-success">
-                                                            <th scope="row">
-                                                                <?php echo $tiquete_c['id_tiquete']; ?>
-                                                            </th>
+                                                            <th scope="row"><?php echo $tiquete_c['id_tiquete']; ?></th>
                                                             <td><?php echo $tiquete_c['nombre_completo']; ?></td>
                                                             <td><?php echo $tiquete_c['asunto']; ?></td>
                                                             <td><?php echo $tiquete_c['correo']; ?></td>
                                                             <td><?php echo $tiquete_c['telefono']; ?></td>
-                                                            <td>
-                                                            </td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
@@ -462,11 +652,32 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade show " id="pills-c_pendientes" role="tabpanel"
+
+
+
+
+
+                                    <!-- Tiquetes Contactenos Pendientes -->
+                                    <div class="tab-pane fade show" id="pills-c_pendientes" role="tabpanel"
                                         aria-labelledby="pills-c_pendientes-tab">
-                                        <div class:="titulo" style="text-align: center; color: white;">
+                                        <div class="titulo" style="text-align: center; color: white;">
                                             <h2>Tiquetes pendientes</h2>
                                         </div>
+
+                                        <form method="POST" action="" class="mb-3"
+                                            style="max-width: 600px; margin: auto;">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control rounded-pill me-2"
+                                                    name="search_id_pendientes" placeholder="Buscar por ID de tiquete"
+                                                    aria-label="Buscar por ID de tiquete"
+                                                    value="<?php echo isset($_POST['search_id_pendientes']) ? htmlspecialchars($_POST['search_id_pendientes']) : ''; ?>">
+                                                <button class="btn btn-success rounded-pill me-2"
+                                                    type="submit">Buscar</button>
+
+                                                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+                                                    class="btn btn-success rounded-pill">Mostrar Todos</a>
+                                            </div>
+                                        </form>
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -482,21 +693,18 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                 <?php if (count($tiquetesPendientes_contactenos) > 0): ?>
                                                     <?php foreach ($tiquetesPendientes_contactenos as $tiquete_p): ?>
                                                         <tr class="table-success">
-                                                            <th scope="row">
-                                                                <?php echo $tiquete_p['id_tiquete']; ?>
-                                                            </th>
+                                                            <th scope="row"><?php echo $tiquete_p['id_tiquete']; ?></th>
                                                             <td><?php echo $tiquete_p['nombre_completo']; ?></td>
                                                             <td><?php echo $tiquete_p['asunto']; ?></td>
-                                                            <td>     <a href="mailto:<?php echo $tiquete_p['correo']; ?>">         <?php echo $tiquete_p['correo']; ?> </a> </td>
+                                                            <td><a
+                                                                    href="mailto:<?php echo $tiquete_p['correo']; ?>"><?php echo $tiquete_p['correo']; ?></a>
+                                                            </td>
                                                             <td><?php echo $tiquete_p['telefono']; ?></td>
                                                             <td>
-                                                                <!--completar -->
-                                                                <button type="button" class="btn btn-outline-primary btn-custom active rounded-pill"
+                                                                <button type="button" class="btn btn-success rounded-pill"
                                                                     onclick="confirmCompletion(<?php echo $tiquete_p['id_tiquete']; ?>)">
                                                                     Completar
                                                                 </button>
-
-                                                                <!-- completar -->
                                                                 <form id="complete-form-<?php echo $tiquete_p['id_tiquete']; ?>"
                                                                     action="/SC-502-Web-ClienteServidor/static/managment/admin/update_contactenos.php"
                                                                     method="POST" style="display:inline;">
@@ -508,14 +716,17 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                                                     <?php endforeach; ?>
                                                 <?php else: ?>
                                                     <tr>
-                                                        <td colspan="5">No se encontraron tiquetes completados.</td>
+                                                        <td colspan="6">No se encontraron tiquetes pendientes.</td>
                                                     </tr>
                                                 <?php endif; ?>
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
 
+
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -541,6 +752,33 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                 });
             }
         });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const activeTab = sessionStorage.getItem('activeTab');
+            if (activeTab) {
+                const tabElement = document.getElementById(activeTab);
+                if (tabElement) {
+                    new bootstrap.Tab(tabElement).show();
+                }
+            }
+
+            function saveActiveTab(event) {
+                const tabId = event.target.getAttribute('id');
+                if (tabId) {
+                    sessionStorage.setItem('activeTab', tabId);
+                }
+            }
+
+            document.querySelectorAll('.nav-item button').forEach(button => {
+                button.addEventListener('click', saveActiveTab);
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', saveActiveTab);
+            });
+        });
+
     </script>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/SC-502-Web-ClienteServidor/static/php/footer.php'; ?>

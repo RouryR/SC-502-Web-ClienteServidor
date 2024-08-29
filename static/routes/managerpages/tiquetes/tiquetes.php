@@ -40,7 +40,7 @@ $numero = isset($_GET['numero']) ? htmlspecialchars($_GET['numero']) : '';
                     <i class="fa-solid fa-headset fa-beat fa-sm" style="color: #ffffff;"></i> Tiquetes
                 </p>
 
-                <div class="container">
+                <div>
                     <div class="row">
                         <div class="col-lg-3 ">
                             <div class="card left-profile-card">
