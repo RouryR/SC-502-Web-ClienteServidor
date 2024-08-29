@@ -39,7 +39,8 @@ ini_set('display_errors', 1);
                                         </a>
                                     </div>
                                     <p class="custom-card-text">El módulo de importaciones permite:
-                                        <li>Consolidar varias ordenes de compra en un solo proceso de importación.</li>
+                                    <ul>    
+                                    <li>Consolidar varias ordenes de compra en un solo proceso de importación.</li>
                                         <li>Permite el manejo de múltiples des-almacenajes para múltiples proveedores en
                                             la misma importación.</li>
                                         <li>Liquidación de la misma y el costeo de las entradas al Inventario.</li>

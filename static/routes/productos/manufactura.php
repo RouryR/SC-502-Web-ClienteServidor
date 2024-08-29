@@ -37,6 +37,8 @@ ini_set('display_errors', 1);
                         </a>
                     </div>
                     <p class="custom-card-text">Con el módulo de Manufactura podrá:
+                    
+                    <ul>
                     <li>Crear órdenes de manufactura.</li>
                         <li>Costeo de órdenes de manufactura al costo estándar vs costo real.</li>
                         <li>Manejo de ensambles o producción en serie.</li>

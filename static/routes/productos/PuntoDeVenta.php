@@ -37,6 +37,7 @@ ini_set('display_errors', 1);
                         </a>
                     </div>
                     <p class="custom-card-text">Con un software multi-tienda usted podrá:
+                    <ul>
                     <li>Realizar una facturación rápida de forma independiente.</li>
                         <li>Tendrá acceso a la pantalla interactiva de punto de venta donde podrá colocar diferentes opciones como logo de marca, fotografías de los productos y videos.</li>
                         <li>Automatizar el control del inventario, reduciendo posibles pérdidas.</li>

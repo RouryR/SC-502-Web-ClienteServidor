@@ -37,7 +37,8 @@ ini_set('display_errors', 1);
                         </a>
                     </div>
                     <p class="custom-card-text">Usted podrá:
-                        <li>Administrar inventarios consolidados.</li>
+                    <ul>    
+                    <li>Administrar inventarios consolidados.</li>
                         <li>Generar de forma automática facturas de venta de una compañía a otra,</li>
                         <li>Registrar de forma automatizada de la compra correspondiente.</li>
                     </ul></p>

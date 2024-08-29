@@ -37,7 +37,8 @@ ini_set('display_errors', 1);
                         </a>
                     </div>
                     <p class="custom-card-text">Con el presente modulo usted podra
-                        <li>Definir políticas de descuento por cliente, categoría de productos, productos por proveedor vs cliente individuales o con limitación de descuentos por cantidad y hasta delimitar por fechas.</li>
+                    <ul>   
+                    <li>Definir políticas de descuento por cliente, categoría de productos, productos por proveedor vs cliente individuales o con limitación de descuentos por cantidad y hasta delimitar por fechas.</li>
                         <li>Efectuar registros de pedidos y proformas a los diferentes clientes correspondientes a su facturación a diferentes monedas.</li>
                         <li>Efectuar la facturación empresarial y puntos de venta (Retail) (Online y Offline).</li>
                         <li>Consultar y conocer los reportes de pedidos y facturas pendientes y ventas.</li>

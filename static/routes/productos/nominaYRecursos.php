@@ -37,6 +37,7 @@ ini_set('display_errors', 1);
                         </a>
                     </div>
                     <p class="custom-card-text">Con esta herramienta usted como empresario se le permitirá:
+                    <ul>
                     <li>Crear el perfil detallado de sus empleados.</li>
                         <li>Llevar un control de los días feriados.</li>
                         <li>Elaborar acciones de personal.</li>
