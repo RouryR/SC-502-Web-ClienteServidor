@@ -188,7 +188,7 @@ $id = $_SESSION['usuario_id'];
                                                             <td><?php echo $empleado['nombre_completo']; ?></td>
                                                             <td><?php echo $empleado['correo']; ?></td>
                                                             <td><?php echo $empleado['puesto']; ?></td>
-                                                            <td><?php echo $empleado['salario']; ?></td>
+                                                            <td>₡<?php echo $empleado['salario']; ?></td>
                                                             <td><?php echo $empleado['telefono']; ?></td>
                                                             <td>
 

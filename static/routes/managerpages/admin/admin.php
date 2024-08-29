@@ -71,7 +71,6 @@ if (isset($_SESSION['mensaje'])) {
                                             class="circular-image mb-3" />
                                         <h3><?php echo $_SESSION['Nombre']; ?></h3>
                                         <p><?php echo $_SESSION['empresa_nombre']; ?></p>
-                                        <p><?php echo $_SESSION['usuario_id']; ?></p>
                                         <button type="button"
                                             class="btn btn-outline-primary btn-custom active rounded-pill"
                                             data-bs-toggle="modal" data-bs-target="#editAdmin"
@@ -640,7 +639,9 @@ if (isset($_SESSION['mensaje'])) {
                                                             <th scope="row"><?php echo $tiquete_c['id_tiquete']; ?></th>
                                                             <td><?php echo $tiquete_c['nombre_completo']; ?></td>
                                                             <td><?php echo $tiquete_c['asunto']; ?></td>
-                                                            <td><?php echo $tiquete_c['correo']; ?></td>
+                                                            <td><a
+                                                                    href="mailto:<?php echo $tiquete_c['correo']; ?>"><?php echo $tiquete_c['correo']; ?></a>
+                                                            </td>
                                                             <td><?php echo $tiquete_c['telefono']; ?></td>
                                                         </tr>
                                                     <?php endforeach; ?>

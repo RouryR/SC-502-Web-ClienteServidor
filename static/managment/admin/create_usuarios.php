@@ -31,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!$correo || !$nombre_completo || !$password || !$empresaid || !$puesto || !$telefono || !$direccion || $rol === null || !$imagen) {
-        die("Faltan datos en el formulario.");
+        $_SESSION['mensaje'] = "Error al crear la usuario: Faltan datos en el formulario.";
+        header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php");
+        //die("Faltan datos en el formulario.");
     }
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);

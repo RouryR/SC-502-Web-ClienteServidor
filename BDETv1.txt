@@ -84,11 +84,16 @@ INSERT INTO empresas (nombre, correo, telefono, imagen) VALUES
 ('Excalibur-Tech', 'Admin@excaliburtech.com', '8652-5341','/SC-502-Web-ClienteServidor/static/img/logo.svg');
 
 INSERT INTO usuarios (correo, nombre_completo, password, empresa_id, puesto, telefono, direccion, rol, imagen) VALUES
-('john.doe@techsolutions.com', 'John Doe', '$2a$12$MEny.72BP4kZvzVyJVaB9.UGgixRdHIFAA7HU0T/q43BGUO/dq/Nm', 1, 'Developer', '8888-9999','Heredia, Aurora', FALSE, 'https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg'),
-('jane.smith@innovatech.com', 'Jane Smith', '$2a$12$fMMQoBrJkynD1FnV9Q3PZuhMvB9pnxZ70unnDNZ1z9gROWQVE9fPS', 2, 'Project Manager', '8777-8888','San Jose, Desamparados', FALSE, 'https://img.freepik.com/foto-gratis/hombre-feliz-pie-playa_107420-9868.jpg?size=626&ext=jpg'),
-('peter.parker@cybercorp.com', 'Peter Parker', '$2a$12$69ixoDMZpP6ah81IOB17R.F7VbveD5qJtl4wZT1sVC/yHtg8jk/Te', 3, 'Technician', '8666-7777','Catago, San Isidro', FALSE, 'https://static.vecteezy.com/system/resources/previews/002/010/370/large_2x/asian-handsome-man-with-a-mustache-smiling-and-laughing-isolated-on-white-background-free-photo.jpg'),
-('mary.jones@techsolutions.com', 'Mary Jones', '$2a$12$M0q8iUbU2TiK5gMjY2e2zOcCFxdqcFQUJGSpONOj8z.RHRnM3Kt3O', 1, 'QA Engineer', '8555-6666','Guanacaste, Flamingo', FALSE, 'https://www.santanderopenacademy.com/es/blog/mujeres-empresarias/_jcr_content/root/container/responsivegrid/image_688851163_copy.coreimg.jpeg/1641997612895/mujeres-empresarias-becas.jpeg'),
-('james.bond@excaliburtech.com', 'James Bond', '$2a$12$sOTWQ2CzknL.P6ZKErXitO4.y1IB5hFymz4n0PuV4Uq2SQO3tStAu', 4, 'Administrador Excalibur-Tech', '8444-7777','Puntarenas, Golfito', TRUE, 'https://media.istockphoto.com/id/1148808852/photo/casual-businessman-portrait-while-standing-in-the-office-with-folded-arms.jpg?s=612x612&w=0&k=20&c=GUaX2eiFcJWHn2dxSNp8PAVY9ir8ydyLoZH5XFzNgqE=');
+
+('john.doe@techsolutions.com', 'John Doe', '$2a$12$MEny.72BP4kZvzVyJVaB9.UGgixRdHIFAA7HU0T/q43BGUO/dq/Nm', 1, 'Gerente', '8888-9999','Heredia, Aurora', FALSE, 'https://mejorconsalud.as.com/wp-content/uploads/2017/11/hombre-sonriendo-gafas.jpg'),
+
+('jane.smith@innovatech.com', 'Jane Smith', '$2a$12$fMMQoBrJkynD1FnV9Q3PZuhMvB9pnxZ70unnDNZ1z9gROWQVE9fPS', 2, 'Contador', '8777-8888','San Jose, Desamparados', FALSE, 'https://img.freepik.com/foto-gratis/hombre-feliz-pie-playa_107420-9868.jpg?size=626&ext=jpg'),
+
+('peter.parker@cybercorp.com', 'Peter Parker', '$2a$12$69ixoDMZpP6ah81IOB17R.F7VbveD5qJtl4wZT1sVC/yHtg8jk/Te', 3, 'CEO', '8666-7777','Cartago, San Isidro', FALSE, 'https://static.vecteezy.com/system/resources/previews/002/010/370/large_2x/asian-handsome-man-with-a-mustache-smiling-and-laughing-isolated-on-white-background-free-photo.jpg'),
+
+('mary.jones@techsolutions.com', 'Mary Jones', '$2a$12$M0q8iUbU2TiK5gMjY2e2zOcCFxdqcFQUJGSpONOj8z.RHRnM3Kt3O', 1, 'Supervisor Industrial', '8555-6666','Guanacaste, Flamingo', FALSE, 'https://www.santanderopenacademy.com/es/blog/mujeres-empresarias/_jcr_content/root/container/responsivegrid/image_688851163_copy.coreimg.jpeg/1641997612895/mujeres-empresarias-becas.jpeg'),
+
+('supervision@excaliburtech.com', 'Emmanuel Cervantes', '$2a$12$sOTWQ2CzknL.P6ZKErXitO4.y1IB5hFymz4n0PuV4Uq2SQO3tStAu', 4, 'Administrador Excalibur-Tech', '8444-7777','Heredia, Barreal', TRUE, 'https://media.istockphoto.com/id/1148808852/photo/casual-businessman-portrait-while-standing-in-the-office-with-folded-arms.jpg?s=612x612&w=0&k=20&c=GUaX2eiFcJWHn2dxSNp8PAVY9ir8ydyLoZH5XFzNgqE=');
 
 
 INSERT INTO tiquetes_usuarios (titulo, descripcion, fecha_apertura, fecha_cierre, respuesta_recibida, id_usuario, estado) VALUES
@@ -96,14 +101,14 @@ INSERT INTO tiquetes_usuarios (titulo, descripcion, fecha_apertura, fecha_cierre
 ('Error in payment gateway', 'Payment gateway returns an error code', '2024-07-02', '2024-07-03', 'Issue resolved by updating API keys', 2, 'Completado'),
 ('Server downtime', 'Server is down for maintenance', '2024-07-01', NULL, '', 3, 'En revisión'),
 ('UI Bug on Dashboard', 'Button misalignment on dashboard page', '2024-07-05', NULL, '', 4, 'Pendiente'),
-('Email Notification Issue', 'Emails not being sent for notifications', '2024-07-07', '2024-07-08', 'Issue fixed by server configuration', 5, 'Completado');
+('Email Notification Issue', 'Emails not being sent for notifications', '2024-07-07', '2024-07-08', 'Issue fixed by server configuration', 1, 'Completado');
 
 INSERT INTO empleados (nombre_completo, correo, puesto, salario, telefono, id_usuario) VALUES
 ('Alice Johnson', 'alice.johnson@techsolutions.com', 'HR Manager', 3000.00, '8444-5555', 1),
 ('Bob Brown', 'bob.brown@innovatech.com', 'Marketing Specialist', 2500.00, '8333-4444', 2),
 ('Charlie Davis', 'charlie.davis@cybercorp.com', 'System Administrator', 3500.00, '8222-3333', 3),
 ('Eve Adams', 'eve.adams@techsolutions.com', 'Software Engineer', 3200.00, '8111-2222', 4),
-('Frank Black', 'frank.black@innovatech.com', 'Business Analyst', 2700.00, '8000-1111', 5);
+('Frank Black', 'frank.black@innovatech.com', 'Business Analyst', 2700.00, '8000-1111', 1);
 
 INSERT INTO tiquetes_contactenos (nombre_completo, asunto, correo, telefono, revisado) VALUES
 ('Michael Scott','Crear usuario', 'michael.scott@dundermifflin.com', '8111-2222', FALSE),

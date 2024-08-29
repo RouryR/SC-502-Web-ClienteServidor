@@ -27,7 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!$nombre || !$correo || !$telefono || !$imagen) {
-        die("Faltan datos en el formulario.");
+        $_SESSION['mensaje'] = "Error al crear la empresa: Faltan datos en el formulario.";
+        header("Location: /SC-502-Web-ClienteServidor/static/routes/managerpages/admin/admin.php");
+        //die("Faltan datos en el formulario.");
     }
 
     $query = "INSERT INTO empresas (nombre, correo, telefono, imagen) VALUES (?, ?, ?, ?)";
